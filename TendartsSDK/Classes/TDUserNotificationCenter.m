@@ -14,20 +14,21 @@
 #import "TendartsSDK.h"
 @implementation TDUserNotificationCenter
 
-
+#ifdef _IOS_10_FUNCTIONALITY
 
 static UNUserNotificationCenter * currentNC = nil;
+#endif
 + (void) installTDUserNotifications
 {
-	
 
+#ifdef _IOS_10_FUNCTIONALITY
 	
 	
 	
 	//insert our custom set delegate override that will install all delegate functionality
 	putMethodInTarget([TDUserNotificationCenter class], @selector(setTDDelegate:), [UNUserNotificationCenter class], @selector(setDelegate:));
 
-#ifdef _IOS_10_FUNCTIONALITY
+
 	
 	
 	//td3
@@ -41,12 +42,12 @@ static UNUserNotificationCenter * currentNC = nil;
 	}
 #endif
 }
-
+#ifdef _IOS_10_FUNCTIONALITY
 - (void) setTDDelegate:(id)delegate
 {
 	NSLog(@"Set delegate: user notification center");
 	
-	
+
 	Class existingDelegate =  searchAncestorImplementingProtocol([delegate class], @protocol(UNUserNotificationCenterDelegate));
 	NSArray * childs = getChilds(existingDelegate);
 	
@@ -69,7 +70,7 @@ static UNUserNotificationCenter * currentNC = nil;
 	{
 		[self setTDDelegate:delegate];
 	}
-	
+
 
 }
 
@@ -101,6 +102,6 @@ static UNUserNotificationCenter * currentNC = nil;
 	completionHandler();
 }
 
-
+#endif
 
 @end
