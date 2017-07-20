@@ -1,6 +1,6 @@
 # TendartsSDK
 
-[![CI Status](http://img.shields.io/travis/jorgeonpublico/TendartsSDK.svg?style=flat)](https://travis-ci.org/jorgeonpublico/TendartsSDK)
+[![CI Status](https://img.shields.io/travis/10darts/ios-TendartsSDK.svg?style=flat)](https://travis-ci.org/jorgeonpublico/TendartsSDK)
 [![Version](https://img.shields.io/cocoapods/v/TendartsSDK.svg?style=flat)](http://cocoapods.org/pods/TendartsSDK)
 [![License](https://img.shields.io/cocoapods/l/TendartsSDK.svg?style=flat)](http://cocoapods.org/pods/TendartsSDK)
 [![Platform](https://img.shields.io/cocoapods/p/TendartsSDK.svg?style=flat)](http://cocoapods.org/pods/TendartsSDK)
