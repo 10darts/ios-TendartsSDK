@@ -22,7 +22,7 @@ pod "TendartsSDK"
 
 ## Author
 
-jorgeonpublico, jorge.onpublico@gmail.com
+10 Dartsº
 
 ## License
 
