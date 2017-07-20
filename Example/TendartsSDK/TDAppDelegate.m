@@ -7,11 +7,13 @@
 //
 
 #import "TDAppDelegate.h"
+#import <TendartsSDK/TendartsSDK.h>
 
 @implementation TDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[TendartsSDK initTendartsUsingLaunchOptions:launchOptions withAPIKey:@"jdlakj" andConfig:nil];
     // Override point for customization after application launch.
     return YES;
 }
