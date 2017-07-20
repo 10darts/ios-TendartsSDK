@@ -1,0 +1,16 @@
+PODS:
+  - TendartsSDK (0.1.0)
+
+DEPENDENCIES:
+  - TendartsSDK (from `../`)
+
+EXTERNAL SOURCES:
+  TendartsSDK:
+    :path: ../
+
+SPEC CHECKSUMS:
+  TendartsSDK: 9ed76b94c9fecdd5caf2cb451c141f9eecacdb9f
+
+PODFILE CHECKSUM: 90b0554441398c084766f957364ceeffe93901d3
+
+COCOAPODS: 1.0.1

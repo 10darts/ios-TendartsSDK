@@ -1,0 +1,6 @@
+framework module Pods_TendartsSDK_Tests {
+  umbrella header "Pods-TendartsSDK_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
