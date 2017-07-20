@@ -5,10 +5,14 @@
 //  Created by Jorge Arimany on 26/6/17.
 //  Copyright © 2017 10Darts. All rights reserved.
 //
-
+#import "TendartsSDK.h"
 #import "NotificationUtils.h"
 #import <UIKit/UIKit.h>
+
+
+#ifdef _IOS_10_FUNCTIONALITY
 #import <UserNotifications/UserNotifications.h>
+#endif
 #import "TDUtils.h"
 
 
@@ -24,7 +28,7 @@
 	
 	if( [TDUtils getIOSVersion] >=10.0)
 	{
-		
+#ifdef _IOS_10_FUNCTIONALITY
 		UIApplication* app = [UIApplication sharedApplication];
 		NSSet* categories = [[app currentUserNotificationSettings] categories];
 		[app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge) categories:categories]];
@@ -43,7 +47,7 @@
 		
 		}];
 		
-			
+#endif
 	}
 	else
 	{
