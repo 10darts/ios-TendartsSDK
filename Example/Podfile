@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TendartsSDK_Example' do
+  pod 'TendartsSDK', :path => '../'
+
+  target 'TendartsSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
