@@ -5,10 +5,12 @@
 //  Created by Jorge Arimany on 3/7/17.
 //  Copyright © 2017 10Darts. All rights reserved.
 //
-
+#import "TendartsSDK.h"
 #import "TDUserNotificationCenter.h"
 #import "TDClassUtils.h"
+#ifdef _IOS_10_FUNCTIONALITY
 #import <UserNotifications/UserNotifications.h>
+#endif
 #import "TendartsSDK.h"
 @implementation TDUserNotificationCenter
 
