@@ -104,6 +104,8 @@
 		self.contentType = [dict objectForKey:TDN_CONTENT_TYPE];
 		self.image = [dict objectForKey:TDN_IMAGE];
 		
+		self.alreadySent = [dict objectForKey:@"sentReceived"];
+		
 		self.userData = [dict objectForKey:TDN_USER_DATA];
 		
 	}

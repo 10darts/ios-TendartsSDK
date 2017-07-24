@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *contentType;//dst
 @property (nonatomic, strong) NSString * image;//img
 @property (nonatomic, strong) NSString * userData;//ctm
+@property (nonatomic, strong) NSString * alreadySent;//internal use
 
 +(BOOL) isTendartsNotification: (NSDictionary*) data;
 

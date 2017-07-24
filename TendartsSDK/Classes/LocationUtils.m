@@ -7,7 +7,10 @@
 //
 
 #import "LocationUtils.h"
-
+#import "TDConfiguration.h"
+#import "TDConstants.h"
+#import "TDCommunications.h"
+#import "TDSDKExtension.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface LocationUtils () <CLLocationManagerDelegate>
@@ -90,6 +93,14 @@ static LocationUtils * _instance = nil;
 + (NSDictionary *)getLocationData
 {
 	LocationUtils * me = [LocationUtils instance];
+	if( me.lastLocation.coordinate.latitude == 0)
+	{
+		return nil;
+	}
+	if( me.lastLocation.coordinate.longitude == 0)
+	{
+		return nil;
+	}
 	NSArray * array = [NSArray arrayWithObjects:
 					   [NSNumber numberWithDouble: me.lastLocation.coordinate.longitude],
 					   [NSNumber numberWithDouble:me.lastLocation.coordinate.latitude],
@@ -165,6 +176,7 @@ BOOL isAuthorized()
 - (void)cutoffTimerFired:(NSTimer *)cutoffTimer
 {
 	[self stopUpdatesKeepingMonitoring];
+	
 	/*if (self.onCompletion)
 	 {
 		self.onCompletion(NO, self.bestLocationReceived, @(-[self.startTime timeIntervalSinceNow]), nil);
@@ -271,6 +283,7 @@ BOOL isAuthorized()
 	}
 }
 
+
 -(void) saveLocation:(CLLocation*)location
 {
 	NSLog(@"locations: saving location");
@@ -282,6 +295,53 @@ BOOL isAuthorized()
 	[userDefault setObject:coordinate forKey:@"TDCoordinate"];
 	[userDefault synchronize];
 	
+
+	static int n_sent = 0;
+	NSDate *last =[TDConfiguration getLastGeostatsSent];
+	
+	
+	if( last == nil  ||n_sent++ <5 || [last timeIntervalSinceNow] < -60 )
+	{
+		if( location.coordinate.latitude == 0)
+		{
+			n_sent++;
+		}
+		else
+		{
+			//send geostats
+			NSString *code = [TDConfiguration getPushCode];
+			NSString *url =  [[TDConstants instance] devices];
+			if( code != nil)
+			{
+				
+				
+				NSDictionary *loc =[LocationUtils getLocationData];
+				NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+									loc,@"position",
+									  [NSString stringWithFormat:@"acc:%f",location.horizontalAccuracy], @"debug_info",
+									  nil];
+				
+				NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+
+				
+				url = [[TDConstants instance] getDeviceUrl:code];
+				[TDCommunications sendData:data toURl:url withMethod:@"PATCH"
+						  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
+				 {
+					 [TDConfiguration saveLastGeostatsSent:[NSDate date]];
+					 [TendartsSDK logEventWithCategory:@"DEVICE" type:@"location succesfully sent" andMessage:json.description];
+				 }onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
+
+				 {
+					 [TendartsSDK logEventWithCategory:@"DEVICE" type:@"Error sending location" andMessage:json.description];
+				}];
+				
+
+			}
+
+		}
+		
+	}
 	
 	
 	CLGeocoder *reverseGeocoder = [[CLGeocoder alloc] init];

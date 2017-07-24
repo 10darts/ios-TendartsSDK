@@ -22,7 +22,7 @@ pod "TendartsSDK"
 
 ## Author
 
-10 Dartsº
+10 Darts
 
 ## License
 

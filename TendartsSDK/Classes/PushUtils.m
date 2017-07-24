@@ -36,14 +36,15 @@
 	platform = @"ios_sandbox";
 #endif
 	
-
+	
+	NSDictionary *loc =[LocationUtils getLocationData];
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
 						  token, @"token",
 						  platform, @"platform",
 						  language,@"language",
 						  version,@"version",
 						  model, @"model",
-						  [LocationUtils getLocationData],@"position",
+						  loc,@"position",
 						  nil];
 	
 	NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];

@@ -182,6 +182,10 @@ static id<TendartsDelegate> _delegate = nil;
 		}
 		return;
 	}
+	if( notification.alreadySent.length > 2)
+	{
+		return;//already sent
+	}
 	
 	NSString* code = [TDConfiguration getPushCode];
 	
@@ -276,6 +280,12 @@ static id<TendartsDelegate> _delegate = nil;
 	[TDCommunications sendData:data toURl:url withMethod:@"POST"
 			  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
 	 {
+		 NSString *persona = [json objectForKey:@"persona"];
+		 if( persona != nil )
+		 {
+			 [TDConfiguration saveUserCode:persona];
+		 }
+		 
 		 [TendartsSDK logEventWithCategory:@"USER" type:@"link device sent ok" andMessage:json.description];
 		 if( successHandler)
 		 {
@@ -330,14 +340,14 @@ static id<TendartsDelegate> _delegate = nil;
 	{
 		[dict setObject:firstName forKey:@"first_name"];
 	}
-	if( firstName.length > 0)
+	if( lastName.length > 0)
 	{
 		[dict setObject:lastName forKey:@"last_name"];
 	}
 	
 	
 	
-	if( firstName.length > 0)
+	if( password.length > 0)
 	{
 		[dict setObject:password forKey:@"password"];
 	}
@@ -395,15 +405,28 @@ static id<TendartsDelegate> _delegate = nil;
 	{
 		TDNotification * notification = [[TDNotification alloc]initWithDictionary:request.content.userInfo];
 		
+		
+		
 		//send received
 		[TendartsSDK onNotificationReceived:notification withHandler:nil];
 		
+		UNMutableNotificationContent *content = [request.content mutableCopy];
+		
+		NSMutableDictionary *info = [content.userInfo mutableCopy];
+		if( info == nil)
+		{
+			info = [[NSMutableDictionary alloc]init];
+		}
+		[info setObject:@"sent" forKey:@"sentReceived"];
+		content.userInfo = info;
+
 		if( notification.silent)
 		{
 	
-			contentHandler(request.content);
+			contentHandler(content);
 			return;
 		}
+		
 		
 		if( notification.image != nil && notification.image.length > 6)
 		{
@@ -443,7 +466,7 @@ static id<TendartsDelegate> _delegate = nil;
 					{
 						NSMutableArray *attatchments = [NSMutableArray new];
 						[attatchments addObject:attachment];
-						UNMutableNotificationContent *mutable = [request.content mutableCopy];
+						UNMutableNotificationContent *mutable =  content;//[request.content mutableCopy];
 						mutable.attachments = attatchments;
 						contentHandler(mutable);
 						return;
@@ -461,6 +484,8 @@ static id<TendartsDelegate> _delegate = nil;
 			}
 			
 		}
+		contentHandler(content);
+		return;
 		
 	}
 	contentHandler(request.content);
