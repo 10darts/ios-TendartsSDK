@@ -316,8 +316,9 @@
 										 {
 											 if( [notification.deepLink length] > 3)
 											 {
-												 NSURL *url = [NSURL URLWithString:notification.deepLink];
 #if !(IN_APP_EXTENSION)
+												 NSURL *url = [NSURL URLWithString:notification.deepLink];
+
 												 if(url != nil && [[UIApplication sharedApplication] canOpenURL:url])
 												 {
 													 dispatch_async(dispatch_get_main_queue(), ^{
@@ -410,8 +411,9 @@
 
 			if( [notification.deepLink length] > 3)
 			{
+#if !(IN_APP_EXTENSION)				
 				NSURL *url = [NSURL URLWithString:notification.deepLink];
-#if !(IN_APP_EXTENSION)
+
 				if(url != nil && [[UIApplication sharedApplication] canOpenURL:url])
 				{
 					dispatch_async(dispatch_get_main_queue(), ^{
