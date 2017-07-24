@@ -29,6 +29,9 @@
 	if( [TDUtils getIOSVersion] >=10.0)
 	{
 #ifdef _IOS_10_FUNCTIONALITY
+	
+#if !(IN_APP_EXTENSION)
+	
 		UIApplication* app = [UIApplication sharedApplication];
 		NSSet* categories = [[app currentUserNotificationSettings] categories];
 		[app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge) categories:categories]];
@@ -46,19 +49,19 @@
 			
 		
 		}];
-		
+#endif
 #endif
 	}
 	else
 	{
-		
+#if !(IN_APP_EXTENSION)
 		// ios 8
 		UIUserNotificationType types = UIUserNotificationTypeBadge |
 		UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
 		UIUserNotificationSettings *settings =
 		[UIUserNotificationSettings settingsForTypes:types categories:nil];
 		[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-		
+#endif
 	}
 	
 	
@@ -70,9 +73,10 @@
 		
 	}
 	
-
+#if !(IN_APP_EXTENSION)
 	[[UIApplication sharedApplication] registerForRemoteNotifications];
 	
+#endif
 	
 	
 	
@@ -82,6 +86,8 @@
 	
 	
 }
+
+
 
 
 @end

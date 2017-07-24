@@ -105,8 +105,10 @@
 	if( [TDNotification isTendartsNotification:userInfo] )
 	{
 		TDNotification * notification = [[TDNotification alloc]initWithDictionary:userInfo];
-		UIApplicationState state = [UIApplication sharedApplication].applicationState;
-		
+		UIApplicationState state = 7777777;
+#if !(IN_APP_EXTENSION)
+		state = [UIApplication sharedApplication].applicationState;
+#endif
 		static int pendingResults = 0;
 		
 		if( state == UIApplicationStateActive )
@@ -291,7 +293,9 @@
 					localNotification.alertTitle = notification.title;
 				}
 				//badge? todo
+#if !(IN_APP_EXTENSION)
 				[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+#endif
 			}
 			
 			
@@ -313,12 +317,14 @@
 											 if( [notification.deepLink length] > 3)
 											 {
 												 NSURL *url = [NSURL URLWithString:notification.deepLink];
+#if !(IN_APP_EXTENSION)
 												 if(url != nil && [[UIApplication sharedApplication] canOpenURL:url])
 												 {
 													 dispatch_async(dispatch_get_main_queue(), ^{
 														 [[UIApplication sharedApplication] openURL:url];
 													 });
 												 }
+#endif
 											 }
 
 											 //followed
@@ -348,8 +354,9 @@
 			[alert addAction:discard];
 			[alert addAction:viewButton];
 			
+#if !(IN_APP_EXTENSION)
 			[[[[UIApplication sharedApplication] keyWindow] rootViewController]presentViewController:alert animated:YES completion:nil];
-			
+#endif
 			
 			
 			
@@ -404,12 +411,14 @@
 			if( [notification.deepLink length] > 3)
 			{
 				NSURL *url = [NSURL URLWithString:notification.deepLink];
+#if !(IN_APP_EXTENSION)
 				if(url != nil && [[UIApplication sharedApplication] canOpenURL:url])
 				{
 					dispatch_async(dispatch_get_main_queue(), ^{
 					[[UIApplication sharedApplication] openURL:url];
 					});
 				}
+#endif
 			}
 			NSLog(@"td: opened: %@", userInfo);
 		}

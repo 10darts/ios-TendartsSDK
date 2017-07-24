@@ -10,4 +10,5 @@
 
 @interface NotificationUtils : NSObject
 +(void) registerRemoteNotifications;
+
 @end

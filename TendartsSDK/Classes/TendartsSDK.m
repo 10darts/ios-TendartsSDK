@@ -227,7 +227,9 @@ static id<TendartsDelegate> _delegate = nil;
 
 +(void)resetBadge: (TDOnSuccess _Nullable ) successHandler onError: (TDOnError _Nullable ) errorHandler;
 {
+#if !(IN_APP_EXTENSION)
 	 [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+#endif
 	NSString* code = [TDConfiguration getPushCode];
 	
 	

@@ -35,6 +35,22 @@ Pod::Spec.new do |s|
 
    s.public_header_files = 'TendartsSDK/Classes/**/*.h'
 
-  # s.frameworks = 'UIKit', 'MapKit'
+
+  s.frameworks = 'UIKit', 'UserNotifications'
   # s.dependency 'AFNetworking', '~> 2.3'
+
+  s.default_subspec = 'Normal'
+  s.subspec 'Normal' do |n|
+   n.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) IN_APP_EXTENSION=0' }
+   n.source_files = 'TendartsSDK/Classes/**/*'
+   n.public_header_files = 'TendartsSDK/Classes/**/*.h'
+
+
+  end
+  s.subspec 'AppExtension' do |ae|
+	ae.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) IN_APP_EXTENSION=1' }
+    ae.source_files = 'TendartsSDK/Classes/**/*'
+    ae.public_header_files = 'TendartsSDK/Classes/**/*.h'
+
+  end
 end
