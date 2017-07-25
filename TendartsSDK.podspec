@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
    s.public_header_files = 'TendartsSDK/Classes/**/*.h'
 
 
-  s.frameworks = 'UIKit', 'UserNotifications'
+# s.frameworks = 'UIKit', 'UserNotifications'
   # s.dependency 'AFNetworking', '~> 2.3'
 
   s.default_subspec = 'Normal'
