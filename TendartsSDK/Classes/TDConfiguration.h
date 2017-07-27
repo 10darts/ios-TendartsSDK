@@ -17,24 +17,25 @@
  Description: Saves the API key
  Parameters:  apiKey: the API key to store
  */
-+(void) saveAPIKey: (NSString*) apiKey;
++(void) saveAPIKey: (NSString*_Nonnull) apiKey;
 
-+(NSString*) getAPIKey;
++(NSString*_Nullable) getAPIKey;
 
-+(void) savePushToken: (NSString*) pushToken;
-+(NSString*) getPushToken;
++(void) savePushToken: (NSString*_Nonnull) pushToken;
++(NSString*_Nullable) getPushToken;
 
-+(void) savePushCode: (NSString*) pushCode;
-+(NSString*) getPushCode;
++(void) savePushCode: (NSString*_Nonnull) pushCode withApiKey: (NSString* _Nonnull) apiKey;
++(NSString*_Nullable) getPushCodeWithApiKey: (NSString* _Nonnull) apiKey;
++(NSString*_Nullable) getPushCode;
 
-+(void) saveTokenAndVersion: (NSString*) tokenAndVersion;
-+(NSString*) getTokenAndVersion;
++(void) saveTokenAndVersion: (NSString*_Nonnull) tokenAndVersion;
++(NSString*_Nullable) getTokenAndVersion;
 
-+(void) saveUserCode: (NSString*) userCode;
-+(NSString*) getUserCode;
++(void) saveUserCode: (NSString*_Nonnull) userCode;
++(NSString*_Nullable) getUserCode;
 
-+(void) saveLastGeostatsSent: (NSDate*) date;
-+(NSDate*) getLastGeostatsSent;
++(void) saveLastGeostatsSent: (NSDate*_Nonnull) date;
++(NSDate*_Nullable) getLastGeostatsSent;
 
 
 @end

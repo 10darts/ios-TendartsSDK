@@ -164,7 +164,7 @@ static id<TendartsDelegate> _delegate = nil;
 	}
 }
 
-+(void)onNotificationReceived:(TDNotification *)notification withHandler:(TDOperationComplete)onComplete
++(void)onNotificationReceived:(TDNotification *)notification withHandler:(TDOperationComplete)onComplete  withApiKey: (NSString* _Nonnull) apiKey
 {
 	
 	
@@ -187,7 +187,7 @@ static id<TendartsDelegate> _delegate = nil;
 		return;//already sent
 	}
 	
-	NSString* code = [TDConfiguration getPushCode];
+	NSString* code = [TDConfiguration getPushCodeWithApiKey:apiKey ];
 	
 	
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -401,95 +401,107 @@ static id<TendartsDelegate> _delegate = nil;
 
 
 
-+ (void) didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * _Nonnull))contentHandler
++ (void) didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * ))contentHandler withApiKey: (NSString* ) apiKey
 {
 	if( [TDNotification isTendartsNotification:request.content.userInfo])
 	{
-		TDNotification * notification = [[TDNotification alloc]initWithDictionary:request.content.userInfo];
-		
-		
-		
-		//send received
-		[TendartsSDK onNotificationReceived:notification withHandler:nil];
-		
-		UNMutableNotificationContent *content = [request.content mutableCopy];
-		
-		NSMutableDictionary *info = [content.userInfo mutableCopy];
-		if( info == nil)
+		if( apiKey != nil && ! [apiKey containsString:@"api_key"])
 		{
-			info = [[NSMutableDictionary alloc]init];
-		}
-		[info setObject:@"sent" forKey:@"sentReceived"];
-		content.userInfo = info;
-
-		if( notification.silent)
-		{
-	
-			contentHandler(content);
-			return;
-		}
 		
-		
-		if( notification.image != nil && notification.image.length > 6)
-		{
+			TDNotification * notification = [[TDNotification alloc]initWithDictionary:request.content.userInfo];
 			
 			
 			
-			NSArray *parts = [notification.image componentsSeparatedByString:@"."];
-			if( [parts count] > 1)
+			//send received
+			[TendartsSDK onNotificationReceived:notification withHandler:nil withApiKey:apiKey];
+			
+			UNMutableNotificationContent *content = [request.content mutableCopy];
+			
+			NSMutableDictionary *info = [content.userInfo mutableCopy];
+			if( info == nil)
 			{
-				NSString *extension = [parts lastObject];
-				//dowload synchronously the image as we should call contenthandler at the end
-				NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"tmp_%@.%@",notification.nId,extension ]];
-				TDDownloadDelegate *downloadDelegate = [[TDDownloadDelegate alloc]initWithFile:filePath];
+				info = [[NSMutableDictionary alloc]init];
+			}
+			[info setObject:@"sent" forKey:@"sentReceived"];
+			content.userInfo = info;
+			
+			if( notification.silent)
+			{
 				
-				NSURL *url = [NSURL URLWithString:notification.image];
-				
-				NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
-				
-				[NSURLConnection connectionWithRequest:urlRequest delegate: downloadDelegate];
-				
-				//iterate until download is finished
-				int failsafe = 60*3; //30 secs for max waiting
-				int i = 0;
-				while ( i++ < failsafe && !downloadDelegate.finished )
-				{
-					//let the things flow half second
-					[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
-				}
-		
-				NSError *error = downloadDelegate.error;
-				if( error == nil)
-				{
-					//image downloaded, attach it to the notification
-					NSURL* imageUrl = [NSURL fileURLWithPath:filePath];
-					id attachment = [UNNotificationAttachment attachmentWithIdentifier:notification.nId URL:imageUrl options:0 error:&error];
-					if (attachment != nil)
-					{
-						NSMutableArray *attatchments = [NSMutableArray new];
-						[attatchments addObject:attachment];
-						UNMutableNotificationContent *mutable =  content;//[request.content mutableCopy];
-						mutable.attachments = attatchments;
-						contentHandler(mutable);
-						return;
-					}
-					
-
-				}
-				else
-				{
-					NSLog(@"td: could not download image:%@",error);
-					
-				}
- 
-				
+				contentHandler(content);
+				return;
 			}
 			
+			
+			if( notification.image != nil && notification.image.length > 6)
+			{
+				
+				
+				
+				NSArray *parts = [notification.image componentsSeparatedByString:@"."];
+				if( [parts count] > 1)
+				{
+					NSString *extension = [parts lastObject];
+					//dowload synchronously the image as we should call contenthandler at the end
+					NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"tmp_%@.%@",notification.nId,extension ]];
+					TDDownloadDelegate *downloadDelegate = [[TDDownloadDelegate alloc]initWithFile:filePath];
+					
+					NSURL *url = [NSURL URLWithString:notification.image];
+					
+					NSMutableURLRequest* urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
+					
+					[NSURLConnection connectionWithRequest:urlRequest delegate: downloadDelegate];
+					
+					//iterate until download is finished
+					int failsafe = 60*3; //30 secs for max waiting
+					int i = 0;
+					while ( i++ < failsafe && !downloadDelegate.finished )
+					{
+						//let the things flow half second
+						[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+					}
+					
+					NSError *error = downloadDelegate.error;
+					if( error == nil)
+					{
+						//image downloaded, attach it to the notification
+						NSURL* imageUrl = [NSURL fileURLWithPath:filePath];
+						id attachment = [UNNotificationAttachment attachmentWithIdentifier:notification.nId URL:imageUrl options:0 error:&error];
+						if (attachment != nil)
+						{
+							NSMutableArray *attatchments = [NSMutableArray new];
+							[attatchments addObject:attachment];
+							UNMutableNotificationContent *mutable =  content;//[request.content mutableCopy];
+							mutable.attachments = attatchments;
+							contentHandler(mutable);
+							return;
+						}
+						
+						
+					}
+					else
+					{
+						NSLog(@"td: could not download image:%@",error);
+						
+					}
+					
+					
+				}
+				
+			}//notification image
+			contentHandler(content);
 		}
-		contentHandler(content);
+		else
+		{
+			//not api key
+			NSLog(@"error: please add porper api key to didReceiveNotificationRequest call");
+			contentHandler(request.content);
+		}
+		
 		return;
 		
-	}
+
+	}//tendarts notification
 	contentHandler(request.content);
 	
 }

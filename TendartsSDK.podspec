@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TendartsSDK'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = '10 Darts, THE SMARTEST Push Notification Platform.'
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://10darts.com/'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'jorgeonpublico' => 'jorge.onpublico@gmail.com' }
+  s.author           = { '10 Darts' => 'jorge.onpublico@gmail.com' }
   s.source           = { :git => 'https://github.com/10darts/ios-TendartsSDK.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/10dartsSoftware'
 

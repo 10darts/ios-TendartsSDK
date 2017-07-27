@@ -128,7 +128,7 @@
 					{
 						completionHandler(UIBackgroundFetchResultNewData);
 					}
-				}];
+				} withApiKey:[TDConfiguration getAPIKey]];
 			}
 			else
 			{
@@ -390,7 +390,7 @@
 				{
 					completionHandler(UIBackgroundFetchResultNewData);
 				}
-			}];
+			} withApiKey:[TDConfiguration getAPIKey]];
 			
 
 			

@@ -17,7 +17,7 @@ NSString* const TD_TOKEN_VERSION = @"TendartsTokenAndVersion";
 NSString* const TD_USER_CODE = @"TendartsUserCode";
 NSString* const TD_GEOSTATS = @"TendartsGeostats";
 
-+(NSUserDefaults* ) getUserDefaults
++(NSUserDefaults* ) getSharedUserDefaults 
 {
 	if([TDUtils getIOSVersion]>=10 )
 	{
@@ -27,6 +27,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 		{
 			return defaults;
 		}
+		NSLog(@"error: you should add group.TendartsSDK to your app and service extension group capability ");
 	}
 	
 	return [NSUserDefaults standardUserDefaults];
@@ -37,7 +38,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 {
 	@try
 	{
-		NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];// [TDConfiguration getUserDefaults];
 		[userDefaults setObject:apiKey forKey:TD_API_KEY];
 		[userDefaults synchronize];
 	} @catch (NSException *exception)
@@ -47,7 +48,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 }
 + (NSString*) getAPIKey
 {
-	NSUserDefaults* userDefaults =  [TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];//[TDConfiguration getUserDefaults];
 	return [userDefaults objectForKey:TD_API_KEY];
 
 }
@@ -57,7 +58,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 {
 	@try
 	{
-		NSUserDefaults* userDefaults =  [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];//[TDConfiguration getUserDefaults];
 		[userDefaults setObject:pushToken forKey:TD_PUSH_TOKEN];
 		[userDefaults synchronize];
 	} @catch (NSException *exception)
@@ -68,7 +69,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 }
 +(NSString*) getPushToken
 {
-	NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];// [TDConfiguration getUserDefaults];
 	return [userDefaults objectForKey:TD_PUSH_TOKEN];
 
 }
@@ -82,7 +83,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 {
 	@try
 	{
-		NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];// [TDConfiguration getUserDefaults];
 		[userDefaults setObject:tokenAndVersion forKey:TD_TOKEN_VERSION];
 		[userDefaults synchronize];
 	} @catch (NSException *exception)
@@ -93,7 +94,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 }
 +(NSString*) getTokenAndVersion
 {
-	NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];//[TDConfiguration getUserDefaults];
 	return [userDefaults objectForKey:TD_TOKEN_VERSION];
 	
 }
@@ -102,13 +103,19 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 
 
 
-+(void) savePushCode: (NSString*) pushCode
++(void) savePushCode: (NSString*) pushCode withApiKey: (NSString* _Nonnull) apiKey
 {
 	@try
 	{
-		NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+		//save shared combined
+		NSUserDefaults* userDefaults = [TDConfiguration getSharedUserDefaults];
+		[userDefaults setObject:[NSString stringWithFormat:@"%@%@",apiKey, pushCode] forKey:TD_PUSH_CODE];
+		[userDefaults synchronize];
+		//save local as it is
+		userDefaults = [NSUserDefaults standardUserDefaults];
 		[userDefaults setObject:pushCode forKey:TD_PUSH_CODE];
 		[userDefaults synchronize];
+
 	} @catch (NSException *exception)
 	{
 		NSLog(@"TD configuration: could not save api key: %@",exception.reason);
@@ -116,10 +123,22 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 	
 }
 
-+(NSString*) getPushCode
-{
-	NSUserDefaults* userDefaults =  [TDConfiguration getUserDefaults];
++(NSString*) getPushCode{
+	NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
 	return [userDefaults objectForKey:TD_PUSH_CODE];
+	
+}
+
++(NSString*) getPushCodeWithApiKey:(NSString *)apiKey
+{
+	NSUserDefaults* userDefaults =  [TDConfiguration getSharedUserDefaults];
+	NSString* combined = [userDefaults objectForKey:TD_PUSH_CODE];
+	if( combined == nil)
+	{
+		return nil;
+	}
+	return [combined stringByReplacingOccurrencesOfString:apiKey withString:@""];
+
 	
 }
 
@@ -132,7 +151,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 {
 	@try
 	{
-		NSUserDefaults* userDefaults =  [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
 		[userDefaults setObject:userCode forKey:TD_USER_CODE];
 		[userDefaults synchronize];
 	} @catch (NSException *exception)
@@ -144,7 +163,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 
 +(NSString*) getUserCode
 {
-	NSUserDefaults* userDefaults =  [TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
 	return [userDefaults objectForKey:TD_USER_CODE];
 	
 }
@@ -155,7 +174,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 {
 	@try
 	{
-		NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 		[userDefaults setObject:date forKey:TD_GEOSTATS];
 		[userDefaults synchronize];
 	} @catch (NSException *exception)
@@ -166,7 +185,7 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 }
 +(NSDate*) getLastGeostatsSent
 {
-	NSUserDefaults* userDefaults = [TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	return [userDefaults objectForKey:TD_GEOSTATS];
 	
 }

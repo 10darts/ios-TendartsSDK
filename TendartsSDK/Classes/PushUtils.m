@@ -75,7 +75,8 @@
 			 NSString* code = [json objectForKey:@"code"];
 			 if( code != nil )
 			 {
-				 [TDConfiguration savePushCode:code];
+				 
+				 [TDConfiguration savePushCode:code withApiKey:[TDConfiguration getAPIKey]];
 				 if( statusCode == 201)
 				 {
 					 [TDConfiguration saveTokenAndVersion:tokenAndVersion];

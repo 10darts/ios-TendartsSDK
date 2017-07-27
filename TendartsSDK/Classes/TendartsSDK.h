@@ -60,7 +60,7 @@ typedef void(^TDOnError)(NSString* _Nullable error);
 
 
 #ifdef _IOS_10_FUNCTIONALITY
-+ (void) didReceiveNotificationRequest:(UNNotificationRequest *_Nullable)request withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler;
++ (void) didReceiveNotificationRequest:(UNNotificationRequest *_Nullable)request withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler withApiKey: (NSString* _Nonnull) apiKey;
 + (void) serviceExtensionTimeWillExpire:(UNNotificationContent *_Nullable)content withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler;
 #endif
 @end
