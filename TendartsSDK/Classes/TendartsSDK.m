@@ -410,18 +410,31 @@ static id<TendartsDelegate> _delegate = nil;
 		
 			TDNotification * notification = [[TDNotification alloc]initWithDictionary:request.content.userInfo];
 			
-			
-			
 			//send received
 			[TendartsSDK onNotificationReceived:notification withHandler:nil withApiKey:apiKey];
-			
 			UNMutableNotificationContent *content = [request.content mutableCopy];
-			
 			NSMutableDictionary *info = [content.userInfo mutableCopy];
+			
 			if( info == nil)
 			{
 				info = [[NSMutableDictionary alloc]init];
 			}
+			/*else
+			{
+				NSMutableDictionary *aps = [[info objectForKey:@"aps"] mutableCopy];
+				[aps removeObjectForKey:@"alert"];
+				[aps setObject:@"" forKey:@"sound"];
+				[aps removeObjectForKey:@"badge"];
+				[info setObject:aps forKey:@"aps"];
+				[info removeObjectForKey:@"title"];
+				content.title = @"";
+				content.body = @"";
+				content.sound = nil;
+				content.userInfo = info;
+				content.badge = nil;
+				contentHandler(content);
+				return;
+			}*/
 			[info setObject:@"sent" forKey:@"sentReceived"];
 			content.userInfo = info;
 			
