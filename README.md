@@ -23,10 +23,10 @@ pod "TendartsSDK"
 
 Please refer to [10darts documentation] (http://docs.10darts.com/tutorials/ios/setup.html) to a complete how to use guide.
 
-If you are consuming this pod from a Service Extension you should add the folloeing line to your Service Ectension target on your Podfile instead
+If you are consuming this pod from a Service Extension you should add the following line to your Service Ectension target on your Podfile instead
 
 ```ruby
-pod "TendartsSDK"
+pod "TendartsSDKSE"
 ```
 
 
