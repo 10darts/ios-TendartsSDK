@@ -16,7 +16,7 @@
 #import "TDSDKExtension.h"
 @implementation PushUtils
 
-+(void) savePushToken:(NSString *)token
++(void) savePushToken:(NSString *)token inSharedGroup:(NSString *)group
 {
 	
 	[TDConfiguration savePushToken:token];
@@ -76,7 +76,7 @@
 			 if( code != nil )
 			 {
 				 
-				 [TDConfiguration savePushCode:code withApiKey:[TDConfiguration getAPIKey]];
+				 [TDConfiguration savePushCode:code withApiKey:[TDConfiguration getAPIKey] andGroupName:group];
 				 if( statusCode == 201)
 				 {
 					 [TDConfiguration saveTokenAndVersion:tokenAndVersion];

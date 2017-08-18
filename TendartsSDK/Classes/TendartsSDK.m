@@ -24,10 +24,14 @@
 
 @implementation TendartsSDK
 
+static NSString * group = nil;
+
+
 + (id)initTendartsUsingLaunchOptions:(NSDictionary*)launchOptions withAPIKey: (NSString*) apiKey
-andConfig: (NSDictionary*)config
+andConfig: (NSDictionary*)config andSharedGroup:(NSString* _Nonnull) group
 {
 	//todo: get configuration from parameters
+	[TDConfiguration saveSharedGroup:group];
 	
 	if( [apiKey length] < 4)
 	{
@@ -164,7 +168,7 @@ static id<TendartsDelegate> _delegate = nil;
 	}
 }
 
-+(void)onNotificationReceived:(TDNotification *)notification withHandler:(TDOperationComplete)onComplete  withApiKey: (NSString* _Nonnull) apiKey
++(void)onNotificationReceived:(TDNotification *)notification withHandler:(TDOperationComplete)onComplete  withApiKey: (NSString* _Nonnull) apiKey andSharedGroup: (NSString*_Nonnull) group
 {
 	
 	
@@ -187,7 +191,7 @@ static id<TendartsDelegate> _delegate = nil;
 		return;//already sent
 	}
 	
-	NSString* code = [TDConfiguration getPushCodeWithApiKey:apiKey ];
+	NSString* code = [TDConfiguration getPushCodeWithApiKey:apiKey andGroupName:group];
 	
 	
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -401,7 +405,7 @@ static id<TendartsDelegate> _delegate = nil;
 
 
 
-+ (void) didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * ))contentHandler withApiKey: (NSString* ) apiKey
++ (void) didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * ))contentHandler withApiKey: (NSString* ) apiKey andSharedGroup:(NSString * _Nonnull)group
 {
 	if( [TDNotification isTendartsNotification:request.content.userInfo])
 	{
@@ -411,7 +415,7 @@ static id<TendartsDelegate> _delegate = nil;
 			TDNotification * notification = [[TDNotification alloc]initWithDictionary:request.content.userInfo];
 			
 			//send received
-			[TendartsSDK onNotificationReceived:notification withHandler:nil withApiKey:apiKey];
+			[TendartsSDK onNotificationReceived:notification withHandler:nil withApiKey:apiKey andSharedGroup:group];
 			UNMutableNotificationContent *content = [request.content mutableCopy];
 			NSMutableDictionary *info = [content.userInfo mutableCopy];
 			

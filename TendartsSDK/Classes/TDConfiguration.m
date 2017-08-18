@@ -16,18 +16,19 @@ NSString* const TD_PUSH_CODE = @"TendartsPushCode";
 NSString* const TD_TOKEN_VERSION = @"TendartsTokenAndVersion";
 NSString* const TD_USER_CODE = @"TendartsUserCode";
 NSString* const TD_GEOSTATS = @"TendartsGeostats";
+NSString* const TD_SHARED_GROUP = @"TendartsSharedGroup";
 
-+(NSUserDefaults* ) getSharedUserDefaults 
++(NSUserDefaults* ) getSharedUserDefaults: (NSString* _Nonnull )groupName
 {
 	if([TDUtils getIOSVersion]>=10 )
 	{
 		NSUserDefaults *defaults =
-		[[NSUserDefaults alloc] initWithSuiteName:@"group.TendartsSDK"];
+		[[NSUserDefaults alloc] initWithSuiteName:groupName];
 		if( defaults)
 		{
 			return defaults;
 		}
-		NSLog(@"error: you should add group.TendartsSDK to your app and service extension group capability ");
+		NSLog(@"error: you should add correct group to your app and service extension group capability ");
 	}
 	
 	return [NSUserDefaults standardUserDefaults];
@@ -103,12 +104,12 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 
 
 
-+(void) savePushCode: (NSString*) pushCode withApiKey: (NSString* _Nonnull) apiKey
++(void) savePushCode: (NSString*) pushCode withApiKey: (NSString* _Nonnull) apiKey andGroupName:(NSString* _Nonnull) group
 {
 	@try
 	{
 		//save shared combined
-		NSUserDefaults* userDefaults = [TDConfiguration getSharedUserDefaults];
+		NSUserDefaults* userDefaults = [TDConfiguration getSharedUserDefaults:group];
 		[userDefaults setObject:[NSString stringWithFormat:@"%@%@",apiKey, pushCode] forKey:TD_PUSH_CODE];
 		[userDefaults synchronize];
 		//save local as it is
@@ -129,9 +130,10 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 	
 }
 
-+(NSString*) getPushCodeWithApiKey:(NSString *)apiKey
++(NSString*) getPushCodeWithApiKey:(NSString *)apiKey andGroupName:(NSString* _Nonnull) group
+
 {
-	NSUserDefaults* userDefaults =  [TDConfiguration getSharedUserDefaults];
+	NSUserDefaults* userDefaults =  [TDConfiguration getSharedUserDefaults:group];
 	NSString* combined = [userDefaults objectForKey:TD_PUSH_CODE];
 	if( combined == nil)
 	{
@@ -190,6 +192,27 @@ NSString* const TD_GEOSTATS = @"TendartsGeostats";
 	
 }
 
+
+
++(void) saveSharedGroup:( NSString* _Nonnull) group
+{
+	@try
+	{
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+		[userDefaults setObject:group forKey:TD_SHARED_GROUP];
+		[userDefaults synchronize];
+	} @catch (NSException *exception)
+	{
+		NSLog(@"TD configuration: could not save api key: %@",exception.reason);
+	}
+	
+}
++(NSString*) getSharedGroup
+{
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	return [userDefaults objectForKey:TD_SHARED_GROUP];
+
+}
 
 
 

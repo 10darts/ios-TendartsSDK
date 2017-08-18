@@ -36,7 +36,7 @@ typedef void(^TDOnError)(NSString* _Nullable error);
 + (void) setDelegate:(_Nullable id  <TendartsDelegate>)delegate;
 +(_Nullable id<TendartsDelegate>) getDelegate;
 
-+ (id _Nonnull )initTendartsUsingLaunchOptions:(NSDictionary*_Nullable)launchOptions withAPIKey: (NSString*_Nonnull) apiKey andConfig: (NSDictionary*_Nullable)config ;
++ (id _Nonnull )initTendartsUsingLaunchOptions:(NSDictionary*_Nullable)launchOptions withAPIKey: (NSString*_Nonnull) apiKey andConfig: (NSDictionary*_Nullable)config andSharedGroup:(NSString* _Nonnull) group ;
 
 +(void) resetBadge: (TDOnSuccess _Nullable ) successHandler onError: (TDOnError _Nullable ) errorHandler;
 
@@ -60,7 +60,7 @@ typedef void(^TDOnError)(NSString* _Nullable error);
 
 
 #ifdef _IOS_10_FUNCTIONALITY
-+ (void) didReceiveNotificationRequest:(UNNotificationRequest *_Nullable)request withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler withApiKey: (NSString* _Nonnull) apiKey;
++ (void) didReceiveNotificationRequest:(UNNotificationRequest *_Nullable)request withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler withApiKey: (NSString* _Nonnull) apiKey andSharedGroup: (NSString*_Nonnull) group;
 + (void) serviceExtensionTimeWillExpire:(UNNotificationContent *_Nullable)content withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler;
 #endif
 @end

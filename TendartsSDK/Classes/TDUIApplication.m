@@ -16,7 +16,7 @@
 #import "TDConstants.h"
 #import "TDUserNotificationCenter.h"
 
-
+#import "TDConfiguration.h"
 #ifdef _IOS_10_FUNCTIONALITY
 #import <UserNotifications/UserNotifications.h>
 
@@ -39,7 +39,7 @@
 	strData = [strData stringByReplacingOccurrencesOfString:@" " withString:@""];
 	
 	
-	[PushUtils savePushToken:strData];
+	[PushUtils savePushToken:strData inSharedGroup: [TDConfiguration getSharedGroup]];
 	
 	//call parent
 	if( [self respondsToSelector:@selector(TDdidRegisterForRemoteNotificationsWithDeviceToken:withDeviceToken:)])
@@ -128,7 +128,7 @@
 					{
 						completionHandler(UIBackgroundFetchResultNewData);
 					}
-				} withApiKey:[TDConfiguration getAPIKey]];
+				} withApiKey:[TDConfiguration getAPIKey] andSharedGroup:[TDConfiguration getSharedGroup]];
 			}
 			else
 			{
@@ -390,7 +390,7 @@
 				{
 					completionHandler(UIBackgroundFetchResultNewData);
 				}
-			} withApiKey:[TDConfiguration getAPIKey]];
+			} withApiKey:[TDConfiguration getAPIKey] andSharedGroup:[TDConfiguration getSharedGroup]];
 			
 
 			
@@ -507,7 +507,7 @@ static BOOL accessSent = false;
 					NSString* token = [TDConfiguration getPushToken];
 					if( token != nil)
 					{
-						[PushUtils savePushToken:token];
+						[PushUtils savePushToken:token  inSharedGroup: [TDConfiguration getSharedGroup]];
 					}
 				}
 			}];

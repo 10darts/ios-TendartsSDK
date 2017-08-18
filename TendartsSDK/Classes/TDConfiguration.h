@@ -24,8 +24,8 @@
 +(void) savePushToken: (NSString*_Nonnull) pushToken;
 +(NSString*_Nullable) getPushToken;
 
-+(void) savePushCode: (NSString*_Nonnull) pushCode withApiKey: (NSString* _Nonnull) apiKey;
-+(NSString*_Nullable) getPushCodeWithApiKey: (NSString* _Nonnull) apiKey;
++(void) savePushCode: (NSString*_Nonnull) pushCode withApiKey: (NSString* _Nonnull) apiKey andGroupName:(NSString* _Nonnull) group;
++(NSString*_Nullable) getPushCodeWithApiKey: (NSString* _Nonnull) apiKey andGroupName:(NSString* _Nonnull) group;
 +(NSString*_Nullable) getPushCode;
 
 +(void) saveTokenAndVersion: (NSString*_Nonnull) tokenAndVersion;
@@ -36,6 +36,9 @@
 
 +(void) saveLastGeostatsSent: (NSDate*_Nonnull) date;
 +(NSDate*_Nullable) getLastGeostatsSent;
+
++(void) saveSharedGroup:( NSString* _Nonnull) group;
++(NSString*_Nonnull) getSharedGroup;
 
 
 @end
