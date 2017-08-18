@@ -13,7 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[TendartsSDK initTendartsUsingLaunchOptions:launchOptions withAPIKey:@"jdlakj" andConfig:nil];
+	[TendartsSDK initTendartsUsingLaunchOptions:launchOptions withAPIKey:@"api_key" andConfig:nil andSharedGroup:@"group_name"];
     // Override point for customization after application launch.
     return YES;
 }
