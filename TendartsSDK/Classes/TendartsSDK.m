@@ -453,12 +453,15 @@ static id<TendartsDelegate> _delegate = nil;
 			if( notification.image != nil && notification.image.length > 6)
 			{
 				
+				NSURLComponents *components = [NSURLComponents componentsWithString:notification.image];
+				components.query = nil;
 				
-				
-				NSArray *parts = [notification.image componentsSeparatedByString:@"."];
+				NSArray *parts = [components.string componentsSeparatedByString:@"."];
 				if( [parts count] > 1)
 				{
 					NSString *extension = [parts lastObject];
+				
+					
 					//dowload synchronously the image as we should call contenthandler at the end
 					NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"tmp_%@.%@",notification.nId,extension ]];
 					TDDownloadDelegate *downloadDelegate = [[TDDownloadDelegate alloc]initWithFile:filePath];
@@ -482,6 +485,7 @@ static id<TendartsDelegate> _delegate = nil;
 					if( error == nil)
 					{
 						//image downloaded, attach it to the notification
+						
 						NSURL* imageUrl = [NSURL fileURLWithPath:filePath];
 						id attachment = [UNNotificationAttachment attachmentWithIdentifier:notification.nId URL:imageUrl options:0 error:&error];
 						if (attachment != nil)
