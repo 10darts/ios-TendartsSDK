@@ -425,8 +425,21 @@
 			NSLog(@"td: opened: %@", userInfo);
 		}
 		
+	}//if is tendarts
+	else
+	{
+		//call parent if any
+		if( [self respondsToSelector:@selector(TDDidReceiveRemoteNotification:UserInfo:fetchCompletionHandler:)])
+		{
+			[self TDDidReceiveRemoteNotification:application UserInfo:userInfo fetchCompletionHandler:completionHandler];
+		}
 	}
 	//td2
+	
+	
+	
+	
+	
 	
 	if( runHandler &&  completionHandler)
 	{

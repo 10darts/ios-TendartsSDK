@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TendartsSDK'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = '10darts, THE SMARTEST Push Notification Platform.'
 
 # This description is used to generate tags and improve search results.
