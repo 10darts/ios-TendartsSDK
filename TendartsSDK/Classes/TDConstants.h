@@ -19,4 +19,10 @@
 -(NSString*) getNotificationClickedUrl:(NSString*)notificationId;
 -(NSString*) getAllNotificationsRead;
 -(NSString*) getLinkDevice;
+-(NSString*) getEvents;
+
+#define URL_TYPE_PUSH @"pushes"
+#define URL_TYPE_DEVICES @"devices"
+#define URL_KIND_SESSION @"/api/v1/event_kinds/session/"
+-(NSString*) buildUrlOfType:(NSString*)type andId:(NSString*)identifier;
 @end

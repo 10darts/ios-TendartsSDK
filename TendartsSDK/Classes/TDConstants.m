@@ -69,4 +69,15 @@ static TDConstants * _instance = nil;
 	return [NSString stringWithFormat:@"%@/api/v1/devices/links/",_baseUrl];
 	
 }
+
+-(NSString*) getEvents
+{
+	return [NSString stringWithFormat:@"%@/api/v1/events/",_baseUrl];
+
+}
+-(NSString*) buildUrlOfType:(NSString*)type andId:(NSString*)identifier
+{
+	return [NSString stringWithFormat:@"/api/v1/%@/%@/", type, identifier];
+}
+
 @end

@@ -114,8 +114,27 @@ static id<TendartsDelegate> _delegate = nil;
 }
 
 
+static NSString* lastCode = nil;
+static double lastTimestamp = 0;
+
+
 +(void) onNotificationOpened:(TDNotification*)notification withHandler:(TDOperationComplete)onComplete
 {
+	
+	
+	
+	//decrease badge
+#if !(IN_APP_EXTENSION)
+	
+	long badge =  [UIApplication sharedApplication].applicationIconBadgeNumber -1;
+	if( badge >=0)
+	{
+		[UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+	}
+	
+#endif
+	
+	
 	
 	id<TendartsDelegate> delegate = [TendartsSDK getDelegate];
 	if( delegate != nil && [delegate respondsToSelector:@selector(onNotificationOpened:)])
@@ -123,6 +142,9 @@ static id<TendartsDelegate> _delegate = nil;
 		[delegate onNotificationOpened:notification];
 	}
 	NSString* code = [TDConfiguration getPushCode];
+	
+	lastCode =  notification.nId;
+	lastTimestamp = [[NSDate date] timeIntervalSince1970];
 	
 	
 	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -156,6 +178,71 @@ static id<TendartsDelegate> _delegate = nil;
 	
 
 }
+
+#if !(IN_APP_EXTENSION)
+static UIBackgroundTaskIdentifier backgroundTask = 0;
+#endif
+
++ (void)endBackgroundTask
+{
+#if !(IN_APP_EXTENSION)
+  [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];
+			backgroundTask = UIBackgroundTaskInvalid;
+#endif
+}
+
++(BOOL) onAppGoingToBackground
+{
+	if( lastTimestamp != 0 && lastCode != nil)
+	{
+		
+		
+		
+		
+		int seconds = ceil([[NSDate date] timeIntervalSince1970] - lastTimestamp);
+		NSString* code = [TDConfiguration getPushCode];
+
+		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+							[[TDConstants instance] buildUrlOfType:URL_TYPE_PUSH andId:lastCode],@"push",
+							[[TDConstants instance]buildUrlOfType:URL_TYPE_DEVICES andId:code],@"device",
+							URL_KIND_SESSION ,@"kind",
+							  [NSString stringWithFormat:@"%d",seconds],@"value",
+							  nil];
+		
+		NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+		
+#if !(IN_APP_EXTENSION)
+		
+		backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+			NSLog(@"session: timeout");
+			[self endBackgroundTask];
+		}];
+#endif
+		
+		[TDCommunications sendData:data
+							 toURl:[[TDConstants instance] getEvents]
+						withMethod:@"POST"
+				  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
+			{
+				[TendartsSDK logEventWithCategory:@"SDK" type:@"Session sent" andMessage:json.description];
+				NSLog(@"td: sent session");
+				[self endBackgroundTask];
+			}
+					onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
+			{
+				[TendartsSDK logEventWithCategory:@"SDK" type:@"Error sending session" andMessage:json.description];
+				NSLog(@"td: error sending session");
+				[self endBackgroundTask];
+				
+			}];
+		
+		lastTimestamp = 0;
+		lastCode = nil;
+		return YES;
+	}
+	return NO;
+}
+
 
 +(void)notifyNotificationReceived:(TDNotification *)notification
 {
@@ -229,7 +316,7 @@ static id<TendartsDelegate> _delegate = nil;
 }
 
 
-+(void)resetBadge: (TDOnSuccess _Nullable ) successHandler onError: (TDOnError _Nullable ) errorHandler;
++(void)resetBadge: (TDOnSuccess _Nullable ) successHandler onError: (TDOnError _Nullable ) errorHandler
 {
 #if !(IN_APP_EXTENSION)
 	 [UIApplication sharedApplication].applicationIconBadgeNumber = 0;

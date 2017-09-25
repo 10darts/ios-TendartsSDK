@@ -537,6 +537,19 @@ static BOOL accessSent = false;
 	}
 }
 
+
+-(void)TDWillResignActive:(UIApplication *)application
+{
+	[TendartsSDK onAppGoingToBackground];
+	
+	//call parent
+	if( [self respondsToSelector:@selector(TDWillResignActive:)])
+	{
+		[self TDWillResignActive:application];
+	}
+}
+
+
 static Class _delegateClass = nil;
 static NSArray *_delegateChilds = nil;
 
@@ -577,6 +590,13 @@ static NSArray *_delegateChilds = nil;
 							  _delegateClass,
 							  _delegateChilds,
 							  @selector(application:didFailToRegisterForRemoteNotificationsWithError:));
+		
+		//install application will resign active
+		installOverrideMethod(tendartsDelegate,
+							  @selector(TDWillResignActive:),
+							  _delegateClass,
+							  _delegateChilds,
+							  @selector(applicationWillResignActive:));
 		
 		
 		/*apple: This delegate method offers an opportunity for applications with the "remote-notification" background mode to fetch appropriate new data in response to an incoming remote notification. You should call the fetchCompletionHandler as soon as you're finished performing that operation, so the system can accurately estimate its power and data cost.
@@ -640,6 +660,10 @@ static NSArray *_delegateChilds = nil;
 		[self setTDDelegate:delegate];
 	}
 }
+
+
+
+
 
 
 
