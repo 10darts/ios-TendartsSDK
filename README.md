@@ -19,7 +19,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "TendartsSDK"
 ```
-##Documentation
+## Documentation
 
 Please refer to [10darts documentation] (http://docs.10darts.com/tutorials/ios/setup.html) to a complete how to use guide.
 
