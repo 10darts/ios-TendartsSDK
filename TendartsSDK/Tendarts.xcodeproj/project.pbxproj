@@ -69,6 +69,14 @@
 		965C437D1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C437B1FBE0F5900E05A2D /* TDHTTPClient.m */; };
 		965C437E1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C437B1FBE0F5900E05A2D /* TDHTTPClient.m */; };
 		965C437F1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C437B1FBE0F5900E05A2D /* TDHTTPClient.m */; };
+		965C43821FBE169B00E05A2D /* TDAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 965C43801FBE169B00E05A2D /* TDAPIService.h */; };
+		965C43831FBE169B00E05A2D /* TDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43811FBE169B00E05A2D /* TDAPIService.m */; };
+		965C43841FBE169B00E05A2D /* TDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43811FBE169B00E05A2D /* TDAPIService.m */; };
+		965C43851FBE169B00E05A2D /* TDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43811FBE169B00E05A2D /* TDAPIService.m */; };
+		965C43881FBE19A300E05A2D /* TDNotificationOpenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 965C43861FBE19A300E05A2D /* TDNotificationOpenHandler.h */; };
+		965C43891FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43871FBE19A300E05A2D /* TDNotificationOpenHandler.m */; };
+		965C438A1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43871FBE19A300E05A2D /* TDNotificationOpenHandler.m */; };
+		965C438B1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43871FBE19A300E05A2D /* TDNotificationOpenHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +138,10 @@
 		965C43411FBDCBC100E05A2D /* LocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtils.m; sourceTree = "<group>"; };
 		965C437A1FBE0F5900E05A2D /* TDHTTPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDHTTPClient.h; sourceTree = "<group>"; };
 		965C437B1FBE0F5900E05A2D /* TDHTTPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDHTTPClient.m; sourceTree = "<group>"; };
+		965C43801FBE169B00E05A2D /* TDAPIService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDAPIService.h; sourceTree = "<group>"; };
+		965C43811FBE169B00E05A2D /* TDAPIService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDAPIService.m; sourceTree = "<group>"; };
+		965C43861FBE19A300E05A2D /* TDNotificationOpenHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDNotificationOpenHandler.h; sourceTree = "<group>"; };
+		965C43871FBE19A300E05A2D /* TDNotificationOpenHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDNotificationOpenHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +240,10 @@
 				965C432B1FBDCBBF00E05A2D /* TDCommunications.m */,
 				965C437A1FBE0F5900E05A2D /* TDHTTPClient.h */,
 				965C437B1FBE0F5900E05A2D /* TDHTTPClient.m */,
+				965C43801FBE169B00E05A2D /* TDAPIService.h */,
+				965C43811FBE169B00E05A2D /* TDAPIService.m */,
+				965C43861FBE19A300E05A2D /* TDNotificationOpenHandler.h */,
+				965C43871FBE19A300E05A2D /* TDNotificationOpenHandler.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -246,6 +262,7 @@
 				965C43751FBDCBC100E05A2D /* PushController.h in Headers */,
 				965C43581FBDCBC100E05A2D /* TDClassUtils.h in Headers */,
 				965C43671FBDCBC100E05A2D /* TDUserNotificationCenter.h in Headers */,
+				965C43821FBE169B00E05A2D /* TDAPIService.h in Headers */,
 				965C434A1FBDCBC100E05A2D /* TDSDKExtension.h in Headers */,
 				965C43611FBDCBC100E05A2D /* TDUIApplication.h in Headers */,
 				965C43421FBDCBC100E05A2D /* TDUtils.h in Headers */,
@@ -254,6 +271,7 @@
 				965C43741FBDCBC100E05A2D /* NotificationUtils.h in Headers */,
 				965C43571FBDCBC100E05A2D /* TDConstants.h in Headers */,
 				965C43661FBDCBC100E05A2D /* TDCommunications.h in Headers */,
+				965C43881FBE19A300E05A2D /* TDNotificationOpenHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,8 +405,10 @@
 				965C43551FBDCBC100E05A2D /* PushUtils.m in Sources */,
 				965C43631FBDCBC100E05A2D /* TDUtils.m in Sources */,
 				965C436C1FBDCBC100E05A2D /* TDUIApplication.m in Sources */,
+				965C438A1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
 				965C437E1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
 				965C43521FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
+				965C43841FBE169B00E05A2D /* TDAPIService.m in Sources */,
 				965C434C1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C434F1FBDCBC100E05A2D /* TDSDKExtension.m in Sources */,
 				965C43451FBDCBC100E05A2D /* PushController.m in Sources */,
@@ -406,7 +426,9 @@
 				965C42BA1FBC6FEB00E05A2D /* TendartsTests.m in Sources */,
 				965C434D1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C43531FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
+				965C43851FBE169B00E05A2D /* TDAPIService.m in Sources */,
 				965C43461FBDCBC100E05A2D /* PushController.m in Sources */,
+				965C438B1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
 				965C43731FBDCBC100E05A2D /* TDUserNotificationCenter.m in Sources */,
 				965C43701FBDCBC100E05A2D /* TDConstants.m in Sources */,
 				965C43561FBDCBC100E05A2D /* PushUtils.m in Sources */,
@@ -432,8 +454,10 @@
 				965C43541FBDCBC100E05A2D /* PushUtils.m in Sources */,
 				965C43621FBDCBC100E05A2D /* TDUtils.m in Sources */,
 				965C436B1FBDCBC100E05A2D /* TDUIApplication.m in Sources */,
+				965C43891FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
 				965C437D1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
 				965C43511FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
+				965C43831FBE169B00E05A2D /* TDAPIService.m in Sources */,
 				965C434B1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C434E1FBDCBC100E05A2D /* TDSDKExtension.m in Sources */,
 				965C43441FBDCBC100E05A2D /* PushController.m in Sources */,

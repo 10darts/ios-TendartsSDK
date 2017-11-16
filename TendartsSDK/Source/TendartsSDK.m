@@ -7,10 +7,12 @@
 #import "TDConstants.h"
 #import "TDUIApplication.h"
 #import "LocationUtils.h"
-#import "TDCommunications.h"
+#import "TDNotificationOpenHandler.h"
 #import "TDUserNotificationCenter.h"
 #import "TDNotification.h"
 #import "TDSDKExtension.h"
+
+#import "TDCommunications.h"
 
 @implementation TendartsSDK
 
@@ -75,39 +77,14 @@ static double lastTimestamp = 0;
 	if (delegate != nil && [delegate respondsToSelector:@selector(onNotificationOpened:)]) {
 		[delegate onNotificationOpened:notification];
 	}
-	NSString * code = [TDConfiguration getPushCode];
-	
-	lastCode =  notification.nId;
-	lastTimestamp = [[NSDate date] timeIntervalSince1970];
-	
-	
-	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  [[TDConstants instance] getDeviceUrl:code], @"device",
-						  nil];
-	
-	NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-	
-	NSString *url =[[TDConstants instance] getNotificationClickedUrl:notification.nId];
-	
-	[TDCommunications sendData:data toURl:url withMethod:@"PATCH"
-			  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"NOTIFICATION" type:@"notification opened sent ok" andMessage:json.description];
-		 NSLog(@"SDK sent followed: %@", json);
-		 if (onComplete != nil )
-		 {
-			 onComplete();
-		 }
-	 }
-				onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"NOTIFICATION" type:@"notification opened send error" andMessage:json.description];
-		 NSLog(@"SDK error sending followed %@", json);
-		 if (onComplete != nil )
-		 {
-			 onComplete();
-		 }
-	 }];
+    
+    lastCode =  notification.nId;
+    lastTimestamp = [[NSDate date] timeIntervalSince1970];
+    
+    [TDNotificationOpenHandler notificationOpenWithNotificationId: notification.nId
+                                                          handler: ^{
+                                                              onComplete();
+                                                          }];
 }
 
 #if !(IN_APP_EXTENSION)
@@ -440,7 +417,7 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 			contentHandler(request.content);
 		}
 		return;
-        
+
     }//tendarts notification
 	contentHandler(request.content);    
 }

@@ -1,8 +1,8 @@
 
 #import "TDCommunications.h"
+#import "TDHTTPClient.h"
 #import "TDConfiguration.h"
 #import "TDUtils.h"
-#import "TDHTTPClient.h"
 
 @implementation TDCommunications
 
