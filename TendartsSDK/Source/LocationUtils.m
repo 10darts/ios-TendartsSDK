@@ -6,13 +6,13 @@
 #import "TDSDKExtension.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface LocationUtils () <CLLocationManagerDelegate>
-@property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) NSDate *lastUpdate;
-@property ( nonatomic,strong) NSDate *lastReload;
-@property (nonatomic,strong) NSTimer *cutoffTimer;
-@property (nonatomic,strong) NSTimer *reloadTimer;
-@property (nonatomic, strong) CLLocation *lastLocation;
+@interface LocationUtils ()<CLLocationManagerDelegate>
+@property (nonatomic, strong)CLLocationManager *locationManager;
+@property (nonatomic, strong)NSDate *lastUpdate;
+@property ( nonatomic,strong)NSDate *lastReload;
+@property (nonatomic,strong)NSTimer *cutoffTimer;
+@property (nonatomic,strong)NSTimer *reloadTimer;
+@property (nonatomic, strong)CLLocation *lastLocation;
 @property BOOL updating;
 
 @property NSInteger secondsInterval;
@@ -79,7 +79,7 @@ static LocationUtils * _instance = nil;
 	return position;
 }
 
-+ (void) startUpdating {
++ (void)startUpdating {
 	LocationUtils * me = [LocationUtils instance];
 	me.updating = YES;
 	me.cutoffTimer = [NSTimer scheduledTimerWithTimeInterval:me.secondsInterval/2
@@ -107,8 +107,7 @@ static LocationUtils * _instance = nil;
 	[self.cutoffTimer invalidate];
 	self.cutoffTimer = nil;
 	[self.reloadTimer invalidate];
-	self.reloadTimer = nil;
-	
+	self.reloadTimer = nil;    
 }
 
 BOOL isAuthorized() {
@@ -165,7 +164,7 @@ BOOL isAuthorized() {
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	if( newLocation.horizontalAccuracy < self.lastLocation.horizontalAccuracy && newLocation.horizontalAccuracy >=0) {
+	if (newLocation.horizontalAccuracy < self.lastLocation.horizontalAccuracy && newLocation.horizontalAccuracy >=0) {
 		self.lastLocation = newLocation;
 		[self saveLocation:newLocation];
 	}
@@ -214,7 +213,7 @@ BOOL isAuthorized() {
 	NSDate *last =[TDConfiguration getLastGeostatsSent];
 	
 	if (last == nil  ||n_sent++ <5 || [last timeIntervalSinceNow] < -60) {
-		if( location.coordinate.latitude == 0) {
+		if (location.coordinate.latitude == 0) {
 			n_sent++;
         } else {
 			//send geostats
@@ -249,14 +248,13 @@ BOOL isAuthorized() {
 	CLGeocoder *reverseGeocoder = [[CLGeocoder alloc] init];
 	
 	[reverseGeocoder reverseGeocodeLocation:location
-						  completionHandler:^(NSArray *placemarks, NSError *error){
+						  completionHandler:^(NSArray *placemarks, NSError *error) {
 							  [userDefault setObject:[[placemarks firstObject] ISOcountryCode]
 											  forKey:@"TDCurrentCountryCode"];
 							  [userDefault setObject:[[placemarks firstObject] locality]
 											  forKey:@"TDCurrentCity"];
 							  [userDefault synchronize];
-						  }];
-	
+						  }];    
 }
 
 + (BOOL)isDiferentCountry:(NSString *)codeCountry {

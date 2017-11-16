@@ -3,6 +3,6 @@
 
 @interface TDUserNotificationCenter : NSObject
 
-+ (void) installTDUserNotifications;
++ (void)installTDUserNotifications;
 
 @end

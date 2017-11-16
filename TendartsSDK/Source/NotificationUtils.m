@@ -11,7 +11,7 @@
 
 @implementation NotificationUtils
 
-+ (void) registerRemoteNotifications {
++ (void)registerRemoteNotifications {
 	//todo: save if already registered (dont ask twice)
 #if !(IN_APP_EXTENSION)
 	if ([TDUtils getIOSVersion] >=10.0) {
@@ -25,7 +25,7 @@
 #endif
 }
 
-+ (void) registeriOS8 {
++ (void)registeriOS8 {
     UIUserNotificationType types = UIUserNotificationTypeBadge |
     UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *settings =
@@ -33,10 +33,10 @@
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 }
 
-+ (void) registeriOS10 {
++ (void)registeriOS10 {
     UIApplication* app = [UIApplication sharedApplication];
     NSSet* categories = [[app currentUserNotificationSettings] categories];
-    [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge) categories:categories]];
+    [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)categories:categories]];
     
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)

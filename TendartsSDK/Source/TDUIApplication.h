@@ -4,6 +4,6 @@
 
 @interface TDUIApplication : NSObject 
 
-+ (void) installTenddartsOnApplication: (Class) application;
++ (void)installTenddartsOnApplication: (Class)application;
 
 @end

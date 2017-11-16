@@ -3,6 +3,6 @@
 
 @interface PushUtils : NSObject
 
-+ (void) savePushToken:(NSString *)token inSharedGroup:(NSString *) group;
++ (void)savePushToken:(NSString *)token inSharedGroup:(NSString *)group;
 
 @end

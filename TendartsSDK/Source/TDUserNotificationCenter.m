@@ -22,7 +22,7 @@ static UNUserNotificationCenter * currentNC = nil;
 	currentNC = [UNUserNotificationCenter currentNotificationCenter];
 	if (currentNC.delegate == nil) {
 		TendartsSDK* instance = [TendartsSDK instance];
-		currentNC.delegate = (id) instance;
+		currentNC.delegate = (id)instance;
 	}
 #endif
 }
@@ -48,7 +48,7 @@ static UNUserNotificationCenter * currentNC = nil;
 						  @selector(userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:));
 	
 	//call esxisting
-	if( [self respondsToSelector:@selector(setTDDelegate:)]) {
+	if ([self respondsToSelector:@selector(setTDDelegate:)]) {
 		[self setTDDelegate:delegate];
 	}
 }

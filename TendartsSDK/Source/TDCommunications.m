@@ -5,7 +5,7 @@
 
 @implementation TDCommunications
 
-+ (void)sendData:(NSData *)data toURl:(NSString *)sUrl withMethod: (NSString *) method onSuccessHandler: (TDCHandleSuccess) successHandler onErrorHandler:(TDCHandleError) errorHandler {
++ (void)sendData:(NSData *)data toURl:(NSString *)sUrl withMethod: (NSString *)method onSuccessHandler: (TDCHandleSuccess)successHandler onErrorHandler:(TDCHandleError)errorHandler {
 	
 	NSString * apiKey =[TDConfiguration getAPIKey];
 	if (apiKey == nil) {

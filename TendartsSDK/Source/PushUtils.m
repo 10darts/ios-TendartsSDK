@@ -10,7 +10,7 @@
 
 @implementation PushUtils
 
-+ (void) savePushToken:(NSString *)token inSharedGroup:(NSString *)group {
++ (void)savePushToken:(NSString *)token inSharedGroup:(NSString *)group {
 	[TDConfiguration savePushToken:token];
     
 	NSString *language = [TDUtils getCurrentLanguage];
@@ -19,7 +19,7 @@
 	uname(&systemInfo);
     
 	NSString * model = [NSString stringWithCString:systemInfo.machine  encoding:NSUTF8StringEncoding];
-	NSString* platform = @"ios";
+	NSString * platform = @"ios";
     
 #if DEBUG
 	platform = @"ios_sandbox";
@@ -36,14 +36,14 @@
 						  nil];
 	
 	NSData* data = [NSJSONSerialization dataWithJSONObject: dict options:0 error:nil];
-	NSString* tokenAndVersion = [token stringByAppendingString: version];
-	NSString* saved = [TDConfiguration getTokenAndVersion];
-	NSString* code = [TDConfiguration getPushCode];
+	NSString * tokenAndVersion = [token stringByAppendingString: version];
+	NSString * saved = [TDConfiguration getTokenAndVersion];
+	NSString * code = [TDConfiguration getPushCode];
 	
 	if (code == nil ||! [tokenAndVersion isEqualToString:saved]) {
-		NSString* method = @"POST";
+		NSString * method = @"POST";
 		NSString *url =  [[TDConstants instance] devices];
-		if( code != nil) {
+		if (code != nil) {
 			url = [[TDConstants instance] getDeviceUrl:code];
 			method = @"PATCH";
 		}
@@ -51,10 +51,10 @@
         [TDCommunications sendData:data toURl:url withMethod:method
                   onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
                       [TendartsSDK logEventWithCategory:@"PUSH" type:@"token_sent_ok" andMessage:json.description];
-                      NSString* code = [json objectForKey:@"code"];
+                      NSString * code = [json objectForKey:@"code"];
                       if (code != nil) {
                           [TDConfiguration savePushCode:code withApiKey:[TDConfiguration getAPIKey] andGroupName:group];
-                          if( statusCode == 201) {
+                          if (statusCode == 201) {
                               [TDConfiguration saveTokenAndVersion:tokenAndVersion];
                           }
                       }
@@ -68,8 +68,7 @@
                         [TendartsSDK logEventWithCategory:@"PUSH" type:@"Error sending token" andMessage:json.description];
                         NSLog(@"SDK error saving token %@", json);
                     }];
-	}
-	
+	}    
 }
 
 @end

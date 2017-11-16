@@ -2,8 +2,8 @@
 #import "TDNotification.h"
 
 #ifndef TDNOTIFICATIONDEFS
-#define TDNOTIFICATIONDEFS
 
+#define TDNOTIFICATIONDEFS
 #define TDN_DEEP_URL @"dl"
 #define TDN_MESSAGE @"body"
 #define TDN_TITLE @"title"
@@ -22,42 +22,34 @@
 #endif
 
 @interface TDNotification ()
-+ (NSDictionary *) getProperDictionary: (NSDictionary*)dict;
+
++ (NSDictionary *)getProperDictionary: (NSDictionary*)dict;
+
 @end
 
 @implementation TDNotification
-- (id)initWithDictionary:(NSDictionary *)dict
-{
-	
+
+- (id)initWithDictionary:(NSDictionary *)dict {
 	self = [super init];
-	if( self)
-	{
+	if (self) {
 		
 		NSDictionary *old = nil;
-		if( dict == nil)
-		{
+		if (dict == nil) {
 			self.data = [[NSDictionary alloc]init];
-		}
-		else
-		{
+		} else {
 			old = dict;
 			self.data = [TDNotification getProperDictionary:dict];
 		}
 		
 		NSObject * current = [self.data objectForKey:@"aps"];
-		if( current)
-		{
-			
+		if (current) {
 			current = [(NSDictionary *)current objectForKey:@"alert"];
-			if( [[current class] isSubclassOfClass:[NSDictionary class]])
-			{
+			if ([[current class] isSubclassOfClass:[NSDictionary class]]) {
 				self.message = [(NSDictionary*)current objectForKey:TDN_MESSAGE];
 				self.title = [(NSDictionary*)current objectForKey:TDN_TITLE];
 				
-			}
-			else
-			{
-				self.message = (NSString *) current;
+			} else {
+                self.message = (NSString *)current;
 			}
 		}
 		
@@ -65,25 +57,17 @@
 		self.deepLink = [dict objectForKey:TDN_DEEP_URL];
 		self.timeStamp = [NSDate date];
 		NSNumber* number = [dict objectForKey:TDN_SILENT];
-		if( number != nil && [number integerValue] == 1)
-		{
+		if (number != nil && [number integerValue] == 1) {
 			self.silent = YES;  //sil
-		}
-		else
-		{
+        } else {
 			self.silent = NO;
 		}
-		
 		number = [dict objectForKey:TDN_CONFIRMATION];
-		if( number != nil && [number integerValue] == 1)
-		{
+		if (number != nil && [number integerValue] == 1) {
 			self.confirm = YES;
-		}
-		else
-		{
+		} else {
 			self.confirm = NO;
 		}
-		
 		self.nId = [dict objectForKey:TDN_NID];
 		self.nNot = [dict objectForKey:TDN_NNOT];
 		self.contentId = [dict objectForKey:TDN_CONTENT_ID];
@@ -98,39 +82,27 @@
 	return self;
 }
 
-+ (NSDictionary *) getProperDictionary: (NSDictionary*)dict
-{
++ (NSDictionary *)getProperDictionary: (NSDictionary*)dict {
 	
 	NSDictionary *data = dict;
 	NSDictionary *new = [dict objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
 	
-	if( new != nil)
-	{
+	if (new != nil) {
 		data = new;
-	}
-	else
-	{
+    } else {
 		data = dict;
 	}
 	//message compatibility with and withour apns
 	NSObject * apns =[data objectForKey:@"APNS"];
-	if(apns)
-	{
+	if (apns) {
 		data = (NSDictionary *)apns;
 	}
 	return data;
 }
 
-
-+ (BOOL) isTendartsNotification: (NSDictionary*) data
-{
-	//org = 10d
++ (BOOL)isTendartsNotification: (NSDictionary*)data {
 	NSDictionary* dict = [TDNotification getProperDictionary:data];
 	return [@"10d" isEqualToString:[dict objectForKey:TDN_ORIGIN]];
 }
-
-
-
-
 
 @end

@@ -2,8 +2,8 @@
 
 @interface NotificationUtils : NSObject
 
-+ (void) registerRemoteNotifications;
-+ (void) registeriOS8;
-+ (void) registeriOS10;
++ (void)registerRemoteNotifications;
++ (void)registeriOS8;
++ (void)registeriOS10;
 
 @end

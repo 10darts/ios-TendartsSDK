@@ -19,7 +19,6 @@
 
 // dummy selector to check if tend darts is already installed
 - (void)TDAlreadyInstalled {
-	
 }
 
 - (void)TDdidRegisterForRemoteNotificationsWithDeviceToken:(UIApplication*)application withDeviceToken:(NSData*)deviceToken {
@@ -28,14 +27,12 @@
 	strData = [strData stringByReplacingOccurrencesOfString:@">" withString:@""];
 	strData = [strData stringByReplacingOccurrencesOfString:@" " withString:@""];
 	
-	
 	[PushUtils savePushToken:strData inSharedGroup: [TDConfiguration getSharedGroup]];
 	
 	//call parent
-	if( [self respondsToSelector:@selector(TDdidRegisterForRemoteNotificationsWithDeviceToken:withDeviceToken:)]) {
+	if ([self respondsToSelector:@selector(TDdidRegisterForRemoteNotificationsWithDeviceToken:withDeviceToken:)]) {
 		[self TDdidRegisterForRemoteNotificationsWithDeviceToken:application withDeviceToken:deviceToken];
 	}
-	
 }
 
 - (void)TDDidFailRegisterForRemoteNotification:(UIApplication*)application error:(NSError*)error {
@@ -51,10 +48,9 @@
 			break;
 	}
 	//call parent
-	if( [self respondsToSelector:@selector(TDDidFailRegisterForRemoteNotification:error:)]) {
+	if ([self respondsToSelector:@selector(TDDidFailRegisterForRemoteNotification:error:)]) {
 		[self TDDidFailRegisterForRemoteNotification:application error:error];
 	}
-    
 }
 
 - (void)TDdidReceiveRemoteNotification:(UIApplication *)application withUserInfo:(NSDictionary *)userInfo {
@@ -63,12 +59,10 @@
 	[self TDDidReceiveRemoteNotification:application UserInfo:userInfo fetchCompletionHandler:nil];
 	
 	//call parent
-	if( [self respondsToSelector:@selector(TDdidReceiveRemoteNotification:withUserInfo:)])
-	{
+	if ([self respondsToSelector:@selector(TDdidReceiveRemoteNotification:withUserInfo:)]) {
 		[self TDdidReceiveRemoteNotification:application withUserInfo:userInfo];
 	}
 }
-
 
 /*! This delegate method offers an opportunity for applications with the "remote-notification" background mode to fetch appropriate new data in response to an incoming remote notification. You should call the fetchCompletionHandler as soon as you're finished performing that operation, so the system can accurately estimate its power and data cost.
  
@@ -76,12 +70,12 @@
 
 //-notificaiton received or opened when the app is in focus
 //-content-available notification received and the app is in the background
-- (void) TDDidReceiveRemoteNotification:(UIApplication*)application UserInfo:(NSDictionary*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult)) completionHandler {
+- (void)TDDidReceiveRemoteNotification:(UIApplication*)application UserInfo:(NSDictionary*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 	NSLog(@"td: did receive remote notification with completion handler");
     
 	BOOL runHandler = true;
 	
-	if( [TDNotification isTendartsNotification: userInfo] ) {
+	if ([TDNotification isTendartsNotification: userInfo] ) {
 		TDNotification * notification = [[TDNotification alloc]initWithDictionary:userInfo];
 		UIApplicationState state = 7777777;
 #if !(IN_APP_EXTENSION)
@@ -89,8 +83,8 @@
 #endif
 		static int pendingResults = 0;
 		
-		if( state == UIApplicationStateActive ) {
-			if(notification.confirm) {
+		if (state == UIApplicationStateActive ) {
+			if (notification.confirm) {
 				runHandler = false;
 				pendingResults++;
 				[TendartsSDK onNotificationReceived:notification withHandler:^{
@@ -107,27 +101,22 @@
 			
 			//application is active when the notification is received, create local notification
 			
-			if( notification.silent) {
-				if( runHandler &&  completionHandler) {
+			if (notification.silent) {
+				if (runHandler &&  completionHandler) {
 					completionHandler(UIBackgroundFetchResultNewData);
 				}
 				return;
 			}
 			
-			if( [TDUtils getIOSVersion] >= 10.0) {
+			if ([TDUtils getIOSVersion] >= 10.0) {
 #ifdef _IOS_10_FUNCTIONALITY
-				
 				UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
 				[center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
 									  completionHandler:^(BOOL granted, NSError * _Nullable error)
 				 {
-					 
-					 dispatch_async(dispatch_get_main_queue(), ^
-									{
-										//td1- notify new authorization status
-									});
-					 
-					 
+                     dispatch_async(dispatch_get_main_queue(), ^ {
+                         //td1- notify new authorization status
+                     });
 				 }];
 
 				
@@ -137,18 +126,16 @@
 				content.userInfo = userInfo;
 				content.sound = [UNNotificationSound defaultSound];
 				//badge?
-				if( [notification.image length] >4)
-				{
+				if ([notification.image length] >4) {
 					pendingResults ++;
 					dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 						//download and add media
 						NSArray *parts = [notification.image componentsSeparatedByString:@"."];
-						if( [parts count] > 1)
-						{
+						if ([parts count] > 1) {
 							NSString *extension = [parts lastObject];
 							
 							//dowload
-							NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"tmp_%@.%@",notification.nId,extension ]];
+							NSString *filePath = [NSTemporaryDirectory()stringByAppendingPathComponent:[NSString stringWithFormat:@"tmp_%@.%@",notification.nId,extension ]];
 							TDDownloadDelegate *downloadDelegate = [[TDDownloadDelegate alloc]initWithFile:filePath];
 							
 							NSURL *url = [NSURL URLWithString:notification.image];
@@ -167,7 +154,7 @@
 							}
 							
 							NSError *error = downloadDelegate.error;
-							if( error == nil)
+							if (error == nil)
 							{
 								//image downloaded, attach it to the notification
 								NSURL* imageUrl = [NSURL fileURLWithPath:filePath];
@@ -190,7 +177,7 @@
 							
 							UNNotificationRequest *request =[UNNotificationRequest requestWithIdentifier:notification.nId content:content trigger:[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.3 repeats:NO]];
 							[[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-								if(error)
+								if (error)
 								{
 									NSLog(@"TD: error in local notification: %@", error);
 								}
@@ -203,7 +190,7 @@
 							//call compleri
 							pendingResults --;
 							
-							if( completionHandler && pendingResults < 1)
+							if (completionHandler && pendingResults < 1)
 							{
 								completionHandler(UIBackgroundFetchResultNewData);
 							}
@@ -219,8 +206,7 @@
 					//no image
 					UNNotificationRequest *request =[UNNotificationRequest requestWithIdentifier:notification.nId content:content trigger:[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.3 repeats:NO]];
 					[[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-						if(error)
-						{
+						if (error) {
 							NSLog(@"TD: error in local notification: %@", error);
 						}
 						else
@@ -229,31 +215,20 @@
 						}
 						pendingResults --;
 						
-						if( completionHandler && pendingResults < 1)
-						{
+						if (completionHandler && pendingResults < 1) {
 							completionHandler(UIBackgroundFetchResultNewData);
 						}
-						
-
-					}];// todo: refactor
+					}];
 				}
 #endif
-				
-			
-
-			}
-				
-			else
-			{
-				
+			} else {
 				UILocalNotification* localNotification = [[UILocalNotification alloc] init];
 				
 				localNotification.alertBody = notification.message;
 				localNotification.userInfo = userInfo;
 				localNotification.soundName = UILocalNotificationDefaultSoundName;
 				
-				if( [notification.title length] > 0 && [localNotification respondsToSelector: NSSelectorFromString(@"alertTitle")])
-				{
+				if ([notification.title length] > 0 && [localNotification respondsToSelector: NSSelectorFromString(@"alertTitle")]) {
 					//titles are not in all os versions
 					localNotification.alertTitle = notification.title;
 				}
@@ -279,12 +254,12 @@
 										 style:UIAlertActionStyleDefault
 										 handler:^(UIAlertAction * action)
 										 {
-											 if( [notification.deepLink length] > 3)
+											 if ([notification.deepLink length] > 3)
 											 {
 #if !(IN_APP_EXTENSION)
 												 NSURL *url = [NSURL URLWithString:notification.deepLink];
 
-												 if(url != nil && [[UIApplication sharedApplication] canOpenURL:url])
+												 if (url != nil && [[UIApplication sharedApplication] canOpenURL:url])
 												 {
 													 dispatch_async(dispatch_get_main_queue(), ^{
 														 [[UIApplication sharedApplication] openURL:url];
@@ -297,7 +272,7 @@
 											 [TendartsSDK onNotificationOpened:notification withHandler:^{
 												 pendingResults --;
 												 
-												 if( completionHandler && pendingResults < 1)
+												 if (completionHandler && pendingResults < 1)
 												 {
 													 completionHandler(UIBackgroundFetchResultNewData);
 												 }
@@ -311,7 +286,7 @@
 									  {
 										  pendingResults --;
 										  
-										  if( completionHandler && pendingResults < 1)
+										  if (completionHandler && pendingResults < 1)
 										  {
 											  completionHandler(UIBackgroundFetchResultNewData);
 										  }
@@ -330,17 +305,13 @@
 
 			
 			
-			if( runHandler &&  completionHandler)
-			{
+			if (runHandler &&  completionHandler) {
 				completionHandler(UIBackgroundFetchResultNewData);
 			}
-
-
 			
 		}
 		
-		else if(application.applicationState == UIApplicationStateBackground)
-		{
+		else if (application.applicationState == UIApplicationStateBackground) {
 			
 			//app is in background, check content available key
 			//todo send received
@@ -351,8 +322,7 @@
 			[TendartsSDK onNotificationReceived:notification withHandler:^{
 				pendingResults --;
 				
-				if( completionHandler && pendingResults < 1)
-				{
+				if (completionHandler && pendingResults < 1) {
 					completionHandler(UIBackgroundFetchResultNewData);
 				}
 			} withApiKey:[TDConfiguration getAPIKey] andSharedGroup:[TDConfiguration getSharedGroup]];
@@ -360,27 +330,23 @@
 
 			
 		}
-		else if(application.applicationState == UIApplicationStateInactive)
-		{
+		else if (application.applicationState == UIApplicationStateInactive) {
 			//app is transitioning from background to foreground (user taps notification)
 			runHandler = false;
 			pendingResults++;
 			[TendartsSDK onNotificationOpened:notification withHandler:^{
 				pendingResults --;
 				
-				if( completionHandler && pendingResults < 1)
-				{
+				if (completionHandler && pendingResults < 1) {
 					completionHandler(UIBackgroundFetchResultNewData);
 				}
 			}];
 
-			if( [notification.deepLink length] > 3)
-			{
+			if ([notification.deepLink length] > 3) {
 #if !(IN_APP_EXTENSION)				
 				NSURL *url = [NSURL URLWithString:notification.deepLink];
 
-				if(url != nil && [[UIApplication sharedApplication] canOpenURL:url])
-				{
+				if (url != nil && [[UIApplication sharedApplication] canOpenURL:url]) {
 					dispatch_async(dispatch_get_main_queue(), ^{
 					[[UIApplication sharedApplication] openURL:url];
 					});
@@ -394,8 +360,7 @@
 	else
 	{
 		//call parent if any
-		if( [self respondsToSelector:@selector(TDDidReceiveRemoteNotification:UserInfo:fetchCompletionHandler:)])
-		{
+		if ([self respondsToSelector:@selector(TDDidReceiveRemoteNotification:UserInfo:fetchCompletionHandler:)]) {
 			[self TDDidReceiveRemoteNotification:application UserInfo:userInfo fetchCompletionHandler:completionHandler];
 		}
 	}
@@ -406,84 +371,59 @@
 	
 	
 	
-	if( runHandler &&  completionHandler)
-	{
+	if (runHandler &&  completionHandler) {
 		completionHandler(UIBackgroundFetchResultNewData);
 	}
-	
-	
-	
-	
 }
 
-
-
-- (void)TDDidReceiveLocalNotification:(UIApplication*)application notification:(UILocalNotification*)notification
-{
-	
+- (void)TDDidReceiveLocalNotification:(UIApplication*)application notification:(UILocalNotification*)notification {
 	NSLog(@"td: did receive local notification \n%@", notification);
-	
-	//td4
 		//call parent
-	if( [self respondsToSelector:@selector(TDDidReceiveLocalNotification:notification:)])
-	{
+	if ([self respondsToSelector:@selector(TDDidReceiveLocalNotification:notification:)]) {
 		[self TDDidReceiveLocalNotification:application notification:notification];
 	}
 }
 
-
-- (void) TDLocalNotification:(UIApplication*)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification*)notification completionHandler:(void(^)()) completionHandler
-{
-	//td5
-	
+- (void)TDLocalNotification:(UIApplication*)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification*)notification completionHandler:(void(^)())completionHandler {
 	//call parent
-	if( [self respondsToSelector:@selector(TDLocalNotification:handleActionWithIdentifier:forLocalNotification:completionHandler:)])
-	{
+	if ([self respondsToSelector:@selector(TDLocalNotification:handleActionWithIdentifier:forLocalNotification:completionHandler:)]) {
 		[self TDLocalNotification:application handleActionWithIdentifier:identifier forLocalNotification:notification completionHandler:completionHandler];
 	}
 	completionHandler();
 }
 
-- (void)TDdidRegisterUserNotificationSettings:(UIApplication*)application settings:(UIUserNotificationSettings*)notificationSettings
-{
+- (void)TDdidRegisterUserNotificationSettings:(UIApplication*)application settings:(UIUserNotificationSettings*)notificationSettings {
 	NSLog(@"td: did register user notification settings \n%@", notificationSettings);
 	
 	//td6
 	
 	//call parent
-	if( [self respondsToSelector:@selector(TDdidRegisterUserNotificationSettings:settings:)])
-	{
+	if ([self respondsToSelector:@selector(TDdidRegisterUserNotificationSettings:settings:)]) {
 		[self TDdidRegisterUserNotificationSettings:application settings:notificationSettings];
 	}
 }
 
 static BOOL accessSent = false;
 
-- (void) TDDidBecomeActive: (UIApplication*)application
-{
+- (void)TDDidBecomeActive: (UIApplication*)application {
 	//notify app open
-	if( ! accessSent)
-	{
-		NSString* code = [TDConfiguration getPushCode];
-		if( code != nil)
-		{
+	if (! accessSent) {
+		NSString * code = [TDConfiguration getPushCode];
+		if (code != nil) {
 			accessSent = true;
 			[TDCommunications sendData:nil
 								 toURl:[[TDConstants instance] getDeviceAccessUrl:code]
 							withMethod:@"POST"
-					  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-			{
+					  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
 				[TendartsSDK logEventWithCategory:@"SDK" type:@"Access sent" andMessage:json.description];
 				NSLog(@"td: sent access");
 			}
-						onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-			{
+						onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
 				[TendartsSDK logEventWithCategory:@"SDK" type:@"Error sending access" andMessage:json.description];
 				NSLog(@"td: error sending access");
-				if( data != nil && data.length > 0 && statusCode == 404)
-				{
-					NSString* token = [TDConfiguration getPushToken];
-					if( token != nil)
+				if (data != nil && data.length > 0 && statusCode == 404) {
+					NSString * token = [TDConfiguration getPushToken];
+					if (token != nil)
 					{
 						[PushUtils savePushToken:token  inSharedGroup: [TDConfiguration getSharedGroup]];
 					}
@@ -496,51 +436,35 @@ static BOOL accessSent = false;
 	//todo send geodata if ellapsed time < 2 mins
 	
 	//call parent
-	if( [self respondsToSelector:@selector(TDDidBecomeActive:)])
-	{
+	if ([self respondsToSelector:@selector(TDDidBecomeActive:)]) {
 		[self TDDidBecomeActive:application];
 	}
 }
 
-
-- (void)TDWillResignActive:(UIApplication *)application
-{
+- (void)TDWillResignActive:(UIApplication *)application {
 	[TendartsSDK onAppGoingToBackground];
 	
 	//call parent
-	if( [self respondsToSelector:@selector(TDWillResignActive:)])
-	{
+	if ([self respondsToSelector:@selector(TDWillResignActive:)]) {
 		[self TDWillResignActive:application];
 	}
 }
 
-
 static Class _delegateClass = nil;
 static NSArray *_delegateChilds = nil;
 
-
-- (void) setTDDelegate:(id<UIApplicationDelegate>)delegate
-{
+- (void)setTDDelegate:(id<UIApplicationDelegate>)delegate {
 	NSLog(@"set delegate: called");
-	
 	
 	Class tendartsDelegate = [TDUIApplication class];
 	
-	if( _delegateClass == nil)
-	{
+	if (_delegateClass == nil) {
 		_delegateClass = searchAncestorImplementingProtocol([delegate class], @protocol(UIApplicationDelegate));
-		if( _delegateClass == nil)
-		{
+		if (_delegateClass == nil) {
 			NSLog(@"TD: no delegate");
 			_delegateClass = [delegate class];
 		}
-	
-		
 		_delegateChilds = getChilds(_delegateClass);
-		
-		
-		
-		
 		
 		//install application did register remote notifications:
 		installOverrideMethod(tendartsDelegate,
@@ -584,9 +508,7 @@ static NSArray *_delegateChilds = nil;
 							  _delegateChilds,
 							  @selector(applicationDidBecomeActive:));
 		
-		if( [TDUtils getIOSVersion] < 10 )
-		{
-			
+		if ([TDUtils getIOSVersion] < 10) {
 			installOverrideMethod(tendartsDelegate,
 								  @selector(TDLocalNotification:handleActionWithIdentifier:forLocalNotification:completionHandler:),
 								  _delegateClass,
@@ -614,35 +536,19 @@ static NSArray *_delegateChilds = nil;
 								  @selector(application:didReceiveLocalNotification:));
 			
 		}
-		else
-		{
-			
-		}
 	}
 	//call existing
-	if( [self respondsToSelector:@selector(setTDDelegate:)])
-	{
+	if ([self respondsToSelector:@selector(setTDDelegate:)]) {
 		[self setTDDelegate:delegate];
 	}
 }
 
-
-
-
-
-
-
-+ (void) installTenddartsOnApplication: (Class) application
-{
++ (void)installTenddartsOnApplication: (Class)application {
 	//check if already installed
-	if( targetHasMethod(application, @selector(TDAlreadyInstalled)))
-	{
+	if (targetHasMethod(application, @selector(TDAlreadyInstalled))) {
 		NSLog(@"TD error: already installed, you may have included the library more than once");
 		return;
 	}
-	
-
-	
 	//add dummy method
 	putMethodInTarget([TDUIApplication class], @selector(TDAlreadyInstalled),
 					  [application class],//OJO MIRAR
@@ -651,19 +557,11 @@ static NSArray *_delegateChilds = nil;
 	//insert our custom set delegate override that will install all delegate functionality
 	putMethodInTarget([TDUIApplication class], @selector(setTDDelegate:), application, @selector(setDelegate:));
 	
-	
-	
 	//for ios >= 10 install UserNotifications
 	if (NSClassFromString(@"UNUserNotificationCenter")) {
 		[TDUserNotificationCenter installTDUserNotifications];
 		
 	}
-	
-	
-	
 }
-
-
-
 
 @end
