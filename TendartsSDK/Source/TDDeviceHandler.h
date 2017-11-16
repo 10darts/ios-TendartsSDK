@@ -20,4 +20,8 @@
             location:(NSDictionary *)aLocation
                group:(NSString *)aGroup;
 
++ (void) location:(NSDictionary *)aLocation
+         accuracy:(NSString *)aAccuracy
+         pushCode:(NSString *)aPushCode ;
+
 @end

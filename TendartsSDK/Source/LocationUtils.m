@@ -1,10 +1,10 @@
 
+#import <CoreLocation/CoreLocation.h>
+
 #import "LocationUtils.h"
 #import "TDConfiguration.h"
 #import "TDConstants.h"
-#import "TDCommunications.h"
-#import "TDSDKExtension.h"
-#import <CoreLocation/CoreLocation.h>
+#import "TDDeviceHandler.h"
 
 @interface LocationUtils ()<CLLocationManagerDelegate>
 @property (nonatomic, strong)CLLocationManager *locationManager;
@@ -216,30 +216,14 @@ BOOL isAuthorized() {
 		if (location.coordinate.latitude == 0) {
 			n_sent++;
         } else {
-			//send geostats
-			NSString *code = [TDConfiguration getPushCode];
-			NSString *url =  [[TDConstants instance] devices];
-			if (code != nil) {
+			NSString *pushCode = [TDConfiguration getPushCode];
+			if (pushCode != nil) {
 				NSDictionary *loc =[LocationUtils getLocationData];
-				NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-									loc,@"position",
-									  [NSString stringWithFormat:@"acc:%f",location.horizontalAccuracy], @"debug_info",
-									  nil];
-				
-				NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-
-				
-				url = [[TDConstants instance] getDeviceUrl:code];
-				[TDCommunications sendData:data toURl:url withMethod:@"PATCH"
-						  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-				 {
-					 [TDConfiguration saveLastGeostatsSent:[NSDate date]];
-					 [TendartsSDK logEventWithCategory:@"DEVICE" type:@"location succesfully sent" andMessage:json.description];
-				 }onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-
-				 {
-					 [TendartsSDK logEventWithCategory:@"DEVICE" type:@"Error sending location" andMessage:json.description];
-				}];
+                NSString *accuracy = [NSString stringWithFormat:@"acc:%f",location.horizontalAccuracy];
+                
+                [TDDeviceHandler location: loc
+                                 accuracy: accuracy
+                                 pushCode: pushCode];
 			}
 		}
 	}

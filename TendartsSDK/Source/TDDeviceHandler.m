@@ -20,8 +20,7 @@
             platform:(NSString *)aPlatform
             location:(NSDictionary *)aLocation
                group:(NSString *)aGroup {
-
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           aToken, @"token",
                           aPlatform, @"platform",
                           aLanguage,@"language",
@@ -30,16 +29,16 @@
                           aLocation,@"position",
                           nil];
     
-    NSData* data = [NSJSONSerialization dataWithJSONObject: dict
+    NSData *data = [NSJSONSerialization dataWithJSONObject: dict
                                                    options: 0
                                                      error: nil];
     
-    NSString * tokenAndVersion = [aToken stringByAppendingString: aVersion];
-    NSString * saved = [TDConfiguration getTokenAndVersion];
-    NSString * code = [TDConfiguration getPushCode];
+    NSString *tokenAndVersion = [aToken stringByAppendingString: aVersion];
+    NSString *saved = [TDConfiguration getTokenAndVersion];
+    NSString *code = [TDConfiguration getPushCode];
     
     if (code == nil || ![tokenAndVersion isEqualToString:saved]) {
-        NSString * method = REQUEST_METHOD_POST;
+        NSString *method = REQUEST_METHOD_POST;
         NSString *url =  [[TDConstants instance] devices];
         
         if (code != nil) {
@@ -78,6 +77,37 @@
                       }];
     }
     
+}
+
++ (void) location:(NSDictionary *)aLocation
+         accuracy:(NSString *)aAccuracy
+         pushCode:(NSString *)aPushCode {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          aLocation, @"position",
+                          aAccuracy, @"debug_info",
+                          nil];
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject: dict
+                                                   options: 0
+                                                     error: nil];
+    
+    NSString *method = REQUEST_METHOD_PATCH;
+    NSString *url = [[TDConstants instance] getDeviceUrl: aPushCode];
+    
+    [TDAPIService deviceWithData: data
+                             url: url
+                          method: method
+                onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
+                    [TDConfiguration saveLastGeostatsSent: [NSDate date]];
+                    [TendartsSDK logEventWithCategory: @"DEVICE"
+                                                 type: @"location succesfully sent"
+                                           andMessage: json.description];
+                }
+                  onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
+                      [TendartsSDK logEventWithCategory: @"DEVICE"
+                                                   type: @"Error sending location"
+                                             andMessage: json.description];
+                  }];
 }
 
 @end
