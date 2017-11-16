@@ -7,12 +7,12 @@
 #import "TDConstants.h"
 #import "TDUIApplication.h"
 #import "LocationUtils.h"
-#import "TDNotificationOpenHandler.h"
 #import "TDUserNotificationCenter.h"
 #import "TDNotification.h"
 #import "TDSDKExtension.h"
 
 #import "TDCommunications.h"
+#import "TDNotificationOpenHandler.h"
 
 @implementation TendartsSDK
 

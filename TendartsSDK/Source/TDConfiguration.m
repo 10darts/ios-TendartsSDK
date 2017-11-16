@@ -26,7 +26,7 @@ NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 + (void)saveAPIKey:(NSString *)apiKey {
 	@try
 	{
-		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];// [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 		[userDefaults setObject:apiKey forKey:TD_API_KEY];
 		[userDefaults synchronize];
 	} @catch (NSException *exception) {
@@ -35,14 +35,14 @@ NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 }
 
 + (NSString *)getAPIKey {
-	NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];//[TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
 	return [userDefaults objectForKey:TD_API_KEY];
 }
 
 + (void)savePushToken:(NSString *)pushToken {
 	@try
 	{
-		NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];//[TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
 		[userDefaults setObject:pushToken forKey:TD_PUSH_TOKEN];
 		[userDefaults synchronize];
 	} @catch (NSException *exception) {
@@ -51,14 +51,14 @@ NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 }
 
 + (NSString *)getPushToken {
-	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];// [TDConfiguration getUserDefaults];
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	return [userDefaults objectForKey:TD_PUSH_TOKEN];
 }
 
 + (void)saveTokenAndVersion: (NSString *)tokenAndVersion {
 	@try
 	{
-		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];// [TDConfiguration getUserDefaults];
+		NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 		[userDefaults setObject:tokenAndVersion forKey:TD_TOKEN_VERSION];
 		[userDefaults synchronize];
 	} @catch (NSException *exception) {
@@ -67,8 +67,8 @@ NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 }
 
 + (NSString *)getTokenAndVersion {
-	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];//[TDConfiguration getUserDefaults];
-	return [userDefaults objectForKey:TD_TOKEN_VERSION];
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	return [userDefaults objectForKey: TD_TOKEN_VERSION];
 }
 
 + (void)savePushCode:(NSString *)pushCode
@@ -90,8 +90,8 @@ NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 }
 
 + (NSString *)getPushCode {
-	NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
-	return [userDefaults objectForKey:TD_PUSH_CODE];    
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	return [userDefaults objectForKey: TD_PUSH_CODE];
 }
 
 + (NSString *)getPushCodeWithApiKey:(NSString *)apiKey andGroupName:(NSString * _Nonnull)group {

@@ -23,6 +23,10 @@ static TDConstants * _instance = nil;
 	return [NSString stringWithFormat:_device,deviceCode];
 }
 
+- (NSString *)getDevicesUrl {
+    return _devices;
+}
+
 - (NSString *)getDeviceAccessUrl:(NSString *)deviceCode {
 	return [NSString stringWithFormat:@"%@/api/v1/devices/%@/access/",_baseUrl,deviceCode];
 }
