@@ -2,9 +2,9 @@
 #import "TDConstants.h"
 
 @implementation TDConstants
-- (TDConstants *)init {
 
-	_baseUrl =@"https://10darts.com";
+- (TDConstants *)init {
+	_baseUrl = @"https://10darts.com";
 	_device = [_baseUrl stringByAppendingString: @"/api/v1/devices/%@/"];
 	_devices = [_baseUrl stringByAppendingString:  @"/api/v1/devices/"];
 	

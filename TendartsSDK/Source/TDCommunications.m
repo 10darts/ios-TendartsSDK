@@ -2,37 +2,39 @@
 #import "TDCommunications.h"
 #import "TDConfiguration.h"
 #import "TDUtils.h"
+#import "TDHTTPClient.h"
 
 @implementation TDCommunications
 
-+ (void)sendData:(NSData *)data toURl:(NSString *)sUrl withMethod: (NSString *)method onSuccessHandler: (TDCHandleSuccess)successHandler onErrorHandler:(TDCHandleError)errorHandler {
-	
+static TDHTTPClient *_httpClient;
++ (TDHTTPClient*)httpClient {
+    if (!_httpClient)
+        _httpClient = [TDHTTPClient new];
+    return _httpClient;
+}
+
++ (void)sendData:(NSData *)data
+           toURl:(NSString *)sUrl
+      withMethod: (NSString *)method
+onSuccessHandler: (TDCHandleSuccess)successHandler
+  onErrorHandler:(TDCHandleError)errorHandler {
 	NSString * apiKey =[TDConfiguration getAPIKey];
 	if (apiKey == nil) {
 		return;
 	}
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		// session config
-		NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-		sessionConfiguration.HTTPAdditionalHeaders = @{@"Content-Type"      : @"application/json",
-													   @"Authorization"     : [@"Token " stringByAppendingString: apiKey]   ,
-													   @"Accept-Language"   :  [TDUtils getCurrentLanguage]
-													   };
+        NSURLSession* session = [self.httpClient sessionWithToken:apiKey
+                                                         language: [TDUtils getCurrentLanguage]];
+        
+        NSMutableURLRequest* request = [self.httpClient requestWithMethod: method
+                                                                     data: data
+                                                                      url: sUrl];
 		
-		// session init
-		NSURLSession *session = [NSURLSession sessionWithConfiguration: sessionConfiguration];
-		
-		NSURL *url = [NSURL URLWithString: sUrl];
-		
-		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-		[request setHTTPMethod:method];
-		[request setHTTPBody:data];
-		[request setValue:@"application/json"forHTTPHeaderField:@"Content-Type"];
-		
-		NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-			// get http response and convert to json
+		NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 			NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
 			NSDictionary *json = nil;
+                                                        
 			if (data != nil) {
 				NSError *jerror;
 				json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
@@ -44,13 +46,13 @@
 			if (HTTPResponse.statusCode >= 200 && HTTPResponse.statusCode < 300) {
 				dispatch_async(dispatch_get_main_queue(), ^{
 					if (successHandler != nil) {
-                        successHandler( json,data, HTTPResponse.statusCode);
+                        successHandler(json, data, HTTPResponse.statusCode);
 					}
 				});
 			} else {
 				dispatch_async(dispatch_get_main_queue(), ^{
 					if (errorHandler != nil) {
-						errorHandler(json,data,HTTPResponse.statusCode);
+						errorHandler(json, data, HTTPResponse.statusCode);
 					}
 				});
 			}
