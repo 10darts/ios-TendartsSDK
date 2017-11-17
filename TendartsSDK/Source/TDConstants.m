@@ -20,7 +20,7 @@ static TDConstants * _instance = nil;
 }
 
 - (NSString *)getDeviceUrl:(NSString *)deviceCode {
-	return [NSString stringWithFormat:_device,deviceCode];
+	return [NSString stringWithFormat:_device, deviceCode];
 }
 
 - (NSString *)getDevicesUrl {

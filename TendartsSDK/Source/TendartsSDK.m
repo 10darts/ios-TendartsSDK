@@ -14,6 +14,7 @@
 #import "TDCommunications.h"
 #import "TDNotificationOpenHandler.h"
 #import "TDPersonaHandler.h"
+#import "TDLinksHandler.h"
 
 @implementation TendartsSDK
 
@@ -234,43 +235,23 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 	 }];    
 }
 
-+ (void)linkDeviceWithUserIdentifier:(NSString *)userId onSuccess: (TDOnSuccess _Nullable )successHandler onError: (TDOnError _Nullable )errorHandler {
-	NSString * code = [TDConfiguration getPushCode];
-	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  [[TDConstants instance] getDeviceUrl:code], @"device",
-						  userId,@"client_data",
-						  nil];
-	
-	NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-	
-	NSString *url =[[TDConstants instance] getLinkDevice];
-	
-	[TDCommunications sendData:data toURl:url withMethod:@"POST"
-			  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 NSString *persona = [json objectForKey:@"persona"];
-		 if (persona != nil )
-		 {
-			 [TDConfiguration saveUserCode:persona];
-		 }
-		 
-		 [TendartsSDK logEventWithCategory:@"USER" type:@"link device sent ok" andMessage:json.description];
-		 if (successHandler)
-		 {
-			 successHandler();
-		 }
-		 
-	 }
-				onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 if (errorHandler)
-		 {
-			 errorHandler( [json description]);
-		 }
-		 [TendartsSDK logEventWithCategory:@"USER" type:@"link device send error" andMessage:json.description];
-		
-	 }];
-
++ (void)linkDeviceWithUserIdentifier:(NSString *)userId
+                           onSuccess:(TDOnSuccess _Nullable )successHandler
+                             onError:(TDOnError _Nullable )errorHandler {
+	NSString *code = [TDConfiguration getPushCode];
+    
+    [TDLinksHandler linkWithCode: code
+                          userId: userId
+                       onSuccess: ^{
+                           if (successHandler) {
+                               successHandler();
+                           }
+                       }
+                         onError: ^(NSString * _Nullable error) {
+                             if (errorHandler) {
+                                 errorHandler(error);
+                             }
+                         }];
 }
 
 + (void)ModifyUserEmail:(NSString *)email

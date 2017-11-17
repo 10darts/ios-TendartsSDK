@@ -17,6 +17,10 @@
     return @"ios";
 }
 
++ (NSString *)getDeviceURI:(NSString *)aCode {
+    return [NSString stringWithFormat:@"/api/v1/devices/%@/", aCode];
+}
+
 + (NSString *)getCurrentLanguage {
     NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
     return [language substringToIndex:2];
