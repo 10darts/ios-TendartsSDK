@@ -12,16 +12,22 @@ FOUNDATION_EXPORT NSString *const REQUEST_METHOD_PATCH;
 
 @interface TDAPIService : NSObject
 
-+ (void) notificationOpenWithData:(NSData *)aData
-                              url:(NSString *)aUrl
-                           method:(NSString *)aMethod
-                 onSuccessHandler:(TDCHandleSuccess)successHandler
-                   onErrorHandler:(TDCHandleError)errorHandler;
++ (void)notificationOpenWithData:(NSData *)aData
+                             url:(NSString *)aUrl
+                          method:(NSString *)aMethod
+                onSuccessHandler:(TDCHandleSuccess)successHandler
+                  onErrorHandler:(TDCHandleError)errorHandler;
 
-+ (void) deviceWithData:(NSData *)aData
-                    url:(NSString *)aUrl
-                 method:(NSString *)aMethod
-       onSuccessHandler:(TDCHandleSuccess)successHandler
-         onErrorHandler:(TDCHandleError)errorHandler;
++ (void)deviceWithData:(NSData *)aData
+                   url:(NSString *)aUrl
+                method:(NSString *)aMethod
+      onSuccessHandler:(TDCHandleSuccess)successHandler
+        onErrorHandler:(TDCHandleError)errorHandler;
+
++ (void)accessWithData:(NSData *)aData
+                   url:(NSString *)aUrl
+                method:(NSString *)aMethod
+      onSuccessHandler:(TDCHandleSuccess)successHandler
+        onErrorHandler:(TDCHandleError)errorHandler;
 
 @end

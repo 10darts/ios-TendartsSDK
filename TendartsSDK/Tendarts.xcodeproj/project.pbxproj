@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960BB8761FBE972D000A29CC /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */; };
 		965C42B51FBC6FEB00E05A2D /* Tendarts_Dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965C42AB1FBC6FEB00E05A2D /* Tendarts_Dynamic.framework */; };
 		965C42BA1FBC6FEB00E05A2D /* TendartsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C42B91FBC6FEB00E05A2D /* TendartsTests.m */; };
 		965C43421FBDCBC100E05A2D /* TDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 965C43261FBDCBBE00E05A2D /* TDUtils.h */; };
@@ -126,6 +127,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		960BB8741FBE972D000A29CC /* TDDownloadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDDownloadDelegate.h; sourceTree = "<group>"; };
+		960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDDownloadDelegate.m; sourceTree = "<group>"; };
 		965C42AB1FBC6FEB00E05A2D /* Tendarts_Dynamic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tendarts_Dynamic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		965C42AF1FBC6FEB00E05A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965C42B41FBC6FEB00E05A2D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,6 +295,8 @@
 				965C43A51FBE219B00E05A2D /* TDLinksHandler.m */,
 				965C43AA1FBE2A8900E05A2D /* TDDeviceHandler.h */,
 				965C43AB1FBE2A8900E05A2D /* TDDeviceHandler.m */,
+				960BB8741FBE972D000A29CC /* TDDownloadDelegate.h */,
+				960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				965C43AD1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */,
 				965C437D1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
 				965C43951FBE206200E05A2D /* TDNotificationReceivedHandler.m in Sources */,
+				960BB8761FBE972D000A29CC /* TDDownloadDelegate.m in Sources */,
 				965C43511FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
 				965C43831FBE169B00E05A2D /* TDAPIService.m in Sources */,
 				965C434B1FBDCBC100E05A2D /* TDCommunications.m in Sources */,

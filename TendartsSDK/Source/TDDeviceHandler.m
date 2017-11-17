@@ -13,13 +13,13 @@
 
 @implementation TDDeviceHandler
 
-+ (void) deviceToken:(NSString *)aToken
-            language:(NSString *)aLanguage
-             version:(NSString *)aVersion
-               model:(NSString *)aModel
-            platform:(NSString *)aPlatform
-            location:(NSDictionary *)aLocation
-               group:(NSString *)aGroup {
++ (void)deviceToken:(NSString *)aToken
+           language:(NSString *)aLanguage
+            version:(NSString *)aVersion
+              model:(NSString *)aModel
+           platform:(NSString *)aPlatform
+           location:(NSDictionary *)aLocation
+              group:(NSString *)aGroup {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           aToken, @"token",
                           aPlatform, @"platform",
@@ -79,9 +79,9 @@
     
 }
 
-+ (void) location:(NSDictionary *)aLocation
-         accuracy:(NSString *)aAccuracy
-         pushCode:(NSString *)aPushCode {
++ (void)location:(NSDictionary *)aLocation
+        accuracy:(NSString *)aAccuracy
+        pushCode:(NSString *)aPushCode {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           aLocation, @"position",
                           aAccuracy, @"debug_info",

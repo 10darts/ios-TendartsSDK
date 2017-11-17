@@ -12,14 +12,3 @@ typedef void(^TDCHandleError)(NSDictionary* json , NSData *data, NSInteger statu
 + (void)sendData:(NSData *)data toURl:(NSString *)sUrl withMethod: (NSString *)method onSuccessHandler: (TDCHandleSuccess)successHandler onErrorHandler:(TDCHandleError)errorHandler;
 
 @end
-
-@interface TDDownloadDelegate : NSObject
-
-@property (strong)NSError* error;
-@property (strong)NSURLResponse* response;
-@property (strong)NSFileHandle* fileHandle;
-@property  BOOL finished;
-
-- (id)initWithFile:(NSString *)filePath;
-
-@end

@@ -6,10 +6,11 @@
 #import "TDUtils.h"
 #import "LocationUtils.h"
 #import "TDConfiguration.h"
-#import "TDCommunications.h"
 #import "TDConstants.h"
 #import "TDUserNotificationCenter.h"
 #import "TDConfiguration.h"
+#import "TDAccessHandler.h"
+#import "TDDownloadDelegate.h"
 
 #ifdef _IOS_10_FUNCTIONALITY
 #import <UserNotifications/UserNotifications.h>
@@ -407,30 +408,13 @@ static BOOL accessSent = false;
 
 - (void)TDDidBecomeActive: (UIApplication*)application {
 	//notify app open
-	if (! accessSent) {
-		NSString * code = [TDConfiguration getPushCode];
+	if (!accessSent) {
+		NSString *code = [TDConfiguration getPushCode];
 		if (code != nil) {
 			accessSent = true;
-			[TDCommunications sendData:nil
-								 toURl:[[TDConstants instance] getDeviceAccessUrl:code]
-							withMethod:@"POST"
-					  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-				[TendartsSDK logEventWithCategory:@"SDK" type:@"Access sent" andMessage:json.description];
-				NSLog(@"td: sent access");
-			}
-						onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-				[TendartsSDK logEventWithCategory:@"SDK" type:@"Error sending access" andMessage:json.description];
-				NSLog(@"td: error sending access");
-				if (data != nil && data.length > 0 && statusCode == 404) {
-					NSString * token = [TDConfiguration getPushToken];
-					if (token != nil)
-					{
-						[PushUtils savePushToken:token  inSharedGroup: [TDConfiguration getSharedGroup]];
-					}
-				}
-			}];
+            NSString *url = [[TDConstants instance] getDeviceAccessUrl: code];
+            [TDAccessHandler accessWithUrl: url];
 		}
-		
 	}
 	
 	//todo send geodata if ellapsed time < 2 mins

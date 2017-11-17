@@ -9,8 +9,8 @@
 #import "LocationUtils.h"
 #import "TDUserNotificationCenter.h"
 #import "TDNotification.h"
-#import "TDSDKExtension.h"
 
+#import "TDDownloadDelegate.h"
 #import "TDCommunications.h"
 #import "TDNotificationOpenHandler.h"
 
