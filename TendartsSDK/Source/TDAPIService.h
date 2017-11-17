@@ -18,6 +18,12 @@ FOUNDATION_EXPORT NSString *const REQUEST_METHOD_PATCH;
                 onSuccessHandler:(TDCHandleSuccess)successHandler
                   onErrorHandler:(TDCHandleError)errorHandler;
 
++ (void)notificationReceivedWithData:(NSData *)aData
+                                 url:(NSString *)aUrl
+                              method:(NSString *)aMethod
+                    onSuccessHandler:(TDCHandleSuccess)successHandler
+                      onErrorHandler:(TDCHandleError)errorHandler;
+
 + (void)deviceWithData:(NSData *)aData
                    url:(NSString *)aUrl
                 method:(NSString *)aMethod

@@ -22,7 +22,6 @@
                                                    options: 0
                                                      error: nil];
     
-    
     [TDAPIService eventsWithData: data
                              url: [[TDConstants instance] getEvents]
                           method: REQUEST_METHOD_POST

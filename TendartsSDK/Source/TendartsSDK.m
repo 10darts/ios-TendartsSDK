@@ -13,6 +13,7 @@
 #import "TDDownloadDelegate.h"
 #import "TDCommunications.h"
 #import "TDNotificationOpenHandler.h"
+#import "TDNotificationReceivedHandler.h"
 #import "TDPersonaHandler.h"
 #import "TDLinksHandler.h"
 #import "TDEventsHandler.h"
@@ -161,34 +162,14 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 	}
 	
 	NSString *code = [TDConfiguration getPushCodeWithApiKey:apiKey andGroupName:group];
-	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  [[TDConstants instance] getDeviceUrl:code], @"device",
-						  nil];
-	
-	NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-	
-	NSString *url =[[TDConstants instance] getNotificationReceivedUrl:notification.nId];
-	
-	[TDCommunications sendData:data toURl:url withMethod:@"PATCH"
-			  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"NOTIFICATION" type:@"notification received sent ok" andMessage:json.description];
-		 NSLog(@"SDK sent received: %@", json);
-		 if (onComplete != nil )
-		 {
-			 onComplete();
-		 }
-	 }
-                onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"NOTIFICATION" type:@"notification received send error" andMessage:json.description];
-		 if (onComplete != nil)
-		 {
-			 onComplete();
-		 }
-		 
-		 NSLog(@"SDK error sending received %@", json);
-	 }];
+
+    [TDNotificationReceivedHandler notificationReceivedWithCode: code
+                                                 notificationId: notification.nId
+                                                        handler:^{
+                                                            if (onComplete != nil) {
+                                                                onComplete();
+                                                            }
+                                                        }];
 }
 
 + (void)resetBadge: (TDOnSuccess _Nullable )successHandler onError: (TDOnError _Nullable )errorHandler {
