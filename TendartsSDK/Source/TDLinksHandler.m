@@ -12,12 +12,12 @@
            onSuccess:(TDOnSuccess)successHandler
              onError:(TDOnError)errorHandler {
     NSString *device = [TDUtils getDeviceURI: aCode];
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           device, @"device",
                           aString, @"client_data",
                           nil];
     
-    NSData* data = [NSJSONSerialization dataWithJSONObject: dict
+    NSData *data = [NSJSONSerialization dataWithJSONObject: dict
                                                    options: 0
                                                      error: nil];
     

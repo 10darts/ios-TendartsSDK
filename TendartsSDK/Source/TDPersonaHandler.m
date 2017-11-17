@@ -13,7 +13,7 @@
               password:(NSString *)aPassword
              onSuccess:(TDOnSuccess)successHandler
                onError:(TDOnError)errorHandler {
-    NSString * code = [TDConfiguration getPushCode];
+    NSString *code = [TDConfiguration getPushCode];
     if (code.length < 3) {
         if (errorHandler) {
             errorHandler(@"device not yet registered");
@@ -21,7 +21,7 @@
         return;
     }
     
-    NSString * userCode = [TDConfiguration getUserCode];
+    NSString *userCode = [TDConfiguration getUserCode];
     if (userCode.length < 3) {
         if (errorHandler) {
             errorHandler(@"the user should be already registered");
@@ -32,17 +32,18 @@
     NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  aEmail, @"email",
                                  nil];
+    
     if (aFirstName.length > 0) {
-        [dict setObject:aFirstName forKey:@"first_name"];
+        [dict setObject: aFirstName forKey: @"first_name"];
     }
     if (aLastName.length > 0) {
-        [dict setObject:aLastName forKey:@"last_name"];
+        [dict setObject: aLastName forKey: @"last_name"];
     }
     if (aPassword.length > 0) {
-        [dict setObject:aPassword forKey:@"password"];
+        [dict setObject: aPassword forKey: @"password"];
     }
     
-    NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
     
     [TDAPIService personaWithData: data
                               url: aUrl

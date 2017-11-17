@@ -5,7 +5,7 @@
 
 @interface TDNotificationOpenHandler : NSObject
 
-+ (void) notificationOpenWithNotificationId:(NSString *)aId
-                                    handler:(TDOperationComplete)onComplete;
++ (void)notificationOpenWithNotificationId:(NSString *)aId
+                                   handler:(TDOperationComplete)onComplete;
 
 @end

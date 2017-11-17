@@ -6,15 +6,15 @@
 
 @implementation TDNotificationOpenHandler
 
-+ (void) notificationOpenWithNotificationId:(NSString *)aId
-                                 handler:(TDOperationComplete)onComplete  {
++ (void)notificationOpenWithNotificationId:(NSString *)aId
+                                   handler:(TDOperationComplete)onComplete  {
     NSString * code = [TDConfiguration getPushCode];
     
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           [[TDConstants instance] getDeviceUrl: code], @"device",
                           nil];
     
-    NSData* data = [NSJSONSerialization dataWithJSONObject :dict
+    NSData *data = [NSJSONSerialization dataWithJSONObject :dict
                                                    options: 0
                                                      error: nil];
     
