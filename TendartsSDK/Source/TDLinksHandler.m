@@ -38,7 +38,9 @@
                   if (persona != nil) {
                       [TDConfiguration saveUserCode: persona];
                   }
-                  [TendartsSDK logEventWithCategory:@"USER" type:@"link device sent ok" andMessage:json.description];
+                  [TendartsSDK logEventWithCategory: @"USER"
+                                               type: @"link device sent ok"
+                                         andMessage: json.description];
                   if (successHandler) {
                       successHandler();
                   }
@@ -47,7 +49,9 @@
                     if (errorHandler) {
                         errorHandler( [json description]);
                     }
-                    [TendartsSDK logEventWithCategory:@"USER" type:@"link device send error" andMessage:json.description];
+                    [TendartsSDK logEventWithCategory: @"USER"
+                                                 type: @"link device send error"
+                                           andMessage: json.description];
                 }];
 }
 

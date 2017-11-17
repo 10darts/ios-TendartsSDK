@@ -15,6 +15,7 @@
 #import "TDNotificationOpenHandler.h"
 #import "TDPersonaHandler.h"
 #import "TDLinksHandler.h"
+#import "TDEventsHandler.h"
 
 @implementation TendartsSDK
 
@@ -102,39 +103,29 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 
 + (BOOL)onAppGoingToBackground {
 	if (lastTimestamp != 0 && lastCode != nil) {
-		int seconds = ceil([[NSDate date] timeIntervalSince1970] - lastTimestamp);
-		NSString * code = [TDConfiguration getPushCode];
+		NSString *code = [TDConfiguration getPushCode];
+        NSString *push = [[TDConstants instance] buildUrlOfType:URL_TYPE_PUSH andId:lastCode];
+        NSString *device = [[TDConstants instance]buildUrlOfType:URL_TYPE_DEVICES andId:code];
+        int seconds = ceil([[NSDate date] timeIntervalSince1970] - lastTimestamp);
+        NSString *value = [NSString stringWithFormat:@"%d", seconds];
 
-		NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-							[[TDConstants instance] buildUrlOfType:URL_TYPE_PUSH andId:lastCode],@"push",
-							[[TDConstants instance]buildUrlOfType:URL_TYPE_DEVICES andId:code],@"device",
-							URL_KIND_SESSION ,@"kind",
-							  [NSString stringWithFormat:@"%d",seconds],@"value",
-							  nil];
-		
-		NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-		
 #if !(IN_APP_EXTENSION)
 		backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
 			NSLog(@"session: timeout");
 			[self endBackgroundTask];
 		}];
 #endif
-		
-        [TDCommunications sendData:data
-                             toURl:[[TDConstants instance] getEvents]
-                        withMethod:@"POST"
-                  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-                      [TendartsSDK logEventWithCategory:@"SDK" type:@"Session sent" andMessage:json.description];
-                      NSLog(@"td: sent session");
-                      [self endBackgroundTask];
-                  }
-                    onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-                        [TendartsSDK logEventWithCategory:@"SDK" type:@"Error sending session" andMessage:json.description];
-                        NSLog(@"td: error sending session");
-                        [self endBackgroundTask];
-                        
-                    }];
+        
+        [TDEventsHandler eventWithPushCode: push
+                                    device: device
+                                      kind: URL_KIND_SESSION
+                                     value: value
+                                 onSuccess: ^{
+                                     [self endBackgroundTask];
+                                 }
+                                   onError: ^(NSString * _Nullable error) {
+                                       [self endBackgroundTask];
+                                   }];
         
 		lastTimestamp = 0;
 		lastCode = nil;
