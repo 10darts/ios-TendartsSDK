@@ -11,9 +11,9 @@
 #import "TDNotification.h"
 
 #import "TDDownloadDelegate.h"
-#import "TDCommunications.h"
 #import "TDNotificationOpenHandler.h"
 #import "TDNotificationReceivedHandler.h"
+#import "TDNotificationReadHandler.h"
 #import "TDPersonaHandler.h"
 #import "TDLinksHandler.h"
 #import "TDEventsHandler.h"
@@ -176,35 +176,19 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 #if !(IN_APP_EXTENSION)
 	 [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 #endif
-	NSString * code = [TDConfiguration getPushCode];
-	NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  [[TDConstants instance] getDeviceUrl:code], @"device",
-						  nil];
-	
-	NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-	
-	NSString *url =[[TDConstants instance] getAllNotificationsRead];
-	
-	[TDCommunications sendData:data toURl:url withMethod:@"PATCH"
-			  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"USER" type:@"all notifications read sent ok" andMessage:json.description];
-		 if (successHandler)
-		 {
-			 successHandler();
-		 }
-		 NSLog(@"SDK all read ok: %@", json);
-		
-	 }
-				onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 if (errorHandler)
-		 {
-			 errorHandler( [json description]);
-		 }
-		 [TendartsSDK logEventWithCategory:@"USER" type:@"all notifications read error" andMessage:json.description];
-		 NSLog(@"SDK error in all read %@", json);
-	 }];    
+	NSString *code = [TDConfiguration getPushCode];
+
+    [TDNotificationReadHandler notificationReadedWithCode: code
+                                                onSuccess: ^{
+                                                    if (successHandler) {
+                                                        successHandler();
+                                                    }
+                                                }
+                                                  onError: ^(NSString * _Nullable error) {
+                                                      if (errorHandler) {
+                                                          errorHandler(error);
+                                                      }
+                                                  }];
 }
 
 + (void)linkDeviceWithUserIdentifier:(NSString *)userId
