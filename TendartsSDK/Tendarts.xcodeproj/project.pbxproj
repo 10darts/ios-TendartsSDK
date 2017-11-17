@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		960BB8761FBE972D000A29CC /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */; };
+		960BB8791FBE9AA1000A29CC /* TDPersonaHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8781FBE9AA1000A29CC /* TDPersonaHandler.m */; };
 		965C42B51FBC6FEB00E05A2D /* Tendarts_Dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965C42AB1FBC6FEB00E05A2D /* Tendarts_Dynamic.framework */; };
 		965C42BA1FBC6FEB00E05A2D /* TendartsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C42B91FBC6FEB00E05A2D /* TendartsTests.m */; };
 		965C43421FBDCBC100E05A2D /* TDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 965C43261FBDCBBE00E05A2D /* TDUtils.h */; };
@@ -129,6 +130,8 @@
 /* Begin PBXFileReference section */
 		960BB8741FBE972D000A29CC /* TDDownloadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDDownloadDelegate.h; sourceTree = "<group>"; };
 		960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDDownloadDelegate.m; sourceTree = "<group>"; };
+		960BB8771FBE9AA1000A29CC /* TDPersonaHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDPersonaHandler.h; sourceTree = "<group>"; };
+		960BB8781FBE9AA1000A29CC /* TDPersonaHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDPersonaHandler.m; sourceTree = "<group>"; };
 		965C42AB1FBC6FEB00E05A2D /* Tendarts_Dynamic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tendarts_Dynamic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		965C42AF1FBC6FEB00E05A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965C42B41FBC6FEB00E05A2D /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +298,8 @@
 				965C43A51FBE219B00E05A2D /* TDLinksHandler.m */,
 				965C43AA1FBE2A8900E05A2D /* TDDeviceHandler.h */,
 				965C43AB1FBE2A8900E05A2D /* TDDeviceHandler.m */,
+				960BB8771FBE9AA1000A29CC /* TDPersonaHandler.h */,
+				960BB8781FBE9AA1000A29CC /* TDPersonaHandler.m */,
 				960BB8741FBE972D000A29CC /* TDDownloadDelegate.h */,
 				960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */,
 			);
@@ -523,6 +528,7 @@
 				965C43A11FBE216800E05A2D /* TDEventsHandler.m in Sources */,
 				965C43471FBDCBC100E05A2D /* TDConfiguration.m in Sources */,
 				965C435E1FBDCBC100E05A2D /* TDNotification.m in Sources */,
+				960BB8791FBE9AA1000A29CC /* TDPersonaHandler.m in Sources */,
 				965C43711FBDCBC100E05A2D /* TDUserNotificationCenter.m in Sources */,
 				965C43541FBDCBC100E05A2D /* PushUtils.m in Sources */,
 				965C43621FBDCBC100E05A2D /* TDUtils.m in Sources */,

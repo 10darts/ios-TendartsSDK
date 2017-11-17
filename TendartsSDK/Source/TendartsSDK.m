@@ -13,6 +13,7 @@
 #import "TDDownloadDelegate.h"
 #import "TDCommunications.h"
 #import "TDNotificationOpenHandler.h"
+#import "TDPersonaHandler.h"
 
 @implementation TendartsSDK
 
@@ -276,58 +277,25 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 			  firstName:(NSString *)firstName
 			   lastName:(NSString *)lastName
 			   password:(NSString *)password
-			  onSuccess: (TDOnSuccess  )successHandler
-				onError: (TDOnError  )errorHandler {
-	NSString * code = [TDConfiguration getPushCode];
-	
-	if (code.length < 3) {
-		if (errorHandler) {
-			errorHandler(@"device not yet registered");
-		}
-		return;
-		
-	}
-	NSString * userCode = [TDConfiguration getUserCode];
-	if (userCode.length < 3) {
-		if (errorHandler) {
-			errorHandler(@"the user should be already registered");
-		}
-		return;
-		
-	}
-	
-	NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-								 email, @"email",
-								 nil];
-	if (firstName.length > 0) {
-		[dict setObject:firstName forKey:@"first_name"];
-	}
-	if (lastName.length > 0) {
-		[dict setObject:lastName forKey:@"last_name"];
-	}
-	if (password.length > 0) {
-		[dict setObject:password forKey:@"password"];
-	}
-	
-	NSData* data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
-	
-	
-	
-	[TDCommunications sendData:data toURl:userCode withMethod:@"PATCH"
-			  onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"USER" type:@"modify user sent ok" andMessage:json.description];
-		 if (successHandler) {
-			 successHandler();
-		 }
-	 }
-                onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode)
-	 {
-		 [TendartsSDK logEventWithCategory:@"USER" type:@"modify user send error" andMessage:json.description];
-		 if (errorHandler) {
-			 errorHandler( [json description]);
-		 }
-	 }];
+			  onSuccess:(TDOnSuccess)successHandler
+				onError:(TDOnError)errorHandler {
+#warning NEEDED URL
+    [TDPersonaHandler personaWithUrl: @""
+                               email: email
+                           firstName: firstName
+                            lastName: lastName
+                            password: password
+                           onSuccess:^{
+                              if (successHandler) {
+                                  successHandler();
+                                  
+                              }
+                          }
+                             onError:^(NSString * _Nullable error) {
+                              if (errorHandler) {
+                                  errorHandler(error);
+                              }
+                          }];
 }
 
 + (void)logEventWithCategory:(NSString *_Nullable)category type:(NSString *_Nullable)type andMessage:(NSString *_Nullable)message {
