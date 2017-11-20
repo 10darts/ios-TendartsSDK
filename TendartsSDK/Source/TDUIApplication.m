@@ -109,7 +109,7 @@
 				return;
 			}
 			
-			if ([TDUtils getIOSVersion] >= 10.0) {
+			if ([TDUtils iOSVersion] >= 10.0) {
 #ifdef _IOS_10_FUNCTIONALITY
 				UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
 				[center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)
@@ -492,7 +492,7 @@ static NSArray *_delegateChilds = nil;
 							  _delegateChilds,
 							  @selector(applicationDidBecomeActive:));
 		
-		if ([TDUtils getIOSVersion] < 10) {
+		if ([TDUtils iOSVersion] < 10) {
 			installOverrideMethod(tendartsDelegate,
 								  @selector(TDLocalNotification:handleActionWithIdentifier:forLocalNotification:completionHandler:),
 								  _delegateClass,

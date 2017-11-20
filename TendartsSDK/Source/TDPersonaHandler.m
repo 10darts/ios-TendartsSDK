@@ -43,6 +43,8 @@
         [dict setObject: aPassword forKey: @"password"];
     }
     
+    [dict setObject: userCode forKey: @"persona"];
+    
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
     
     [TDAPIService personaWithData: data

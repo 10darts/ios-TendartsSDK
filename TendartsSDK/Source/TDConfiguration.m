@@ -12,7 +12,7 @@ NSString * const TD_GEOSTATS = @"TendartsGeostats";
 NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 
 + (NSUserDefaults* )getSharedUserDefaults: (NSString * _Nonnull )groupName {
-	if ([TDUtils getIOSVersion]>=10) {
+	if ([TDUtils iOSVersion]>=10) {
 		NSUserDefaults *defaults =
 		[[NSUserDefaults alloc] initWithSuiteName:groupName];
 		if (defaults) {

@@ -33,7 +33,7 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 + (void)linkDeviceWithUserIdentifier:(NSString * _Nonnull)userId
 						   onSuccess: (TDOnSuccess _Nullable )successHandler
 							 onError: (TDOnError _Nullable )errorHandler;
-+ (void)ModifyUserEmail:(NSString *_Nullable)email
++ (void)modifyUserEmail:(NSString *_Nullable)email
 			  firstName:(NSString *_Nullable)firstName
 			   lastName:(NSString *_Nullable)lastName
 			   password:(NSString *_Nullable)password

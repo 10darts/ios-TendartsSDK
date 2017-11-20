@@ -14,7 +14,7 @@
 + (void)registerRemoteNotifications {
 	//todo: save if already registered (dont ask twice)
 #if !(IN_APP_EXTENSION)
-	if ([TDUtils getIOSVersion] >=10.0) {
+	if ([TDUtils iOSVersion] >=10.0) {
 #ifdef _IOS_10_FUNCTIONALITY
         [self registeriOS10];
 #endif

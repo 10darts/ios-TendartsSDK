@@ -12,7 +12,7 @@
         }
         
         //create empty file
-        [[NSFileManager defaultManager] createFileAtPath: filePath contents: l attributes: nil];
+        [[NSFileManager defaultManager] createFileAtPath: filePath contents: nil attributes: nil];
         
         //store the file handle
         self.fileHandle = [NSFileHandle fileHandleForWritingAtPath: filePath];

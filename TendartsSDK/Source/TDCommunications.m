@@ -24,7 +24,7 @@ onSuccessHandler: (TDCHandleSuccess)successHandler
 	}
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURLSession* session = [self.httpClient sessionWithToken:apiKey
-                                                         language: [TDUtils getCurrentLanguage]];
+                                                         language: [TDUtils currentLanguage]];
         
         NSMutableURLRequest* request = [self.httpClient requestWithMethod: method
                                                                      data: data

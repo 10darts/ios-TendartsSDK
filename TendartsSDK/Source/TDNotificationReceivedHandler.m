@@ -11,7 +11,7 @@
                       notificationId:(NSString *)notificationId
                              handler:(TDOperationComplete)onComplete {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [TDUtils getDeviceURI: aCode], @"device",
+                          [TDUtils deviceURI: aCode], @"device",
                           nil];
     
     NSData *data = [NSJSONSerialization dataWithJSONObject: dict

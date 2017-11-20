@@ -9,15 +9,20 @@
 + (void)deviceToken:(NSString *)aToken
            language:(NSString *)aLanguage
             version:(NSString *)aVersion
+                sdk:(NSString *)aSDK
               model:(NSString *)aModel
            platform:(NSString *)aPlatform
            location:(NSDictionary *)aLocation
-              group:(NSString *)aGroup {
+           disabled:(BOOL)aDisabled
+              group:(NSString *)aGroup
+          onSuccess:(TDOnSuccess)successHandler {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           aToken, @"token",
                           aPlatform, @"platform",
                           aLanguage,@"language",
+                          aDisabled,@"disabled",
                           aVersion,@"version",
+                          aSDK,@"sdk",
                           aModel, @"model",
                           aLocation,@"position",
                           nil];

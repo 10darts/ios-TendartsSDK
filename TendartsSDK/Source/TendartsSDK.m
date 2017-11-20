@@ -18,6 +18,8 @@
 #import "TDLinksHandler.h"
 #import "TDEventsHandler.h"
 
+#import "DataManager.h"
+
 @implementation TendartsSDK
 
 static NSString * group = nil;
@@ -194,11 +196,20 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 + (void)linkDeviceWithUserIdentifier:(NSString *)userId
                            onSuccess:(TDOnSuccess _Nullable )successHandler
                              onError:(TDOnError _Nullable )errorHandler {
+    Persona *persona = DataManager.persona;
+    
+    if (![persona isClientDataNew: userId]) {
+        return;
+    }
+    
 	NSString *code = [TDConfiguration getPushCode];
     
     [TDLinksHandler linkWithCode: code
                           userId: userId
                        onSuccess: ^{
+                           persona.clientData = userId;
+                            [DataManager saveObject: persona
+                                             forKey: kPersona];
                            if (successHandler) {
                                successHandler();
                            }
@@ -210,22 +221,22 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
                          }];
 }
 
-+ (void)ModifyUserEmail:(NSString *)email
++ (void)modifyUserEmail:(NSString *)email
 			  firstName:(NSString *)firstName
 			   lastName:(NSString *)lastName
 			   password:(NSString *)password
 			  onSuccess:(TDOnSuccess)successHandler
 				onError:(TDOnError)errorHandler {
-#warning NEEDED URL
-    [TDPersonaHandler personaWithUrl: @""
+    NSString *url = [[TDConstants instance] personasUrl: [TDConfiguration getUserCode]];
+    
+    [TDPersonaHandler personaWithUrl: url
                                email: email
                            firstName: firstName
                             lastName: lastName
                             password: password
-                           onSuccess:^{
+                           onSuccess: ^{
                               if (successHandler) {
                                   successHandler();
-                                  
                               }
                           }
                              onError:^(NSString * _Nullable error) {

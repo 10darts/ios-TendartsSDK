@@ -3,10 +3,12 @@
 
 @interface TDUtils : NSObject
 
-+ (float)getIOSVersion;
-+ (NSString *)getPlatform;
-+ (NSString *)getDeviceURI:(NSString *)aCode;
-+ (NSString *)getCurrentLanguage;
-+ (NSDictionary *)getLocation;
++ (float)iOSVersion;
++ (NSString *)platform;
++ (NSString *)sdkVersion;
++ (NSString *)deviceURI:(NSString *)aCode;
++ (NSString *)currentLanguage;
++ (NSDictionary *)location;
++ (BOOL)isRemoteNotificationsDisabled;
 
 @end

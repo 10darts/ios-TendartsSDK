@@ -14,6 +14,7 @@
 + (TDConstants *)instance;
 - (NSString *)getDeviceUrl:(NSString *)deviceCode;
 - (NSString *)getDeviceAccessUrl:(NSString *)deviceCode;
+- (NSString *)personasUrl:(NSString *)aCode;
 - (NSString *)getNotificationReceivedUrl:(NSString *)notificationId;
 - (NSString *)getNotificationClickedUrl:(NSString *)notificationId;
 - (NSString *)getAllNotificationsRead;

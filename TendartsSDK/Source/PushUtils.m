@@ -6,6 +6,8 @@
 #import "TDConfiguration.h"
 #import "TDDeviceHandler.h"
 
+#import "DataManager.h"
+
 @implementation PushUtils
 
 + (void)savePushToken:(NSString *)token inSharedGroup:(NSString *)group {
@@ -15,7 +17,7 @@
 }
 
 + (void) updateAPIDeviceToken:(NSString *)token inSharedGroup:(NSString *)group{
-    NSString *language = [TDUtils getCurrentLanguage];
+    NSString *language = [TDUtils currentLanguage];
     NSString *bundle = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSString *version = [NSString stringWithFormat:@"%@", bundle];
     
@@ -25,16 +27,40 @@
     NSString *model = [NSString stringWithCString: systemInfo.machine
                                           encoding: NSUTF8StringEncoding];
     
-    NSString *platform = [TDUtils getPlatform];
-    NSDictionary *location = [TDUtils getLocation];
+    NSString *platform = [TDUtils platform];
+    NSDictionary *position = [TDUtils location];
+    NSString *sdk = [TDUtils sdkVersion];
+    BOOL disabled = [TDUtils platform];
+    
+    Device *newDevice = [Device alloc];
+    
+    [newDevice configureDevice: token
+                      platform: platform
+                         model: model
+                       version: version
+                           sdk: sdk
+                      language: language
+                      position: position
+                       persona: DataManager.persona
+                      disabled: disabled];
+    
+    if (![newDevice isUpdateNeeded: DataManager.device]) {
+        return;
+    }
     
     [TDDeviceHandler deviceToken: token
                         language: language
                          version: version
+                             sdk: sdk
                            model: model
                         platform: platform
-                        location: location
-                           group: group];
+                        location: position
+                        disabled: disabled
+                           group: group
+                       onSuccess:^{
+                           [DataManager saveObject: newDevice
+                                            forKey: kDevice];
+                       }];
 }
 
 @end

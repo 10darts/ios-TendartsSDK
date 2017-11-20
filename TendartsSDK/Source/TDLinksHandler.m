@@ -11,7 +11,7 @@
               userId:(NSString *)aString
            onSuccess:(TDOnSuccess)successHandler
              onError:(TDOnError)errorHandler {
-    NSString *device = [TDUtils getDeviceURI: aCode];
+    NSString *device = [TDUtils deviceURI: aCode];
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           device, @"device",
                           aString, @"client_data",
