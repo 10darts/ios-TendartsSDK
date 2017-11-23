@@ -39,7 +39,6 @@
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 #endif
     }
-    id backgroundModes = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"UIBackgroundModes"];
 #if !(IN_APP_EXTENSION)
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 #endif
