@@ -48,7 +48,7 @@ static NSString * const kDeviceDisabled = @"kDeviceDisabled";
     BOOL haveEqualVersion = (!self.version && !oldDevice.version) || [self.version isEqualToString: oldDevice.version];
     BOOL haveEqualSDK = (!self.sdk && !oldDevice.sdk) || [self.sdk isEqualToString: oldDevice.sdk];
     BOOL haveEqualLanguage = (!self.language && !oldDevice.language) || [self.language isEqualToString: oldDevice.language];
-    BOOL haveEqualPersona = (!self.persona && !oldDevice.persona) || self.persona == oldDevice.persona;
+    BOOL haveEqualPersona = (!self.persona.clientData && !oldDevice.persona.clientData) || self.persona.clientData == oldDevice.persona.clientData;
     BOOL haveEqualDisabled = (!self.disabled && !oldDevice.disabled) || self.disabled == oldDevice.disabled;
     
     BOOL isEqualDevice = haveEqualToken && haveEqualPlatform && haveEqualModel && haveEqualVersion && haveEqualSDK && haveEqualLanguage && haveEqualPersona && haveEqualDisabled;

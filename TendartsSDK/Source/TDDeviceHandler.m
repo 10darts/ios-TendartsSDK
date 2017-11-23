@@ -17,13 +17,13 @@
               group:(NSString *)aGroup
           onSuccess:(TDOnSuccess)successHandler {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                          aToken, @"token",
-                          aPlatform, @"platform",
+                          aToken,@"token",
+                          aPlatform,@"platform",
                           aLanguage,@"language",
-                          aDisabled,@"disabled",
+                          [NSNumber numberWithBool: aDisabled],@"disabled",
                           aVersion,@"version",
                           aSDK,@"sdk",
-                          aModel, @"model",
+                          aModel,@"model",
                           aLocation,@"position",
                           nil];
     
@@ -32,48 +32,51 @@
                                                      error: nil];
     
     NSString *tokenAndVersion = [aToken stringByAppendingString: aVersion];
-    NSString *saved = [TDConfiguration getTokenAndVersion];
     NSString *code = [TDConfiguration getPushCode];
+    NSString *method = REQUEST_METHOD_POST;
+    NSString *url =  [[TDConstants instance] devices];
     
-    if (code == nil || ![tokenAndVersion isEqualToString:saved]) {
-        NSString *method = REQUEST_METHOD_POST;
-        NSString *url =  [[TDConstants instance] devices];
-        
-        if (code != nil) {
-            url = [[TDConstants instance] getDeviceUrl:code];
-            method = REQUEST_METHOD_PATCH;
-        }
-        
-        [TDAPIService deviceWithData: data
-                                 url: url
-                              method: method
-                    onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-                        [TendartsSDK logEventWithCategory: @"PUSH"
-                                                     type: @"token_sent_ok"
-                                               andMessage: json.description];
-                        
-                        NSString * code = [json objectForKey: @"code"];
-                        if (code != nil) {
-                            [TDConfiguration savePushCode: code
-                                               withApiKey: [TDConfiguration getAPIKey]
-                                             andGroupName: aGroup];
-                            if (statusCode == 201) {
-                                [TDConfiguration saveTokenAndVersion: tokenAndVersion];
-                            }
-                        }
-                        
-                        NSString *persona = [json objectForKey:@"persona"];
-                        if (persona != nil) {
-                            [TDConfiguration saveUserCode: persona];
-                        }
-                        
-                    }
-                      onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-                          [TendartsSDK logEventWithCategory: @"PUSH"
-                                                       type: @"Error sending token"
-                                                 andMessage: json.description];
-                      }];
+    if (aPlatform == nil || aToken == nil ) {
+        return;
     }
+    
+    if (code != nil) {
+        url = [[TDConstants instance] getDeviceUrl:code];
+        method = REQUEST_METHOD_PATCH;
+    }
+    
+    [TDAPIService deviceWithData: data
+                             url: url
+                          method: method
+                onSuccessHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
+                    [TendartsSDK logEventWithCategory: @"PUSH"
+                                                 type: @"token_sent_ok"
+                                           andMessage: json.description];
+                    
+                    NSString * code = [json objectForKey: @"code"];
+                    if (code != nil) {
+                        [TDConfiguration savePushCode: code
+                                           withApiKey: [TDConfiguration getAPIKey]
+                                         andGroupName: aGroup];
+                        if (statusCode == 201) {
+                            [TDConfiguration saveTokenAndVersion: tokenAndVersion];
+                        }
+                    }
+                    
+                    NSString *persona = [json objectForKey:@"persona"];
+                    if (persona != nil) {
+                        [TDConfiguration saveUserCode: persona];
+                    }
+                    if (successHandler) {
+                        successHandler();
+                    }
+                }
+                  onErrorHandler:^(NSDictionary *json, NSData *data, NSInteger statusCode) {
+                      [TendartsSDK logEventWithCategory: @"PUSH"
+                                                   type: @"Error sending token"
+                                             andMessage: json.description];
+                  }];
+    
     
 }
 

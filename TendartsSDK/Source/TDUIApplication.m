@@ -416,7 +416,8 @@ static BOOL accessSent = false;
             [TDAccessHandler accessWithUrl: url];
 		}
 	}
-	
+    [PushUtils savePushToken: [TDConfiguration getPushToken]
+               inSharedGroup: [TDConfiguration getSharedGroup]];
 	//todo send geodata if ellapsed time < 2 mins
 	
 	//call parent

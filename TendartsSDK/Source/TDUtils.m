@@ -36,8 +36,10 @@ NSString* const TD_VERSION = @"1.1.0";
     return [LocationUtils getLocationData];
 }
 
+#if !(IN_APP_EXTENSION)
 + (BOOL)isRemoteNotificationsDisabled {
     return ![[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
 }
+#endif
 
 @end

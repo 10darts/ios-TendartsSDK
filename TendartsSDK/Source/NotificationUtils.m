@@ -26,14 +26,17 @@
 }
 
 + (void)registeriOS8 {
+    #if !(IN_APP_EXTENSION)
     UIUserNotificationType types = UIUserNotificationTypeBadge |
     UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *settings =
     [UIUserNotificationSettings settingsForTypes:types categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    #endif
 }
 
 + (void)registeriOS10 {
+    #if !(IN_APP_EXTENSION)
     UIApplication* app = [UIApplication sharedApplication];
     NSSet* categories = [[app currentUserNotificationSettings] categories];
     [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge)categories:categories]];
@@ -46,6 +49,7 @@
                                                  //td1- notify new authorization status
                                              });
                           }];
+    #endif
 }
 
 @end

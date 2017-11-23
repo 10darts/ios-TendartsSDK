@@ -204,6 +204,13 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
     
 	NSString *code = [TDConfiguration getPushCode];
     
+    if (code == nil) {
+        [TendartsSDK logEventWithCategory: @"USER"
+                                     type: @"link device not sent"
+                               andMessage: @"User code not available to link"];
+        return;
+    }
+    
     [TDLinksHandler linkWithCode: code
                           userId: userId
                        onSuccess: ^{
