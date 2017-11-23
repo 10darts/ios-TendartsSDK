@@ -30,6 +30,7 @@
     NSString *platform = [TDUtils platform];
     NSDictionary *position = [TDUtils location];
     NSString *sdk = [TDUtils sdkVersion];
+    
     BOOL disabled = [TDUtils isRemoteNotificationsDisabled];
     
     Device *newDevice = [Device alloc];

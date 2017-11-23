@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://10darts.com/'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '10darts' => 'it@10darts.com' }
-  s.source           = { :git => 'https://github.com/10darts/ios-TendartsSDK', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/10darts/ios-TendartsSDK.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/10dartsSoftware'
 
   s.ios.deployment_target = '8.0'
