@@ -1,10 +1,3 @@
-//
-//  TDKeysHandler.m
-//  Tendarts
-//
-//  Created by Ruben Blanco on 5/12/17.
-//  Copyright © 2017 10darts. All rights reserved.
-//
 
 #import "TDKeysHandler.h"
 #import "TDAPIService.h"

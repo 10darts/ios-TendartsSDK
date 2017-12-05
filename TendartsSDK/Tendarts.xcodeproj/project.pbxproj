@@ -10,9 +10,27 @@
 		960BB8761FBE972D000A29CC /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */; };
 		960BB8791FBE9AA1000A29CC /* TDPersonaHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8781FBE9AA1000A29CC /* TDPersonaHandler.m */; };
 		960BB8811FC3237A000A29CC /* Persona.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87D1FC32379000A29CC /* Persona.m */; };
-		960BB8821FC3237A000A29CC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87E1FC32379000A29CC /* Device.m */; };
 		960BB8851FC3267C000A29CC /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8831FC3267B000A29CC /* DataManager.m */; };
 		9637BE3F1FD6A502008780BC /* TDKeysHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE3E1FD6A502008780BC /* TDKeysHandler.m */; };
+		9637BE431FD6F597008780BC /* TDKeysHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE3E1FD6A502008780BC /* TDKeysHandler.m */; };
+		9637BE441FD6F598008780BC /* TDKeysHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE3E1FD6A502008780BC /* TDKeysHandler.m */; };
+		9637BE451FD6F59E008780BC /* TDKeysHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE3D1FD6A502008780BC /* TDKeysHandler.h */; };
+		9637BE461FD6F5B2008780BC /* TDDownloadDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 960BB8741FBE972D000A29CC /* TDDownloadDelegate.h */; };
+		9637BE471FD6F5B4008780BC /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */; };
+		9637BE481FD6F5B5008780BC /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8751FBE972D000A29CC /* TDDownloadDelegate.m */; };
+		9637BE491FD6F5B9008780BC /* TDPersonaHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 960BB8771FBE9AA1000A29CC /* TDPersonaHandler.h */; };
+		9637BE4A1FD6F5BB008780BC /* TDPersonaHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8781FBE9AA1000A29CC /* TDPersonaHandler.m */; };
+		9637BE4B1FD6F5BC008780BC /* TDPersonaHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8781FBE9AA1000A29CC /* TDPersonaHandler.m */; };
+		9637BE4D1FD6F5D7008780BC /* Persona.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87D1FC32379000A29CC /* Persona.m */; };
+		9637BE4E1FD6F5D7008780BC /* Persona.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87D1FC32379000A29CC /* Persona.m */; };
+		9637BE4F1FD6F5DB008780BC /* Persona.h in Headers */ = {isa = PBXBuildFile; fileRef = 960BB87F1FC32379000A29CC /* Persona.h */; };
+		9637BE501FD6F5DF008780BC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87E1FC32379000A29CC /* Device.m */; };
+		9637BE511FD6F5E2008780BC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87E1FC32379000A29CC /* Device.m */; };
+		9637BE521FD6F5E2008780BC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB87E1FC32379000A29CC /* Device.m */; };
+		9637BE531FD6F5E4008780BC /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 960BB8801FC3237A000A29CC /* Device.h */; };
+		9637BE541FD6F5E8008780BC /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8831FC3267B000A29CC /* DataManager.m */; };
+		9637BE551FD6F5E9008780BC /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BB8831FC3267B000A29CC /* DataManager.m */; };
+		9637BE561FD6F5EC008780BC /* DataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 960BB8841FC3267B000A29CC /* DataManager.h */; };
 		965C42B51FBC6FEB00E05A2D /* Tendarts_Dynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965C42AB1FBC6FEB00E05A2D /* Tendarts_Dynamic.framework */; };
 		965C42BA1FBC6FEB00E05A2D /* TendartsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C42B91FBC6FEB00E05A2D /* TendartsTests.m */; };
 		965C43421FBDCBC100E05A2D /* TDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 965C43261FBDCBBE00E05A2D /* TDUtils.h */; };
@@ -333,6 +351,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9637BE491FD6F5B9008780BC /* TDPersonaHandler.h in Headers */,
+				9637BE461FD6F5B2008780BC /* TDDownloadDelegate.h in Headers */,
 				965C437C1FBE0F5900E05A2D /* TDHTTPClient.h in Headers */,
 				965C43591FBDCBC100E05A2D /* TendartsSDK.h in Headers */,
 				965C438E1FBE203200E05A2D /* TDNotificationReadHandler.h in Headers */,
@@ -343,6 +363,7 @@
 				965C43671FBDCBC100E05A2D /* TDUserNotificationCenter.h in Headers */,
 				965C43A01FBE216800E05A2D /* TDEventsHandler.h in Headers */,
 				965C43821FBE169B00E05A2D /* TDAPIService.h in Headers */,
+				9637BE4F1FD6F5DB008780BC /* Persona.h in Headers */,
 				965C434A1FBDCBC100E05A2D /* TDSDKExtension.h in Headers */,
 				965C43611FBDCBC100E05A2D /* TDUIApplication.h in Headers */,
 				965C43AC1FBE2A8900E05A2D /* TDDeviceHandler.h in Headers */,
@@ -351,11 +372,14 @@
 				965C435D1FBDCBC100E05A2D /* TDNotification.h in Headers */,
 				965C43651FBDCBC100E05A2D /* PushUtils.h in Headers */,
 				965C439A1FBE20AB00E05A2D /* TDAccessHandler.h in Headers */,
+				9637BE561FD6F5EC008780BC /* DataManager.h in Headers */,
 				965C43A61FBE219B00E05A2D /* TDLinksHandler.h in Headers */,
+				9637BE531FD6F5E4008780BC /* Device.h in Headers */,
 				965C43741FBDCBC100E05A2D /* NotificationUtils.h in Headers */,
 				965C43571FBDCBC100E05A2D /* TDConstants.h in Headers */,
 				965C43661FBDCBC100E05A2D /* TDCommunications.h in Headers */,
 				965C43881FBE19A300E05A2D /* TDNotificationOpenHandler.h in Headers */,
+				9637BE451FD6F59E008780BC /* TDKeysHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,17 +512,23 @@
 				965C43481FBDCBC100E05A2D /* TDConfiguration.m in Sources */,
 				965C435F1FBDCBC100E05A2D /* TDNotification.m in Sources */,
 				965C43721FBDCBC100E05A2D /* TDUserNotificationCenter.m in Sources */,
+				9637BE541FD6F5E8008780BC /* DataManager.m in Sources */,
 				965C43551FBDCBC100E05A2D /* PushUtils.m in Sources */,
+				9637BE471FD6F5B4008780BC /* TDDownloadDelegate.m in Sources */,
 				965C43631FBDCBC100E05A2D /* TDUtils.m in Sources */,
+				9637BE4E1FD6F5D7008780BC /* Persona.m in Sources */,
 				965C436C1FBDCBC100E05A2D /* TDUIApplication.m in Sources */,
+				9637BE4A1FD6F5BB008780BC /* TDPersonaHandler.m in Sources */,
 				965C43A81FBE219B00E05A2D /* TDLinksHandler.m in Sources */,
 				965C438A1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
 				965C43901FBE203200E05A2D /* TDNotificationReadHandler.m in Sources */,
 				965C43AE1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */,
+				9637BE501FD6F5DF008780BC /* Device.m in Sources */,
 				965C437E1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
 				965C43961FBE206200E05A2D /* TDNotificationReceivedHandler.m in Sources */,
 				965C43521FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
 				965C43841FBE169B00E05A2D /* TDAPIService.m in Sources */,
+				9637BE441FD6F598008780BC /* TDKeysHandler.m in Sources */,
 				965C434C1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C434F1FBDCBC100E05A2D /* TDSDKExtension.m in Sources */,
 				965C43451FBDCBC100E05A2D /* PushController.m in Sources */,
@@ -510,10 +540,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				965C43911FBE203200E05A2D /* TDNotificationReadHandler.m in Sources */,
+				9637BE551FD6F5E9008780BC /* DataManager.m in Sources */,
 				965C437F1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
 				965C43491FBDCBC100E05A2D /* TDConfiguration.m in Sources */,
 				965C43791FBDCBC100E05A2D /* LocationUtils.m in Sources */,
+				9637BE4D1FD6F5D7008780BC /* Persona.m in Sources */,
 				965C436A1FBDCBC100E05A2D /* TDClassUtils.m in Sources */,
+				9637BE4B1FD6F5BC008780BC /* TDPersonaHandler.m in Sources */,
 				965C42BA1FBC6FEB00E05A2D /* TendartsTests.m in Sources */,
 				965C434D1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C43531FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
@@ -522,6 +555,7 @@
 				965C43AF1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */,
 				965C438B1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
 				965C43A31FBE216800E05A2D /* TDEventsHandler.m in Sources */,
+				9637BE431FD6F597008780BC /* TDKeysHandler.m in Sources */,
 				965C43731FBDCBC100E05A2D /* TDUserNotificationCenter.m in Sources */,
 				965C43701FBDCBC100E05A2D /* TDConstants.m in Sources */,
 				965C43561FBDCBC100E05A2D /* PushUtils.m in Sources */,
@@ -530,8 +564,10 @@
 				965C435C1FBDCBC100E05A2D /* NotificationUtils.m in Sources */,
 				965C43A91FBE219B00E05A2D /* TDLinksHandler.m in Sources */,
 				965C43641FBDCBC100E05A2D /* TDUtils.m in Sources */,
+				9637BE481FD6F5B5008780BC /* TDDownloadDelegate.m in Sources */,
 				965C43601FBDCBC100E05A2D /* TDNotification.m in Sources */,
 				965C436D1FBDCBC100E05A2D /* TDUIApplication.m in Sources */,
+				9637BE521FD6F5E2008780BC /* Device.m in Sources */,
 				965C43501FBDCBC100E05A2D /* TDSDKExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,11 +599,11 @@
 				965C437D1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
 				965C43951FBE206200E05A2D /* TDNotificationReceivedHandler.m in Sources */,
 				960BB8761FBE972D000A29CC /* TDDownloadDelegate.m in Sources */,
-				960BB8821FC3237A000A29CC /* Device.m in Sources */,
 				965C43511FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
 				965C43831FBE169B00E05A2D /* TDAPIService.m in Sources */,
 				965C434B1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C434E1FBDCBC100E05A2D /* TDSDKExtension.m in Sources */,
+				9637BE511FD6F5E2008780BC /* Device.m in Sources */,
 				965C43441FBDCBC100E05A2D /* PushController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

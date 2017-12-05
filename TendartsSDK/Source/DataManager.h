@@ -1,9 +1,3 @@
-//
-//  DataManager.h
-//  Pods
-//
-//  Created by Ruben Blanco on 9/11/17.
-//
 
 #import <Foundation/Foundation.h>
 

@@ -1,9 +1,3 @@
-//
-//  DataManager.m
-//  Pods-10dartsTest
-//
-//  Created by Ruben Blanco on 9/11/17.
-//
 
 #import "DataManager.h"
 

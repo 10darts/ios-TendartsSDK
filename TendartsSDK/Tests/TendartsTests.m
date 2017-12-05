@@ -1,10 +1,3 @@
-//
-//  TendartsTests.m
-//  TendartsTests
-//
-//  Created by Ruben Blanco on 15/11/17.
-//  Copyright © 2017 10darts. All rights reserved.
-//
 
 #import <XCTest/XCTest.h>
 
