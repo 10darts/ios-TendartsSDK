@@ -10,7 +10,7 @@
 
 #ifndef OPERATION_HANDLERS_TD
 #define OPERATION_HANDLERS_TD
-typedef void (^TDOnSuccess)();
+typedef void (^TDOnSuccess)(void);
 typedef void(^TDOnError)(NSString * _Nullable error);
 #endif
 
@@ -18,7 +18,9 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 
 @optional
 - (void)onNotificationReceived: (TDNotification* _Nonnull)notification;
+
 - (void)onNotificationOpened: (TDNotification* _Nonnull)notification;
+
 - (void)onLogEventWithCategory:(NSString *_Nullable)category type:(NSString *_Nullable)type andMessage:(NSString *_Nullable)message;
 @end
 
@@ -33,16 +35,31 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 + (void)linkDeviceWithUserIdentifier:(NSString * _Nonnull)userId
 						   onSuccess: (TDOnSuccess _Nullable )successHandler
 							 onError: (TDOnError _Nullable )errorHandler;
+
 + (void)modifyUserEmail:(NSString *_Nullable)email
 			  firstName:(NSString *_Nullable)firstName
 			   lastName:(NSString *_Nullable)lastName
 			   password:(NSString *_Nullable)password
 			  onSuccess: (TDOnSuccess _Nullable )successHandler
 				onError: (TDOnError _Nullable )errorHandler;
+
++ (void)sendDeviceKey:(NSString *_Nullable)aKey
+                 kind:(NSNumber *_Nullable)aKind
+                value:(NSString *_Nullable)aValue
+            onSuccess:(TDOnSuccess _Nullable)successHandler
+              onError:(TDOnError _Nullable)errorHandler;
+
++ (void)sendPersonaKey:(NSString *_Nullable)aKey
+                  kind:(NSNumber *_Nullable)aKind
+                 value:(NSString *_Nullable)aValue
+             onSuccess:(TDOnSuccess _Nullable)successHandler
+               onError:(TDOnError _Nullable)errorHandler;
+
 + (TendartsSDK* _Nonnull)instance;
 
 #ifdef _IOS_10_FUNCTIONALITY
 + (void)didReceiveNotificationRequest:(UNNotificationRequest *_Nullable)request withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler withApiKey: (NSString * _Nonnull)apiKey andSharedGroup: (NSString * _Nonnull)group;
+
 + (void)serviceExtensionTimeWillExpire:(UNNotificationContent *_Nullable)content withContentHandler:(void (^_Nullable)(UNNotificationContent * _Nonnull))contentHandler;
 #endif
 

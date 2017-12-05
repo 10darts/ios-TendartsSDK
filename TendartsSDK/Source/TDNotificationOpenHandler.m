@@ -8,7 +8,7 @@
 
 + (void)notificationOpenWithNotificationId:(NSString *)aId
                                    handler:(TDOperationComplete)onComplete  {
-    NSString * code = [TDConfiguration getPushCode];
+    NSString *code = [TDConfiguration getPushCode];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
                           [[TDConstants instance] getDeviceUrl: code], @"device",

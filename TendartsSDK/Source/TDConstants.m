@@ -52,6 +52,14 @@ static TDConstants * _instance = nil;
 	return [NSString stringWithFormat:@"%@/api/v1/devices/links/",_baseUrl];    
 }
 
+- (NSString *)getDeviceKeys {
+    return [NSString stringWithFormat:@"%@/api/v1/keys/devices/",_baseUrl];
+}
+
+- (NSString *)getPersonaKeys {
+    return [NSString stringWithFormat:@"%@/api/v1/keys/personas/",_baseUrl];
+}
+
 - (NSString *)getEvents {
 	return [NSString stringWithFormat:@"%@/api/v1/events/",_baseUrl];
 

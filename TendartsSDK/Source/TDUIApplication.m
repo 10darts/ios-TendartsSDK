@@ -12,6 +12,7 @@
 #import "TDAccessHandler.h"
 #import "TDDownloadDelegate.h"
 
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #ifdef _IOS_10_FUNCTIONALITY
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -385,7 +386,7 @@
 	}
 }
 
-- (void)TDLocalNotification:(UIApplication*)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification*)notification completionHandler:(void(^)())completionHandler {
+- (void)TDLocalNotification:(UIApplication*)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification*)notification completionHandler:(void(^)(void))completionHandler {
 	//call parent
 	if ([self respondsToSelector:@selector(TDLocalNotification:handleActionWithIdentifier:forLocalNotification:completionHandler:)]) {
 		[self TDLocalNotification:application handleActionWithIdentifier:identifier forLocalNotification:notification completionHandler:completionHandler];

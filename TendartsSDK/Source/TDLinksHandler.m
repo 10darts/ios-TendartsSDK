@@ -39,12 +39,12 @@
                   }
               }
                 onErrorHandler: ^(NSDictionary *json, NSData *data, NSInteger statusCode) {
-                    if (errorHandler) {
-                        errorHandler( [json description]);
-                    }
                     [TendartsSDK logEventWithCategory: @"USER"
                                                  type: @"link device send error"
                                            andMessage: json.description];
+                    if (errorHandler) {
+                        errorHandler( [json description]);
+                    }
                 }];
 }
 

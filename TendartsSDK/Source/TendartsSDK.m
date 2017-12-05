@@ -17,7 +17,7 @@
 #import "TDPersonaHandler.h"
 #import "TDLinksHandler.h"
 #import "TDEventsHandler.h"
-
+#import "TDKeysHandler.h"
 #import "DataManager.h"
 
 @implementation TendartsSDK
@@ -253,6 +253,46 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
                           }];
 }
 
++ (void)sendDeviceKey:(NSString *)aKeys
+                 kind:(NSNumber *)aKind
+                value:(NSString *)aValue
+            onSuccess:(TDOnSuccess)successHandler
+              onError:(TDOnError)errorHandler {
+    [TDKeysHandler keyDevice: aKeys
+                        kind: aKind
+                       value: aValue
+                   onSuccess: ^{
+                       if (successHandler) {
+                           successHandler();
+                       }
+                   }
+                     onError: ^(NSString * _Nullable error) {
+                         if (errorHandler) {
+                             errorHandler(error);
+                         }
+                     }];
+}
+
++ (void)sendPersonaKey:(NSString *)aKey
+                  kind:(NSNumber *)aKind
+                 value:(NSString *)aValue
+             onSuccess:(TDOnSuccess)successHandler
+               onError:(TDOnError)errorHandler {
+    [TDKeysHandler keyPersona: aKey
+                         kind: aKind
+                        value: aValue
+                    onSuccess: ^{
+                        if (successHandler) {
+                            successHandler();
+                        }
+                    }
+                      onError: ^(NSString * _Nullable error) {
+                          if (errorHandler) {
+                              errorHandler(error);
+                          }
+                      }];
+}
+
 + (void)logEventWithCategory:(NSString *_Nullable)category type:(NSString *_Nullable)type andMessage:(NSString *_Nullable)message {
 	id<TendartsDelegate> delegate = [TendartsSDK getDelegate];
 	if (delegate != nil && [delegate respondsToSelector:@selector(onLogEventWithCategory:type:andMessage:)]) {
@@ -260,6 +300,7 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 	}
 }
 
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #ifdef _IOS_10_FUNCTIONALITY
 + (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * ))contentHandler withApiKey: (NSString * )apiKey andSharedGroup:(NSString * _Nonnull)group {
 	if ([TDNotification isTendartsNotification:request.content.userInfo]) {

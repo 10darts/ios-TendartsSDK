@@ -8,6 +8,8 @@
 #endif
 #import "TDUtils.h"
 
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 @implementation NotificationUtils
 
 +(void) registerRemoteNotifications {

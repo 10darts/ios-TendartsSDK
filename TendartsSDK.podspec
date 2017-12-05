@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TendartsSDK'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = '10darts, THE SMARTEST Push Notification Platform.'
   s.description      = '10darts is an Autonomous Push Notifications tool that seamlessly engages your users while saving you the effort of learning and managing yet another CRM'
   s.homepage         = 'https://10darts.com/'

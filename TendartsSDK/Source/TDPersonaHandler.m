@@ -36,16 +36,20 @@
     if (aFirstName.length > 0) {
         [dict setObject: aFirstName forKey: @"first_name"];
     }
+    
     if (aLastName.length > 0) {
         [dict setObject: aLastName forKey: @"last_name"];
     }
+    
     if (aPassword.length > 0) {
         [dict setObject: aPassword forKey: @"password"];
     }
     
     [dict setObject: userCode forKey: @"persona"];
     
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject: dict
+                                                   options: 0
+                                                     error: nil];
     
     [TDAPIService personaWithData: data
                               url: aUrl

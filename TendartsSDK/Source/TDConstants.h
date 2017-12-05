@@ -19,6 +19,8 @@
 - (NSString *)getNotificationClickedUrl:(NSString *)notificationId;
 - (NSString *)getAllNotificationsRead;
 - (NSString *)getLinkDevice;
+- (NSString *)getDeviceKeys;
+- (NSString *)getPersonaKeys;
 - (NSString *)getEvents;
 - (NSString *)buildUrlOfType:(NSString *)type andId:(NSString *)identifier;
 

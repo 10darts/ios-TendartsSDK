@@ -152,6 +152,30 @@ NSString *const REQUEST_METHOD_PATCH = @"PATCH";
    }];
 }
 
++ (void)keysWithData:(NSData *)aData
+                 url:(NSString *)aUrl
+              method:(NSString *)aMethod
+    onSuccessHandler:(TDCHandleSuccess)successHandler
+      onErrorHandler:(TDCHandleError)errorHandler {
+    [self senData: aData
+              url: aUrl
+           method: aMethod
+ onSuccessHandler: ^(NSDictionary *json, NSData *data, NSInteger statusCode) {
+     dispatch_async(dispatch_get_main_queue(), ^{
+         if (successHandler != nil) {
+             successHandler(json, data, statusCode);
+         }
+     });
+ }
+   onErrorHandler: ^(NSDictionary *json, NSData *data, NSInteger statusCode) {
+       dispatch_async(dispatch_get_main_queue(), ^{
+           if (errorHandler != nil) {
+               errorHandler(json, data, statusCode);
+           }
+       });
+   }];
+}
+
 + (void)linkWithData:(NSData *)aData
                  url:(NSString *)aUrl
               method:(NSString *)aMethod
