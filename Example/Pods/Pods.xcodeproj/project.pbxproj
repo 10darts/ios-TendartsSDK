@@ -7,73 +7,73 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05871FF4550F1750530FC1E8B70C5B74 /* PushController.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF74D11BC1E9C48034FC702C6D3CA96 /* PushController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		087FD6D225F127872E922D9DC3E882D2 /* TDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A72583369D6E89924AEF87BE02DB5E /* TDUtils.m */; };
 		093149B3309912D3342517370C90B538 /* Pods-TendartsSDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A6BA543ED0EAC159B34402C5D9F86 /* Pods-TendartsSDK_Tests-dummy.m */; };
-		57BBD5B5F7FE2E33C10203321853A685 /* TendartsSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B3BD5C490484E058D2E588E7B05E2704 /* TendartsSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0957CE21B2029B0B06C5197F451A3A87 /* TDNotificationReceivedHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3E5B4E758659763D37BA494C957F53 /* TDNotificationReceivedHandler.m */; };
+		0B608FF57DD3FEE61532B4FAE28DE3E9 /* TDPersonaHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C8E92E1DDCD737ED566A95A159DFD45 /* TDPersonaHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E7AA69EE31A53D7813582A43E6A7374 /* TendartsSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B3BD5C490484E058D2E588E7B05E2704 /* TendartsSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15947F3407FAF899944F767212558447 /* TDUserNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = A96996721DCA1B3F9D05B7DE630AF0C0 /* TDUserNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A5B94D7448E8923E201CBDA198BC73D /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 43F835595F96C7BBEF64C90DA9DB5077 /* Device.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E6AE0A4EDD1ADBEA3C3458FDE102224 /* TDDeviceHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB3EDA5B889F0DBE74BE9D1C7689554 /* TDDeviceHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F8D42420B1EAF7FEB3F9E4645292F50 /* TendartsSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = C4498DB76ECA2F1079B387015FC049DD /* TendartsSDK.m */; };
+		289B2B335EAAE9B3487ED68FB7701487 /* TDUIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 5670E69C7B9F89CAF348FA92144EFEFB /* TDUIApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A9F4498FB4B3B5F649B66152B2617A5 /* NotificationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E96EDAFB16E7FA2BBA42DC0DC2F06178 /* NotificationUtils.m */; };
+		2E46BDD200269C9B8CA7CFE4763B876C /* TDSDKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 587741FE381BD05BF4E4C1EC149FF4BC /* TDSDKExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		358E34B69EE250F14EE2DA1B927723BF /* TDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CAAF8138B2F26483DDB3AEC3EE8AE /* TDAPIService.m */; };
+		39B1AC0C93883EC1007369D062E6D4BC /* TDKeysHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E6216E799C4A797BDE20F79BB8BE3 /* TDKeysHandler.m */; };
+		3C73B32C66F71C35344DF6B5C9E496FD /* TDCommunications.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E2FCF97F36BDFE45CD150437E45433 /* TDCommunications.m */; };
+		44DD8460BA520B2DF5DD136FFE9B9129 /* TDLinksHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A54A3208BF6ADC50E9632F7941EE27A /* TDLinksHandler.m */; };
+		4846E3BFFC5453D771562EAE6CF53243 /* TDHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 52639819AE8ED3F711D4457754CA813C /* TDHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		494F9C9F4CDB4FFE5C2E4BCFCD01FF8D /* TDKeysHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B0364B28879DE955744E3DC239E8053 /* TDKeysHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49E8E33559A666A1AA2419070BD23D49 /* TDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E4157533FBDF8DAD59085CFFEE509816 /* TDUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DC7B9CF5F6986238609A5F06840CC71 /* TDNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7D047782BCC6D32507181E8CB8CCB /* TDNotification.m */; };
+		4FBBD221A8296334209CC7E179E8ADCD /* TendartsSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 51050416DB869980F1505F1CC93D133A /* TendartsSDK-dummy.m */; };
+		57B36F054833FB0406ABD7C27E0D0E93 /* DataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E215371D5CB04A52BD1770A9B43F3296 /* DataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FBF440B7235EA15D2BB49CD42AF146A /* PushController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9FABF8F74AA75F9CDF0749021A5AC /* PushController.m */; };
+		633CD605A2E40D3ABF73CCBFC201559E /* PushUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C18BF8A66F594D9E5BD3766DBCDDCF /* PushUtils.m */; };
+		65A9B22BCE262F1D9DEE7A490170EA00 /* LocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A05FDC8545739884B57F7D55809F6D /* LocationUtils.m */; };
+		66004CC44D9E94FC1F38559BC91C44CD /* TDNotificationReadHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AB0C4EA9B7B3A61E38514151055E2 /* TDNotificationReadHandler.m */; };
+		66619B8CD2DCE56434070753DD07E433 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = EB083ED1FCEC04369459367914B40162 /* Device.m */; };
+		695B8255B3C90C78A009C570A63E355A /* TDLinksHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2301987B13D190A3757BC6269E549541 /* TDLinksHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E6D3CDE18D41C9284A6B27D1031FBDC /* Persona.m in Sources */ = {isa = PBXBuildFile; fileRef = 4593A74685BB50DF17818DACA1286D4D /* Persona.m */; };
+		6EED1D50D117728CFE9837CB2A6BDE8A /* TDConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 06700E8FCDA9BDBB7F1C6587D42D2C27 /* TDConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74F1465CCDA461CF625C485E1667FEEC /* TDNotificationReadHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 521311E4BE850FD6A1EBFB7919765036 /* TDNotificationReadHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7514BE3A12FB5334765A813057430422 /* TDPersonaHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D20B28049192DA0C6BF98C1043C6ED66 /* TDPersonaHandler.m */; };
+		766A1FEC7F6C787C221D348D5B3A8AEF /* TDClassUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BF91F1561379428D06E433120724615 /* TDClassUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77487B4EE725F5F8DE8BCAAFAD5231F3 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EB16D7067CA0344285DEF57825B4F /* DataManager.m */; };
 		7AF953D8A3B82F7BBAAC93F80506A9D5 /* Pods-TendartsSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55D7C96E156419FF1FE7BCB08914BF29 /* Pods-TendartsSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D566A9ABE2942C1362EF7C6AE4DC70B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		9637BE921FD6FAE1008780BC /* DataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE581FD6FAE0008780BC /* DataManager.h */; };
-		9637BE931FD6FAE1008780BC /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE591FD6FAE0008780BC /* DataManager.m */; };
-		9637BE941FD6FAE1008780BC /* Device.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE5A1FD6FAE0008780BC /* Device.h */; };
-		9637BE951FD6FAE1008780BC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE5B1FD6FAE0008780BC /* Device.m */; };
-		9637BE961FD6FAE1008780BC /* LocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE5C1FD6FAE0008780BC /* LocationUtils.h */; };
-		9637BE971FD6FAE1008780BC /* LocationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE5D1FD6FAE0008780BC /* LocationUtils.m */; };
-		9637BE981FD6FAE1008780BC /* NotificationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE5E1FD6FAE0008780BC /* NotificationUtils.h */; };
-		9637BE991FD6FAE1008780BC /* NotificationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE5F1FD6FAE0008780BC /* NotificationUtils.m */; };
-		9637BE9A1FD6FAE1008780BC /* Persona.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE601FD6FAE0008780BC /* Persona.h */; };
-		9637BE9B1FD6FAE1008780BC /* Persona.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE611FD6FAE0008780BC /* Persona.m */; };
-		9637BE9C1FD6FAE1008780BC /* PushController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE621FD6FAE0008780BC /* PushController.h */; };
-		9637BE9D1FD6FAE1008780BC /* PushController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE631FD6FAE0008780BC /* PushController.m */; };
-		9637BE9E1FD6FAE1008780BC /* PushUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE641FD6FAE0008780BC /* PushUtils.h */; };
-		9637BE9F1FD6FAE1008780BC /* PushUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE651FD6FAE0008780BC /* PushUtils.m */; };
-		9637BEA01FD6FAE1008780BC /* TDAccessHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE661FD6FAE0008780BC /* TDAccessHandler.h */; };
-		9637BEA11FD6FAE1008780BC /* TDAccessHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE671FD6FAE0008780BC /* TDAccessHandler.m */; };
-		9637BEA21FD6FAE1008780BC /* TDAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE681FD6FAE0008780BC /* TDAPIService.h */; };
-		9637BEA31FD6FAE1008780BC /* TDAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE691FD6FAE0008780BC /* TDAPIService.m */; };
-		9637BEA41FD6FAE1008780BC /* TDClassUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE6A1FD6FAE0008780BC /* TDClassUtils.h */; };
-		9637BEA51FD6FAE1008780BC /* TDClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE6B1FD6FAE0008780BC /* TDClassUtils.m */; };
-		9637BEA61FD6FAE1008780BC /* TDCommunications.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE6C1FD6FAE0008780BC /* TDCommunications.h */; };
-		9637BEA71FD6FAE1008780BC /* TDCommunications.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE6D1FD6FAE1008780BC /* TDCommunications.m */; };
-		9637BEA81FD6FAE1008780BC /* TDConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE6E1FD6FAE1008780BC /* TDConfiguration.h */; };
-		9637BEA91FD6FAE1008780BC /* TDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE6F1FD6FAE1008780BC /* TDConfiguration.m */; };
-		9637BEAA1FD6FAE1008780BC /* TDConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE701FD6FAE1008780BC /* TDConstants.h */; };
-		9637BEAB1FD6FAE1008780BC /* TDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE711FD6FAE1008780BC /* TDConstants.m */; };
-		9637BEAC1FD6FAE1008780BC /* TDDeviceHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE721FD6FAE1008780BC /* TDDeviceHandler.h */; };
-		9637BEAD1FD6FAE1008780BC /* TDDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE731FD6FAE1008780BC /* TDDeviceHandler.m */; };
-		9637BEAE1FD6FAE1008780BC /* TDDownloadDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE741FD6FAE1008780BC /* TDDownloadDelegate.h */; };
-		9637BEAF1FD6FAE1008780BC /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE751FD6FAE1008780BC /* TDDownloadDelegate.m */; };
-		9637BEB01FD6FAE1008780BC /* TDEventsHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE761FD6FAE1008780BC /* TDEventsHandler.h */; };
-		9637BEB11FD6FAE1008780BC /* TDEventsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE771FD6FAE1008780BC /* TDEventsHandler.m */; };
-		9637BEB21FD6FAE1008780BC /* TDHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE781FD6FAE1008780BC /* TDHTTPClient.h */; };
-		9637BEB31FD6FAE1008780BC /* TDHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE791FD6FAE1008780BC /* TDHTTPClient.m */; };
-		9637BEB41FD6FAE1008780BC /* TDKeysHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE7A1FD6FAE1008780BC /* TDKeysHandler.h */; };
-		9637BEB51FD6FAE1008780BC /* TDKeysHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE7B1FD6FAE1008780BC /* TDKeysHandler.m */; };
-		9637BEB61FD6FAE1008780BC /* TDLinksHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE7C1FD6FAE1008780BC /* TDLinksHandler.h */; };
-		9637BEB71FD6FAE1008780BC /* TDLinksHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE7D1FD6FAE1008780BC /* TDLinksHandler.m */; };
-		9637BEB81FD6FAE1008780BC /* TDNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE7E1FD6FAE1008780BC /* TDNotification.h */; };
-		9637BEB91FD6FAE1008780BC /* TDNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE7F1FD6FAE1008780BC /* TDNotification.m */; };
-		9637BEBA1FD6FAE1008780BC /* TDNotificationOpenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE801FD6FAE1008780BC /* TDNotificationOpenHandler.h */; };
-		9637BEBB1FD6FAE1008780BC /* TDNotificationOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE811FD6FAE1008780BC /* TDNotificationOpenHandler.m */; };
-		9637BEBC1FD6FAE1008780BC /* TDNotificationReadHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE821FD6FAE1008780BC /* TDNotificationReadHandler.h */; };
-		9637BEBD1FD6FAE1008780BC /* TDNotificationReadHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE831FD6FAE1008780BC /* TDNotificationReadHandler.m */; };
-		9637BEBE1FD6FAE1008780BC /* TDNotificationReceivedHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE841FD6FAE1008780BC /* TDNotificationReceivedHandler.h */; };
-		9637BEBF1FD6FAE1008780BC /* TDNotificationReceivedHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE851FD6FAE1008780BC /* TDNotificationReceivedHandler.m */; };
-		9637BEC01FD6FAE1008780BC /* TDPersonaHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE861FD6FAE1008780BC /* TDPersonaHandler.h */; };
-		9637BEC11FD6FAE1008780BC /* TDPersonaHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE871FD6FAE1008780BC /* TDPersonaHandler.m */; };
-		9637BEC21FD6FAE1008780BC /* TDSDKExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE881FD6FAE1008780BC /* TDSDKExtension.h */; };
-		9637BEC31FD6FAE1008780BC /* TDSDKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE891FD6FAE1008780BC /* TDSDKExtension.m */; };
-		9637BEC41FD6FAE1008780BC /* TDUIApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE8A1FD6FAE1008780BC /* TDUIApplication.h */; };
-		9637BEC51FD6FAE1008780BC /* TDUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE8B1FD6FAE1008780BC /* TDUIApplication.m */; };
-		9637BEC61FD6FAE1008780BC /* TDUserNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE8C1FD6FAE1008780BC /* TDUserNotificationCenter.h */; };
-		9637BEC71FD6FAE1008780BC /* TDUserNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE8D1FD6FAE1008780BC /* TDUserNotificationCenter.m */; };
-		9637BEC81FD6FAE1008780BC /* TDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE8E1FD6FAE1008780BC /* TDUtils.h */; };
-		9637BEC91FD6FAE1008780BC /* TDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE8F1FD6FAE1008780BC /* TDUtils.m */; };
-		9637BECA1FD6FAE1008780BC /* TendartsSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 9637BE901FD6FAE1008780BC /* TendartsSDK.h */; };
-		9637BECB1FD6FAE1008780BC /* TendartsSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 9637BE911FD6FAE1008780BC /* TendartsSDK.m */; };
-		AEDBB777FEED81501EF05D4DA29E24EF /* TendartsSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 51050416DB869980F1505F1CC93D133A /* TendartsSDK-dummy.m */; };
+		9027486968BFF06EEFE08C54F6678FF5 /* TDConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = A4A7432AE94B5FFB29B9BF595BE17E6B /* TDConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A326B8EF3638B242CCF549A5D58F1580 /* TDEventsHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 5513F066CCF61D33ED31684175393D67 /* TDEventsHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A76FF43607653B1BA093B751D1FE2104 /* TDConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE392C443EBEAEB11BAE63ED10FC28 /* TDConfiguration.m */; };
+		B0BBC5D5E64538D37D5D839273A8895F /* LocationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E11324B769F99B114CB09FF4ABFAA028 /* LocationUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4397BFB270280D3F6D8D14051AD421E /* TDAccessHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9EA9F33EE23C4161DE39523CF2AE5B /* TDAccessHandler.m */; };
+		B77A09924BFFBF2B03E277464E0E5356 /* TDClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA3F7F4D59BB09D7F4693D5259E506F /* TDClassUtils.m */; };
+		BED92DEC40FA92E88EF383D237705CA8 /* TDAPIService.h in Headers */ = {isa = PBXBuildFile; fileRef = 225AD55CE8E9F37308EDB967CB4A18E6 /* TDAPIService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0A0103BB5BD4A136995A686DEFDB2F6 /* TDCommunications.h in Headers */ = {isa = PBXBuildFile; fileRef = 15A3DB06DA16685349A361B46FA9276F /* TDCommunications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0A63BFC400D8A68624329B87EF8A4FA /* Pods-TendartsSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF931166D57315BD5C24794B22ECAE5 /* Pods-TendartsSDK_Example-dummy.m */; };
+		C411AFBD0A98B7F02F13DD4CD88D0ADB /* TDNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = D2DBF3A84F3856369A88C63FC2BC29BC /* TDNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCD09651C462AE39505D9A3A9C1B60B3 /* TDNotificationReceivedHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = BE25764FB8BF9FE36F5632FCCFE0376E /* TDNotificationReceivedHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDE65399C162A5057ACDFDB3AAAF0D1F /* TDDownloadDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B6EAF788E59F3430702F5C314C4134 /* TDDownloadDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D06805CED6FD449E851D36940C8BACD7 /* TDUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A39E4F5140D16EB8FFC33DB3732F47 /* TDUIApplication.m */; };
+		D361C5DF0CBAF0A0544082615216835B /* PushUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 51CF961166C5D9592ABBDE2703A726D3 /* PushUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D53FC2E7667E307EE398ED2A0B5188DE /* TDDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 737BA4F89969785A57B746C18DCEEDA1 /* TDDownloadDelegate.m */; };
+		D6D64231D45D8AD85ED2A3F7A9885AD1 /* TDNotificationOpenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E913B4E3B95CE89D7ADFBD19A7DB4DA1 /* TDNotificationOpenHandler.m */; };
+		D9801242122ADD9F22F99CCC44CC3E92 /* TDAccessHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 378952BB65352B42A89916B234C40F24 /* TDAccessHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB6FC98E1F113AD77621F37F76F35110 /* TDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF9ADAA35AC444F6726AC0F91AFFF9E /* TDConstants.m */; };
 		DB8939301A9FA3642D79DC6780FC32C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		DF5E07BFC6B00606D3B23600F4F8C8A4 /* TDEventsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 445739870CA7D86CCDC7AA915F0A9D76 /* TDEventsHandler.m */; };
+		E2A836503C146B96B66F5C9756BEA423 /* TDSDKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7290C19D37958EE2E76B7E801D79C1 /* TDSDKExtension.m */; };
 		E50FB8972A3C14C4D6E47054A7C13D15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		E6B5CFB8FFB8628437FD5B68442EABD4 /* TDDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C9671829DC8023A8F84BBB12ECB4E /* TDDeviceHandler.m */; };
 		EA8D8B48184B466E209C78A83429EC99 /* Pods-TendartsSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FA5F35BB6AEBB06CD4D06694A5103139 /* Pods-TendartsSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1997A3621677963B627AFA511C56023 /* NotificationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 981E5ACD6F798C253077415B539ED87D /* NotificationUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1E537B81C985343A533DB9EDDAF3C86 /* TDUserNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F917CAF658973B2B95DD6A363EBE8A7 /* TDUserNotificationCenter.m */; };
+		F3772DA37CF12548EF326D32CE8C3D9E /* Persona.h in Headers */ = {isa = PBXBuildFile; fileRef = B0C9BBB4080789B206CD2F5F21D00B52 /* Persona.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5532025C51CDA78C0D4976BD1492558 /* TDHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A4F4665C13F3EAA6A17F17C3A77ED7 /* TDHTTPClient.m */; };
+		F66B589152B4FCBDC08BA4B2AB62FFE9 /* TendartsSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA239F36DD6F8A8D917EEEA35F8BB08 /* TendartsSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD9CBDB8B3B58AE39425C692F6D15A9F /* TDNotificationOpenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = B5E1000ECF6082B886107799EF75AF67 /* TDNotificationOpenHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,93 +87,93 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04C18BF8A66F594D9E5BD3766DBCDDCF /* PushUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PushUtils.m; sourceTree = "<group>"; };
+		06700E8FCDA9BDBB7F1C6587D42D2C27 /* TDConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDConfiguration.h; sourceTree = "<group>"; };
+		0DA239F36DD6F8A8D917EEEA35F8BB08 /* TendartsSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TendartsSDK.h; sourceTree = "<group>"; };
+		15A3DB06DA16685349A361B46FA9276F /* TDCommunications.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDCommunications.h; sourceTree = "<group>"; };
+		1A7290C19D37958EE2E76B7E801D79C1 /* TDSDKExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDSDKExtension.m; sourceTree = "<group>"; };
 		1C4A8F979B8D3644303BB74973740F5C /* Pods-TendartsSDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TendartsSDK_Example-frameworks.sh"; sourceTree = "<group>"; };
-		2A606406C070C083D251054C57AA48F6 /* Pods-TendartsSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TendartsSDK_Tests.modulemap"; sourceTree = "<group>"; };
+		1CF9ADAA35AC444F6726AC0F91AFFF9E /* TDConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDConstants.m; sourceTree = "<group>"; };
+		1E9EA9F33EE23C4161DE39523CF2AE5B /* TDAccessHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDAccessHandler.m; sourceTree = "<group>"; };
+		225AD55CE8E9F37308EDB967CB4A18E6 /* TDAPIService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDAPIService.h; sourceTree = "<group>"; };
+		22B6EAF788E59F3430702F5C314C4134 /* TDDownloadDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDDownloadDelegate.h; sourceTree = "<group>"; };
+		2301987B13D190A3757BC6269E549541 /* TDLinksHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDLinksHandler.h; sourceTree = "<group>"; };
+		276C9671829DC8023A8F84BBB12ECB4E /* TDDeviceHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDDeviceHandler.m; sourceTree = "<group>"; };
+		2A54A3208BF6ADC50E9632F7941EE27A /* TDLinksHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDLinksHandler.m; sourceTree = "<group>"; };
+		2A606406C070C083D251054C57AA48F6 /* Pods-TendartsSDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TendartsSDK_Tests.modulemap"; sourceTree = "<group>"; };
+		2C8E92E1DDCD737ED566A95A159DFD45 /* TDPersonaHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDPersonaHandler.h; sourceTree = "<group>"; };
+		2FF7D047782BCC6D32507181E8CB8CCB /* TDNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDNotification.m; sourceTree = "<group>"; };
 		33D7076D214F55B53A88BD00237E684D /* Pods-TendartsSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TendartsSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		378952BB65352B42A89916B234C40F24 /* TDAccessHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDAccessHandler.h; sourceTree = "<group>"; };
+		3C3E5B4E758659763D37BA494C957F53 /* TDNotificationReceivedHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDNotificationReceivedHandler.m; sourceTree = "<group>"; };
+		3C4AB0C4EA9B7B3A61E38514151055E2 /* TDNotificationReadHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDNotificationReadHandler.m; sourceTree = "<group>"; };
 		4382B94502C580423FFAC8D70A8CB6AB /* Pods-TendartsSDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TendartsSDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		43F835595F96C7BBEF64C90DA9DB5077 /* Device.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		445739870CA7D86CCDC7AA915F0A9D76 /* TDEventsHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDEventsHandler.m; sourceTree = "<group>"; };
+		4593A74685BB50DF17818DACA1286D4D /* Persona.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Persona.m; sourceTree = "<group>"; };
+		49A4F4665C13F3EAA6A17F17C3A77ED7 /* TDHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDHTTPClient.m; sourceTree = "<group>"; };
+		4BF91F1561379428D06E433120724615 /* TDClassUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDClassUtils.h; sourceTree = "<group>"; };
+		4DEE392C443EBEAEB11BAE63ED10FC28 /* TDConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDConfiguration.m; sourceTree = "<group>"; };
 		51050416DB869980F1505F1CC93D133A /* TendartsSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TendartsSDK-dummy.m"; sourceTree = "<group>"; };
+		51CF961166C5D9592ABBDE2703A726D3 /* PushUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PushUtils.h; sourceTree = "<group>"; };
+		521311E4BE850FD6A1EBFB7919765036 /* TDNotificationReadHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDNotificationReadHandler.h; sourceTree = "<group>"; };
+		52639819AE8ED3F711D4457754CA813C /* TDHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDHTTPClient.h; sourceTree = "<group>"; };
+		5513F066CCF61D33ED31684175393D67 /* TDEventsHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDEventsHandler.h; sourceTree = "<group>"; };
 		55D7C96E156419FF1FE7BCB08914BF29 /* Pods-TendartsSDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TendartsSDK_Tests-umbrella.h"; sourceTree = "<group>"; };
+		5670E69C7B9F89CAF348FA92144EFEFB /* TDUIApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDUIApplication.h; sourceTree = "<group>"; };
+		587741FE381BD05BF4E4C1EC149FF4BC /* TDSDKExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDSDKExtension.h; sourceTree = "<group>"; };
+		58A72583369D6E89924AEF87BE02DB5E /* TDUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDUtils.m; sourceTree = "<group>"; };
 		5A9385ED1958635DE858079B0C233F09 /* Pods-TendartsSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TendartsSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		5BA3F7F4D59BB09D7F4693D5259E506F /* TDClassUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDClassUtils.m; sourceTree = "<group>"; };
 		5DF931166D57315BD5C24794B22ECAE5 /* Pods-TendartsSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TendartsSDK_Example-dummy.m"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		687161E446585238C2AEE7B53710F870 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F39BCBF822017B1EA38910C77A3032E /* Pods_TendartsSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TendartsSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F39BCBF822017B1EA38910C77A3032E /* Pods_TendartsSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TendartsSDK_Example.framework; path = "Pods-TendartsSDK_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		737BA4F89969785A57B746C18DCEEDA1 /* TDDownloadDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDDownloadDelegate.m; sourceTree = "<group>"; };
+		742CAAF8138B2F26483DDB3AEC3EE8AE /* TDAPIService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDAPIService.m; sourceTree = "<group>"; };
+		77E2FCF97F36BDFE45CD150437E45433 /* TDCommunications.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDCommunications.m; sourceTree = "<group>"; };
 		7A0A6BA543ED0EAC159B34402C5D9F86 /* Pods-TendartsSDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TendartsSDK_Tests-dummy.m"; sourceTree = "<group>"; };
 		7B0B37C6163FB2A1B04B7F0CBD78A381 /* TendartsSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TendartsSDK-prefix.pch"; sourceTree = "<group>"; };
 		83921EAEFD305158A15119A7A4EA1127 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		855EB16D7067CA0344285DEF57825B4F /* DataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		92909FC1883047CC19553EF31AC9C25C /* Pods-TendartsSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TendartsSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9637BE581FD6FAE0008780BC /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
-		9637BE591FD6FAE0008780BC /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		9637BE5A1FD6FAE0008780BC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		9637BE5B1FD6FAE0008780BC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		9637BE5C1FD6FAE0008780BC /* LocationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtils.h; sourceTree = "<group>"; };
-		9637BE5D1FD6FAE0008780BC /* LocationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUtils.m; sourceTree = "<group>"; };
-		9637BE5E1FD6FAE0008780BC /* NotificationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationUtils.h; sourceTree = "<group>"; };
-		9637BE5F1FD6FAE0008780BC /* NotificationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationUtils.m; sourceTree = "<group>"; };
-		9637BE601FD6FAE0008780BC /* Persona.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Persona.h; sourceTree = "<group>"; };
-		9637BE611FD6FAE0008780BC /* Persona.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Persona.m; sourceTree = "<group>"; };
-		9637BE621FD6FAE0008780BC /* PushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushController.h; sourceTree = "<group>"; };
-		9637BE631FD6FAE0008780BC /* PushController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushController.m; sourceTree = "<group>"; };
-		9637BE641FD6FAE0008780BC /* PushUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushUtils.h; sourceTree = "<group>"; };
-		9637BE651FD6FAE0008780BC /* PushUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushUtils.m; sourceTree = "<group>"; };
-		9637BE661FD6FAE0008780BC /* TDAccessHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAccessHandler.h; sourceTree = "<group>"; };
-		9637BE671FD6FAE0008780BC /* TDAccessHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAccessHandler.m; sourceTree = "<group>"; };
-		9637BE681FD6FAE0008780BC /* TDAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAPIService.h; sourceTree = "<group>"; };
-		9637BE691FD6FAE0008780BC /* TDAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAPIService.m; sourceTree = "<group>"; };
-		9637BE6A1FD6FAE0008780BC /* TDClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDClassUtils.h; sourceTree = "<group>"; };
-		9637BE6B1FD6FAE0008780BC /* TDClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDClassUtils.m; sourceTree = "<group>"; };
-		9637BE6C1FD6FAE0008780BC /* TDCommunications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCommunications.h; sourceTree = "<group>"; };
-		9637BE6D1FD6FAE1008780BC /* TDCommunications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCommunications.m; sourceTree = "<group>"; };
-		9637BE6E1FD6FAE1008780BC /* TDConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDConfiguration.h; sourceTree = "<group>"; };
-		9637BE6F1FD6FAE1008780BC /* TDConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConfiguration.m; sourceTree = "<group>"; };
-		9637BE701FD6FAE1008780BC /* TDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDConstants.h; sourceTree = "<group>"; };
-		9637BE711FD6FAE1008780BC /* TDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConstants.m; sourceTree = "<group>"; };
-		9637BE721FD6FAE1008780BC /* TDDeviceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDeviceHandler.h; sourceTree = "<group>"; };
-		9637BE731FD6FAE1008780BC /* TDDeviceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDDeviceHandler.m; sourceTree = "<group>"; };
-		9637BE741FD6FAE1008780BC /* TDDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDownloadDelegate.h; sourceTree = "<group>"; };
-		9637BE751FD6FAE1008780BC /* TDDownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDDownloadDelegate.m; sourceTree = "<group>"; };
-		9637BE761FD6FAE1008780BC /* TDEventsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDEventsHandler.h; sourceTree = "<group>"; };
-		9637BE771FD6FAE1008780BC /* TDEventsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDEventsHandler.m; sourceTree = "<group>"; };
-		9637BE781FD6FAE1008780BC /* TDHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDHTTPClient.h; sourceTree = "<group>"; };
-		9637BE791FD6FAE1008780BC /* TDHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDHTTPClient.m; sourceTree = "<group>"; };
-		9637BE7A1FD6FAE1008780BC /* TDKeysHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDKeysHandler.h; sourceTree = "<group>"; };
-		9637BE7B1FD6FAE1008780BC /* TDKeysHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDKeysHandler.m; sourceTree = "<group>"; };
-		9637BE7C1FD6FAE1008780BC /* TDLinksHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLinksHandler.h; sourceTree = "<group>"; };
-		9637BE7D1FD6FAE1008780BC /* TDLinksHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLinksHandler.m; sourceTree = "<group>"; };
-		9637BE7E1FD6FAE1008780BC /* TDNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDNotification.h; sourceTree = "<group>"; };
-		9637BE7F1FD6FAE1008780BC /* TDNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDNotification.m; sourceTree = "<group>"; };
-		9637BE801FD6FAE1008780BC /* TDNotificationOpenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDNotificationOpenHandler.h; sourceTree = "<group>"; };
-		9637BE811FD6FAE1008780BC /* TDNotificationOpenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDNotificationOpenHandler.m; sourceTree = "<group>"; };
-		9637BE821FD6FAE1008780BC /* TDNotificationReadHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDNotificationReadHandler.h; sourceTree = "<group>"; };
-		9637BE831FD6FAE1008780BC /* TDNotificationReadHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDNotificationReadHandler.m; sourceTree = "<group>"; };
-		9637BE841FD6FAE1008780BC /* TDNotificationReceivedHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDNotificationReceivedHandler.h; sourceTree = "<group>"; };
-		9637BE851FD6FAE1008780BC /* TDNotificationReceivedHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDNotificationReceivedHandler.m; sourceTree = "<group>"; };
-		9637BE861FD6FAE1008780BC /* TDPersonaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDPersonaHandler.h; sourceTree = "<group>"; };
-		9637BE871FD6FAE1008780BC /* TDPersonaHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDPersonaHandler.m; sourceTree = "<group>"; };
-		9637BE881FD6FAE1008780BC /* TDSDKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSDKExtension.h; sourceTree = "<group>"; };
-		9637BE891FD6FAE1008780BC /* TDSDKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSDKExtension.m; sourceTree = "<group>"; };
-		9637BE8A1FD6FAE1008780BC /* TDUIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUIApplication.h; sourceTree = "<group>"; };
-		9637BE8B1FD6FAE1008780BC /* TDUIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUIApplication.m; sourceTree = "<group>"; };
-		9637BE8C1FD6FAE1008780BC /* TDUserNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserNotificationCenter.h; sourceTree = "<group>"; };
-		9637BE8D1FD6FAE1008780BC /* TDUserNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserNotificationCenter.m; sourceTree = "<group>"; };
-		9637BE8E1FD6FAE1008780BC /* TDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUtils.h; sourceTree = "<group>"; };
-		9637BE8F1FD6FAE1008780BC /* TDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUtils.m; sourceTree = "<group>"; };
-		9637BE901FD6FAE1008780BC /* TendartsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TendartsSDK.h; sourceTree = "<group>"; };
-		9637BE911FD6FAE1008780BC /* TendartsSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TendartsSDK.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		981E5ACD6F798C253077415B539ED87D /* NotificationUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NotificationUtils.h; sourceTree = "<group>"; };
+		9B0364B28879DE955744E3DC239E8053 /* TDKeysHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDKeysHandler.h; sourceTree = "<group>"; };
 		9D553E03B838C3B92CDA0FF49362B1D9 /* Pods-TendartsSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TendartsSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9F917CAF658973B2B95DD6A363EBE8A7 /* TDUserNotificationCenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDUserNotificationCenter.m; sourceTree = "<group>"; };
+		A4A7432AE94B5FFB29B9BF595BE17E6B /* TDConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDConstants.h; sourceTree = "<group>"; };
+		A96996721DCA1B3F9D05B7DE630AF0C0 /* TDUserNotificationCenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDUserNotificationCenter.h; sourceTree = "<group>"; };
 		AB10E702A6770FE364F02C6A5E13CF90 /* Pods-TendartsSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TendartsSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		AB378FBAD9A7AEAED25DF184CE9E6205 /* TendartsSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TendartsSDK.xcconfig; sourceTree = "<group>"; };
+		AEF74D11BC1E9C48034FC702C6D3CA96 /* PushController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PushController.h; sourceTree = "<group>"; };
+		B0C9BBB4080789B206CD2F5F21D00B52 /* Persona.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Persona.h; sourceTree = "<group>"; };
 		B0F6CC6684951DA22D674CAF6B81DD0B /* Pods-TendartsSDK_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TendartsSDK_Example-resources.sh"; sourceTree = "<group>"; };
 		B3BD5C490484E058D2E588E7B05E2704 /* TendartsSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TendartsSDK-umbrella.h"; sourceTree = "<group>"; };
 		B559BA3F1711DAE6A02BAC1CB80E76F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B888E73F79A34A4CF82FFFB68B1D3040 /* TendartsSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TendartsSDK.modulemap; sourceTree = "<group>"; };
-		B9294B206CFBC8A57AF62D0A76DC1FD2 /* Pods_TendartsSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TendartsSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5E1000ECF6082B886107799EF75AF67 /* TDNotificationOpenHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDNotificationOpenHandler.h; sourceTree = "<group>"; };
+		B888E73F79A34A4CF82FFFB68B1D3040 /* TendartsSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TendartsSDK.modulemap; sourceTree = "<group>"; };
+		B9294B206CFBC8A57AF62D0A76DC1FD2 /* Pods_TendartsSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TendartsSDK_Tests.framework; path = "Pods-TendartsSDK_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA79B5A0A77309D0F19A90DDE1FD5CF8 /* Pods-TendartsSDK_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TendartsSDK_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		C3F036EFAA400948D01871D3C987982F /* TendartsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TendartsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE25764FB8BF9FE36F5632FCCFE0376E /* TDNotificationReceivedHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDNotificationReceivedHandler.h; sourceTree = "<group>"; };
+		C3F036EFAA400948D01871D3C987982F /* TendartsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TendartsSDK.framework; path = TendartsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4498DB76ECA2F1079B387015FC049DD /* TendartsSDK.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TendartsSDK.m; sourceTree = "<group>"; };
+		C8A05FDC8545739884B57F7D55809F6D /* LocationUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = LocationUtils.m; sourceTree = "<group>"; };
+		C92E6216E799C4A797BDE20F79BB8BE3 /* TDKeysHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDKeysHandler.m; sourceTree = "<group>"; };
+		D20B28049192DA0C6BF98C1043C6ED66 /* TDPersonaHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDPersonaHandler.m; sourceTree = "<group>"; };
+		D2DBF3A84F3856369A88C63FC2BC29BC /* TDNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDNotification.h; sourceTree = "<group>"; };
 		DADBCC6927BE54E1E37B03251B5CB615 /* Pods-TendartsSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TendartsSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		DDB3EDA5B889F0DBE74BE9D1C7689554 /* TDDeviceHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDDeviceHandler.h; sourceTree = "<group>"; };
+		E11324B769F99B114CB09FF4ABFAA028 /* LocationUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = LocationUtils.h; sourceTree = "<group>"; };
+		E215371D5CB04A52BD1770A9B43F3296 /* DataManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		E4157533FBDF8DAD59085CFFEE509816 /* TDUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TDUtils.h; sourceTree = "<group>"; };
+		E5A39E4F5140D16EB8FFC33DB3732F47 /* TDUIApplication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDUIApplication.m; sourceTree = "<group>"; };
+		E5A9FABF8F74AA75F9CDF0749021A5AC /* PushController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PushController.m; sourceTree = "<group>"; };
+		E913B4E3B95CE89D7ADFBD19A7DB4DA1 /* TDNotificationOpenHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TDNotificationOpenHandler.m; sourceTree = "<group>"; };
+		E96EDAFB16E7FA2BBA42DC0DC2F06178 /* NotificationUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NotificationUtils.m; sourceTree = "<group>"; };
 		EAD44AD3620E17E6DA50138E2DF1F046 /* Pods-TendartsSDK_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TendartsSDK_Tests-resources.sh"; sourceTree = "<group>"; };
-		F944C3D794ABDCBFDB7A78B50FC399AD /* Pods-TendartsSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TendartsSDK_Example.modulemap"; sourceTree = "<group>"; };
+		EB083ED1FCEC04369459367914B40162 /* Device.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
+		F944C3D794ABDCBFDB7A78B50FC399AD /* Pods-TendartsSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TendartsSDK_Example.modulemap"; sourceTree = "<group>"; };
 		FA5F35BB6AEBB06CD4D06694A5103139 /* Pods-TendartsSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TendartsSDK_Example-umbrella.h"; sourceTree = "<group>"; };
 		FCEB0D3BCF7ADC85576BF26DDE200358 /* Pods-TendartsSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TendartsSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,7 +238,7 @@
 			children = (
 				9F2DDDD147F97A69882055735DF74351 /* Normal */,
 				CCEACF3C1879C1D2A35A555A775ECF5F /* Support Files */,
-				7F0232AB96B50CC4ED04EF3AAC4C9B86 /* TendartsSDK */,
+				FCE78B552B1C1BF24237ACF89AFF28B8 /* TendartsSDK */,
 			);
 			name = TendartsSDK;
 			path = ../..;
@@ -249,6 +249,7 @@
 			children = (
 				317B5476ACEB2036C6877C8FD9F9D8E1 /* Source */,
 			);
+			name = TendartsSDK;
 			path = TendartsSDK;
 			sourceTree = "<group>";
 		};
@@ -256,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 			);
+			name = Source;
 			path = Source;
 			sourceTree = "<group>";
 		};
@@ -270,85 +272,12 @@
 			);
 			sourceTree = "<group>";
 		};
-		7F0232AB96B50CC4ED04EF3AAC4C9B86 /* TendartsSDK */ = {
-			isa = PBXGroup;
-			children = (
-				9637BE571FD6FAE0008780BC /* Source */,
-			);
-			path = TendartsSDK;
-			sourceTree = "<group>";
-		};
 		877210B97E0F41E63B23E11A148CF0A1 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
 				18A51C05BCB1AED6A7638B391B973EEA /* TendartsSDK */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		9637BE571FD6FAE0008780BC /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				9637BE581FD6FAE0008780BC /* DataManager.h */,
-				9637BE591FD6FAE0008780BC /* DataManager.m */,
-				9637BE5A1FD6FAE0008780BC /* Device.h */,
-				9637BE5B1FD6FAE0008780BC /* Device.m */,
-				9637BE5C1FD6FAE0008780BC /* LocationUtils.h */,
-				9637BE5D1FD6FAE0008780BC /* LocationUtils.m */,
-				9637BE5E1FD6FAE0008780BC /* NotificationUtils.h */,
-				9637BE5F1FD6FAE0008780BC /* NotificationUtils.m */,
-				9637BE601FD6FAE0008780BC /* Persona.h */,
-				9637BE611FD6FAE0008780BC /* Persona.m */,
-				9637BE621FD6FAE0008780BC /* PushController.h */,
-				9637BE631FD6FAE0008780BC /* PushController.m */,
-				9637BE641FD6FAE0008780BC /* PushUtils.h */,
-				9637BE651FD6FAE0008780BC /* PushUtils.m */,
-				9637BE661FD6FAE0008780BC /* TDAccessHandler.h */,
-				9637BE671FD6FAE0008780BC /* TDAccessHandler.m */,
-				9637BE681FD6FAE0008780BC /* TDAPIService.h */,
-				9637BE691FD6FAE0008780BC /* TDAPIService.m */,
-				9637BE6A1FD6FAE0008780BC /* TDClassUtils.h */,
-				9637BE6B1FD6FAE0008780BC /* TDClassUtils.m */,
-				9637BE6C1FD6FAE0008780BC /* TDCommunications.h */,
-				9637BE6D1FD6FAE1008780BC /* TDCommunications.m */,
-				9637BE6E1FD6FAE1008780BC /* TDConfiguration.h */,
-				9637BE6F1FD6FAE1008780BC /* TDConfiguration.m */,
-				9637BE701FD6FAE1008780BC /* TDConstants.h */,
-				9637BE711FD6FAE1008780BC /* TDConstants.m */,
-				9637BE721FD6FAE1008780BC /* TDDeviceHandler.h */,
-				9637BE731FD6FAE1008780BC /* TDDeviceHandler.m */,
-				9637BE741FD6FAE1008780BC /* TDDownloadDelegate.h */,
-				9637BE751FD6FAE1008780BC /* TDDownloadDelegate.m */,
-				9637BE761FD6FAE1008780BC /* TDEventsHandler.h */,
-				9637BE771FD6FAE1008780BC /* TDEventsHandler.m */,
-				9637BE781FD6FAE1008780BC /* TDHTTPClient.h */,
-				9637BE791FD6FAE1008780BC /* TDHTTPClient.m */,
-				9637BE7A1FD6FAE1008780BC /* TDKeysHandler.h */,
-				9637BE7B1FD6FAE1008780BC /* TDKeysHandler.m */,
-				9637BE7C1FD6FAE1008780BC /* TDLinksHandler.h */,
-				9637BE7D1FD6FAE1008780BC /* TDLinksHandler.m */,
-				9637BE7E1FD6FAE1008780BC /* TDNotification.h */,
-				9637BE7F1FD6FAE1008780BC /* TDNotification.m */,
-				9637BE801FD6FAE1008780BC /* TDNotificationOpenHandler.h */,
-				9637BE811FD6FAE1008780BC /* TDNotificationOpenHandler.m */,
-				9637BE821FD6FAE1008780BC /* TDNotificationReadHandler.h */,
-				9637BE831FD6FAE1008780BC /* TDNotificationReadHandler.m */,
-				9637BE841FD6FAE1008780BC /* TDNotificationReceivedHandler.h */,
-				9637BE851FD6FAE1008780BC /* TDNotificationReceivedHandler.m */,
-				9637BE861FD6FAE1008780BC /* TDPersonaHandler.h */,
-				9637BE871FD6FAE1008780BC /* TDPersonaHandler.m */,
-				9637BE881FD6FAE1008780BC /* TDSDKExtension.h */,
-				9637BE891FD6FAE1008780BC /* TDSDKExtension.m */,
-				9637BE8A1FD6FAE1008780BC /* TDUIApplication.h */,
-				9637BE8B1FD6FAE1008780BC /* TDUIApplication.m */,
-				9637BE8C1FD6FAE1008780BC /* TDUserNotificationCenter.h */,
-				9637BE8D1FD6FAE1008780BC /* TDUserNotificationCenter.m */,
-				9637BE8E1FD6FAE1008780BC /* TDUtils.h */,
-				9637BE8F1FD6FAE1008780BC /* TDUtils.m */,
-				9637BE901FD6FAE1008780BC /* TendartsSDK.h */,
-				9637BE911FD6FAE1008780BC /* TendartsSDK.m */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		9F2DDDD147F97A69882055735DF74351 /* Normal */ = {
@@ -417,6 +346,81 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		DE39643F686AE6ABB3D71FA0A0F2416B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E215371D5CB04A52BD1770A9B43F3296 /* DataManager.h */,
+				855EB16D7067CA0344285DEF57825B4F /* DataManager.m */,
+				43F835595F96C7BBEF64C90DA9DB5077 /* Device.h */,
+				EB083ED1FCEC04369459367914B40162 /* Device.m */,
+				E11324B769F99B114CB09FF4ABFAA028 /* LocationUtils.h */,
+				C8A05FDC8545739884B57F7D55809F6D /* LocationUtils.m */,
+				981E5ACD6F798C253077415B539ED87D /* NotificationUtils.h */,
+				E96EDAFB16E7FA2BBA42DC0DC2F06178 /* NotificationUtils.m */,
+				B0C9BBB4080789B206CD2F5F21D00B52 /* Persona.h */,
+				4593A74685BB50DF17818DACA1286D4D /* Persona.m */,
+				AEF74D11BC1E9C48034FC702C6D3CA96 /* PushController.h */,
+				E5A9FABF8F74AA75F9CDF0749021A5AC /* PushController.m */,
+				51CF961166C5D9592ABBDE2703A726D3 /* PushUtils.h */,
+				04C18BF8A66F594D9E5BD3766DBCDDCF /* PushUtils.m */,
+				378952BB65352B42A89916B234C40F24 /* TDAccessHandler.h */,
+				1E9EA9F33EE23C4161DE39523CF2AE5B /* TDAccessHandler.m */,
+				225AD55CE8E9F37308EDB967CB4A18E6 /* TDAPIService.h */,
+				742CAAF8138B2F26483DDB3AEC3EE8AE /* TDAPIService.m */,
+				4BF91F1561379428D06E433120724615 /* TDClassUtils.h */,
+				5BA3F7F4D59BB09D7F4693D5259E506F /* TDClassUtils.m */,
+				15A3DB06DA16685349A361B46FA9276F /* TDCommunications.h */,
+				77E2FCF97F36BDFE45CD150437E45433 /* TDCommunications.m */,
+				06700E8FCDA9BDBB7F1C6587D42D2C27 /* TDConfiguration.h */,
+				4DEE392C443EBEAEB11BAE63ED10FC28 /* TDConfiguration.m */,
+				A4A7432AE94B5FFB29B9BF595BE17E6B /* TDConstants.h */,
+				1CF9ADAA35AC444F6726AC0F91AFFF9E /* TDConstants.m */,
+				DDB3EDA5B889F0DBE74BE9D1C7689554 /* TDDeviceHandler.h */,
+				276C9671829DC8023A8F84BBB12ECB4E /* TDDeviceHandler.m */,
+				22B6EAF788E59F3430702F5C314C4134 /* TDDownloadDelegate.h */,
+				737BA4F89969785A57B746C18DCEEDA1 /* TDDownloadDelegate.m */,
+				5513F066CCF61D33ED31684175393D67 /* TDEventsHandler.h */,
+				445739870CA7D86CCDC7AA915F0A9D76 /* TDEventsHandler.m */,
+				52639819AE8ED3F711D4457754CA813C /* TDHTTPClient.h */,
+				49A4F4665C13F3EAA6A17F17C3A77ED7 /* TDHTTPClient.m */,
+				9B0364B28879DE955744E3DC239E8053 /* TDKeysHandler.h */,
+				C92E6216E799C4A797BDE20F79BB8BE3 /* TDKeysHandler.m */,
+				2301987B13D190A3757BC6269E549541 /* TDLinksHandler.h */,
+				2A54A3208BF6ADC50E9632F7941EE27A /* TDLinksHandler.m */,
+				D2DBF3A84F3856369A88C63FC2BC29BC /* TDNotification.h */,
+				2FF7D047782BCC6D32507181E8CB8CCB /* TDNotification.m */,
+				B5E1000ECF6082B886107799EF75AF67 /* TDNotificationOpenHandler.h */,
+				E913B4E3B95CE89D7ADFBD19A7DB4DA1 /* TDNotificationOpenHandler.m */,
+				521311E4BE850FD6A1EBFB7919765036 /* TDNotificationReadHandler.h */,
+				3C4AB0C4EA9B7B3A61E38514151055E2 /* TDNotificationReadHandler.m */,
+				BE25764FB8BF9FE36F5632FCCFE0376E /* TDNotificationReceivedHandler.h */,
+				3C3E5B4E758659763D37BA494C957F53 /* TDNotificationReceivedHandler.m */,
+				2C8E92E1DDCD737ED566A95A159DFD45 /* TDPersonaHandler.h */,
+				D20B28049192DA0C6BF98C1043C6ED66 /* TDPersonaHandler.m */,
+				587741FE381BD05BF4E4C1EC149FF4BC /* TDSDKExtension.h */,
+				1A7290C19D37958EE2E76B7E801D79C1 /* TDSDKExtension.m */,
+				5670E69C7B9F89CAF348FA92144EFEFB /* TDUIApplication.h */,
+				E5A39E4F5140D16EB8FFC33DB3732F47 /* TDUIApplication.m */,
+				A96996721DCA1B3F9D05B7DE630AF0C0 /* TDUserNotificationCenter.h */,
+				9F917CAF658973B2B95DD6A363EBE8A7 /* TDUserNotificationCenter.m */,
+				E4157533FBDF8DAD59085CFFEE509816 /* TDUtils.h */,
+				58A72583369D6E89924AEF87BE02DB5E /* TDUtils.m */,
+				0DA239F36DD6F8A8D917EEEA35F8BB08 /* TendartsSDK.h */,
+				C4498DB76ECA2F1079B387015FC049DD /* TendartsSDK.m */,
+			);
+			name = Source;
+			path = Source;
+			sourceTree = "<group>";
+		};
+		FCE78B552B1C1BF24237ACF89AFF28B8 /* TendartsSDK */ = {
+			isa = PBXGroup;
+			children = (
+				DE39643F686AE6ABB3D71FA0A0F2416B /* Source */,
+			);
+			name = TendartsSDK;
+			path = TendartsSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -428,40 +432,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED5C8BB3F834670B86726A5F7E24D109 /* Headers */ = {
+		BD5B287A45DE90FCBFE24E2969E1CB4B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9637BEBC1FD6FAE1008780BC /* TDNotificationReadHandler.h in Headers */,
-				9637BEBE1FD6FAE1008780BC /* TDNotificationReceivedHandler.h in Headers */,
-				9637BE981FD6FAE1008780BC /* NotificationUtils.h in Headers */,
-				9637BEC21FD6FAE1008780BC /* TDSDKExtension.h in Headers */,
-				9637BE921FD6FAE1008780BC /* DataManager.h in Headers */,
-				9637BE9E1FD6FAE1008780BC /* PushUtils.h in Headers */,
-				9637BECA1FD6FAE1008780BC /* TendartsSDK.h in Headers */,
-				9637BEB81FD6FAE1008780BC /* TDNotification.h in Headers */,
-				9637BEB21FD6FAE1008780BC /* TDHTTPClient.h in Headers */,
-				9637BEA21FD6FAE1008780BC /* TDAPIService.h in Headers */,
-				9637BEC01FD6FAE1008780BC /* TDPersonaHandler.h in Headers */,
-				9637BEA41FD6FAE1008780BC /* TDClassUtils.h in Headers */,
-				9637BEAE1FD6FAE1008780BC /* TDDownloadDelegate.h in Headers */,
-				9637BEBA1FD6FAE1008780BC /* TDNotificationOpenHandler.h in Headers */,
-				9637BEB41FD6FAE1008780BC /* TDKeysHandler.h in Headers */,
-				9637BEB01FD6FAE1008780BC /* TDEventsHandler.h in Headers */,
-				9637BEC81FD6FAE1008780BC /* TDUtils.h in Headers */,
-				9637BEB61FD6FAE1008780BC /* TDLinksHandler.h in Headers */,
-				9637BE9C1FD6FAE1008780BC /* PushController.h in Headers */,
-				57BBD5B5F7FE2E33C10203321853A685 /* TendartsSDK-umbrella.h in Headers */,
-				9637BEAC1FD6FAE1008780BC /* TDDeviceHandler.h in Headers */,
-				9637BEA01FD6FAE1008780BC /* TDAccessHandler.h in Headers */,
-				9637BE9A1FD6FAE1008780BC /* Persona.h in Headers */,
-				9637BEA61FD6FAE1008780BC /* TDCommunications.h in Headers */,
-				9637BEC41FD6FAE1008780BC /* TDUIApplication.h in Headers */,
-				9637BEC61FD6FAE1008780BC /* TDUserNotificationCenter.h in Headers */,
-				9637BEAA1FD6FAE1008780BC /* TDConstants.h in Headers */,
-				9637BE941FD6FAE1008780BC /* Device.h in Headers */,
-				9637BEA81FD6FAE1008780BC /* TDConfiguration.h in Headers */,
-				9637BE961FD6FAE1008780BC /* LocationUtils.h in Headers */,
+				57B36F054833FB0406ABD7C27E0D0E93 /* DataManager.h in Headers */,
+				1A5B94D7448E8923E201CBDA198BC73D /* Device.h in Headers */,
+				B0BBC5D5E64538D37D5D839273A8895F /* LocationUtils.h in Headers */,
+				F1997A3621677963B627AFA511C56023 /* NotificationUtils.h in Headers */,
+				F3772DA37CF12548EF326D32CE8C3D9E /* Persona.h in Headers */,
+				05871FF4550F1750530FC1E8B70C5B74 /* PushController.h in Headers */,
+				D361C5DF0CBAF0A0544082615216835B /* PushUtils.h in Headers */,
+				D9801242122ADD9F22F99CCC44CC3E92 /* TDAccessHandler.h in Headers */,
+				BED92DEC40FA92E88EF383D237705CA8 /* TDAPIService.h in Headers */,
+				766A1FEC7F6C787C221D348D5B3A8AEF /* TDClassUtils.h in Headers */,
+				C0A0103BB5BD4A136995A686DEFDB2F6 /* TDCommunications.h in Headers */,
+				6EED1D50D117728CFE9837CB2A6BDE8A /* TDConfiguration.h in Headers */,
+				9027486968BFF06EEFE08C54F6678FF5 /* TDConstants.h in Headers */,
+				1E6AE0A4EDD1ADBEA3C3458FDE102224 /* TDDeviceHandler.h in Headers */,
+				CDE65399C162A5057ACDFDB3AAAF0D1F /* TDDownloadDelegate.h in Headers */,
+				A326B8EF3638B242CCF549A5D58F1580 /* TDEventsHandler.h in Headers */,
+				4846E3BFFC5453D771562EAE6CF53243 /* TDHTTPClient.h in Headers */,
+				494F9C9F4CDB4FFE5C2E4BCFCD01FF8D /* TDKeysHandler.h in Headers */,
+				695B8255B3C90C78A009C570A63E355A /* TDLinksHandler.h in Headers */,
+				C411AFBD0A98B7F02F13DD4CD88D0ADB /* TDNotification.h in Headers */,
+				FD9CBDB8B3B58AE39425C692F6D15A9F /* TDNotificationOpenHandler.h in Headers */,
+				74F1465CCDA461CF625C485E1667FEEC /* TDNotificationReadHandler.h in Headers */,
+				CCD09651C462AE39505D9A3A9C1B60B3 /* TDNotificationReceivedHandler.h in Headers */,
+				0B608FF57DD3FEE61532B4FAE28DE3E9 /* TDPersonaHandler.h in Headers */,
+				2E46BDD200269C9B8CA7CFE4763B876C /* TDSDKExtension.h in Headers */,
+				289B2B335EAAE9B3487ED68FB7701487 /* TDUIApplication.h in Headers */,
+				15947F3407FAF899944F767212558447 /* TDUserNotificationCenter.h in Headers */,
+				49E8E33559A666A1AA2419070BD23D49 /* TDUtils.h in Headers */,
+				0E7AA69EE31A53D7813582A43E6A7374 /* TendartsSDK-umbrella.h in Headers */,
+				F66B589152B4FCBDC08BA4B2AB62FFE9 /* TendartsSDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,9 +519,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A2D8ACF6EC317D2992A7BC42B7F24BC /* Build configuration list for PBXNativeTarget "TendartsSDK" */;
 			buildPhases = (
-				04A7CF053DC92B0A3FF8AAAD5D6DD603 /* Sources */,
+				2A2921D25E888D4EA977A41DA5A76C40 /* Sources */,
 				E64F2137717C1594F957ABF4A12DC6B1 /* Frameworks */,
-				ED5C8BB3F834670B86726A5F7E24D109 /* Headers */,
+				BD5B287A45DE90FCBFE24E2969E1CB4B /* Headers */,
 			);
 			buildRules = (
 			);
@@ -557,48 +561,48 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		04A7CF053DC92B0A3FF8AAAD5D6DD603 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9637BE9B1FD6FAE1008780BC /* Persona.m in Sources */,
-				9637BEA51FD6FAE1008780BC /* TDClassUtils.m in Sources */,
-				9637BE991FD6FAE1008780BC /* NotificationUtils.m in Sources */,
-				9637BE971FD6FAE1008780BC /* LocationUtils.m in Sources */,
-				9637BEBD1FD6FAE1008780BC /* TDNotificationReadHandler.m in Sources */,
-				9637BEB91FD6FAE1008780BC /* TDNotification.m in Sources */,
-				9637BEB11FD6FAE1008780BC /* TDEventsHandler.m in Sources */,
-				9637BE9D1FD6FAE1008780BC /* PushController.m in Sources */,
-				9637BEC11FD6FAE1008780BC /* TDPersonaHandler.m in Sources */,
-				9637BE951FD6FAE1008780BC /* Device.m in Sources */,
-				9637BEC31FD6FAE1008780BC /* TDSDKExtension.m in Sources */,
-				AEDBB777FEED81501EF05D4DA29E24EF /* TendartsSDK-dummy.m in Sources */,
-				9637BEAD1FD6FAE1008780BC /* TDDeviceHandler.m in Sources */,
-				9637BEA91FD6FAE1008780BC /* TDConfiguration.m in Sources */,
-				9637BEB31FD6FAE1008780BC /* TDHTTPClient.m in Sources */,
-				9637BE931FD6FAE1008780BC /* DataManager.m in Sources */,
-				9637BEC51FD6FAE1008780BC /* TDUIApplication.m in Sources */,
-				9637BEAF1FD6FAE1008780BC /* TDDownloadDelegate.m in Sources */,
-				9637BE9F1FD6FAE1008780BC /* PushUtils.m in Sources */,
-				9637BEBB1FD6FAE1008780BC /* TDNotificationOpenHandler.m in Sources */,
-				9637BEC71FD6FAE1008780BC /* TDUserNotificationCenter.m in Sources */,
-				9637BECB1FD6FAE1008780BC /* TendartsSDK.m in Sources */,
-				9637BEB71FD6FAE1008780BC /* TDLinksHandler.m in Sources */,
-				9637BEA31FD6FAE1008780BC /* TDAPIService.m in Sources */,
-				9637BEB51FD6FAE1008780BC /* TDKeysHandler.m in Sources */,
-				9637BEAB1FD6FAE1008780BC /* TDConstants.m in Sources */,
-				9637BEA71FD6FAE1008780BC /* TDCommunications.m in Sources */,
-				9637BEBF1FD6FAE1008780BC /* TDNotificationReceivedHandler.m in Sources */,
-				9637BEA11FD6FAE1008780BC /* TDAccessHandler.m in Sources */,
-				9637BEC91FD6FAE1008780BC /* TDUtils.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		22DB43856EF07DE674C12CA9D48DAB69 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C0A63BFC400D8A68624329B87EF8A4FA /* Pods-TendartsSDK_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A2921D25E888D4EA977A41DA5A76C40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77487B4EE725F5F8DE8BCAAFAD5231F3 /* DataManager.m in Sources */,
+				66619B8CD2DCE56434070753DD07E433 /* Device.m in Sources */,
+				65A9B22BCE262F1D9DEE7A490170EA00 /* LocationUtils.m in Sources */,
+				2A9F4498FB4B3B5F649B66152B2617A5 /* NotificationUtils.m in Sources */,
+				6E6D3CDE18D41C9284A6B27D1031FBDC /* Persona.m in Sources */,
+				5FBF440B7235EA15D2BB49CD42AF146A /* PushController.m in Sources */,
+				633CD605A2E40D3ABF73CCBFC201559E /* PushUtils.m in Sources */,
+				B4397BFB270280D3F6D8D14051AD421E /* TDAccessHandler.m in Sources */,
+				358E34B69EE250F14EE2DA1B927723BF /* TDAPIService.m in Sources */,
+				B77A09924BFFBF2B03E277464E0E5356 /* TDClassUtils.m in Sources */,
+				3C73B32C66F71C35344DF6B5C9E496FD /* TDCommunications.m in Sources */,
+				A76FF43607653B1BA093B751D1FE2104 /* TDConfiguration.m in Sources */,
+				DB6FC98E1F113AD77621F37F76F35110 /* TDConstants.m in Sources */,
+				E6B5CFB8FFB8628437FD5B68442EABD4 /* TDDeviceHandler.m in Sources */,
+				D53FC2E7667E307EE398ED2A0B5188DE /* TDDownloadDelegate.m in Sources */,
+				DF5E07BFC6B00606D3B23600F4F8C8A4 /* TDEventsHandler.m in Sources */,
+				F5532025C51CDA78C0D4976BD1492558 /* TDHTTPClient.m in Sources */,
+				39B1AC0C93883EC1007369D062E6D4BC /* TDKeysHandler.m in Sources */,
+				44DD8460BA520B2DF5DD136FFE9B9129 /* TDLinksHandler.m in Sources */,
+				4DC7B9CF5F6986238609A5F06840CC71 /* TDNotification.m in Sources */,
+				D6D64231D45D8AD85ED2A3F7A9885AD1 /* TDNotificationOpenHandler.m in Sources */,
+				66004CC44D9E94FC1F38559BC91C44CD /* TDNotificationReadHandler.m in Sources */,
+				0957CE21B2029B0B06C5197F451A3A87 /* TDNotificationReceivedHandler.m in Sources */,
+				7514BE3A12FB5334765A813057430422 /* TDPersonaHandler.m in Sources */,
+				E2A836503C146B96B66F5C9756BEA423 /* TDSDKExtension.m in Sources */,
+				D06805CED6FD449E851D36940C8BACD7 /* TDUIApplication.m in Sources */,
+				F1E537B81C985343A533DB9EDDAF3C86 /* TDUserNotificationCenter.m in Sources */,
+				087FD6D225F127872E922D9DC3E882D2 /* TDUtils.m in Sources */,
+				4FBBD221A8296334209CC7E179E8ADCD /* TendartsSDK-dummy.m in Sources */,
+				1F8D42420B1EAF7FEB3F9E4645292F50 /* TendartsSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

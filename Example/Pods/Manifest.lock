@@ -1,7 +1,7 @@
 PODS:
-  - TendartsSDK (1.1.0):
-    - TendartsSDK/Normal (= 1.1.0)
-  - TendartsSDK/Normal (1.1.0)
+  - TendartsSDK (1.1.1):
+    - TendartsSDK/Normal (= 1.1.1)
+  - TendartsSDK/Normal (1.1.1)
 
 DEPENDENCIES:
   - TendartsSDK (from `../`)
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TendartsSDK: 9ea7a0a9667a9a270bcea23e994ae83e8bc851ff
+  TendartsSDK: a620678e65b53df7125afdf5d34ddb1e6730a095
 
 PODFILE CHECKSUM: 90b0554441398c084766f957364ceeffe93901d3
 
