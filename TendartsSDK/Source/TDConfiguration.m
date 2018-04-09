@@ -165,7 +165,7 @@ NSString * const TD_ALL_NOTIFICATIONS_READ = @"TendartsAllNotificationsRead";
 
 + (BOOL)getDisableAllNotificationsRead {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    return [userDefaults objectForKey: TD_ALL_NOTIFICATIONS_READ];
+    return [userDefaults boolForKey: TD_ALL_NOTIFICATIONS_READ];
 }
 
 @end

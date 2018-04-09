@@ -19,7 +19,7 @@ static NSString * const kRequestProcess = @"kRequestProcess";
         self.sUrl = [aDecoder decodeObjectForKey: kRequestURL];
         self.method = [aDecoder decodeObjectForKey: kRequestMethod];
         self.requestId = [aDecoder decodeObjectForKey: kRequestId];
-        self.inProcess = [aDecoder decodeObjectForKey: kRequestProcess];
+        self.inProcess = [aDecoder decodeBoolForKey: kRequestProcess];
     }
     
     return self;

@@ -13,11 +13,6 @@
 #import "TDDownloadDelegate.h"
 #import "TDAPIService.h"
 
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-#ifdef _IOS_10_FUNCTIONALITY
-#import <UserNotifications/UserNotifications.h>
-#endif
-
 @implementation TDUIApplication
 
 // dummy selector to check if tend darts is already installed
@@ -90,7 +85,9 @@
         if (notification.nativeSilent && notification.category && state != UIApplicationStateActive) {
             
             UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
+            #ifdef _IOS_10_FUNCTIONALITY
             [TDUIApplication showNotificationButtonsIfNeeded: userInfo content: content];
+            #endif
             content.title = notification.title;
             content.body = notification.siletMessage;
             content.userInfo = userInfo;
@@ -148,7 +145,9 @@
 
 				
 				UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
+                #ifdef _IOS_10_FUNCTIONALITY
                 [TDUIApplication showNotificationButtonsIfNeeded: userInfo content: content];
+                #endif
 				content.title = notification.title;
 				content.body = notification.message;
 				content.userInfo = userInfo;
@@ -539,8 +538,8 @@ static NSArray *_delegateChilds = nil;
 	}
 }
 
-+ (void)showNotificationButtonsIfNeeded: (NSDictionary*)userInfo content:(UNMutableNotificationContent *)content {
-    #ifdef _IOS_10_FUNCTIONALITY
+#ifdef _IOS_10_FUNCTIONALITY
++ (void)showNotificationButtonsIfNeeded:(NSDictionary *)userInfo content:(UNMutableNotificationContent *)content {
     NSString *replies = [NSString stringWithFormat:@"%@", [[userInfo objectForKey:@"aps"] objectForKey:@"category"]];
     if (!replies) {
         return;
@@ -608,9 +607,10 @@ static NSArray *_delegateChilds = nil;
         [center setNotificationCategories: notificationCategories];
         content.categoryIdentifier = categoryIdentifier;
     }
-    #endif
 }
+#endif
 
+#ifdef _IOS_10_FUNCTIONALITY
 + (NSMutableSet<UNNotificationCategory*>*)allExistingCategories {
     __block NSMutableSet* allNotificationCategories;
     dispatch_semaphore_t stopSignal = dispatch_semaphore_create(0);
@@ -628,6 +628,7 @@ static NSArray *_delegateChilds = nil;
     
     return allNotificationCategories;
 }
+#endif
 
 + (void)installTenddartsOnApplication: (Class)application {
 	//check if already installed
