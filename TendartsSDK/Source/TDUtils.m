@@ -4,7 +4,7 @@
 #import "TDUtils.h"
 #import "LocationUtils.h"
 
-NSString* const TD_VERSION = @"1.1.1";
+NSString* const TD_VERSION = @"1.2.0";
 
 @implementation TDUtils
 

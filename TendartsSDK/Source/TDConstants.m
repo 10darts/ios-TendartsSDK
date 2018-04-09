@@ -44,6 +44,10 @@ static TDConstants * _instance = nil;
 	return [NSString stringWithFormat:@"%@/api/v1/pushes/%@/follow/",_baseUrl,notificationId];    
 }
 
+- (NSString *)getNotificationRead:(NSString *)notificationId {
+    return [NSString stringWithFormat:@"%@/api/v1/pushes/%@/read/",_baseUrl,notificationId];
+}
+
 - (NSString *)getAllNotificationsRead {
 	return [NSString stringWithFormat:@"%@/api/v1/pushes/all_read/",_baseUrl];    
 }
@@ -62,7 +66,10 @@ static TDConstants * _instance = nil;
 
 - (NSString *)getEvents {
 	return [NSString stringWithFormat:@"%@/api/v1/events/",_baseUrl];
+}
 
+- (NSString *)getReplies:(NSString *)selectedId {
+    return [NSString stringWithFormat:@"%@/api/v1/replies/%@/selected/", _baseUrl, selectedId];
 }
 
 - (NSString *)buildUrlOfType:(NSString *)type andId:(NSString *)identifier {

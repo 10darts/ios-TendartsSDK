@@ -121,6 +121,4 @@ static NSString * const kDeviceDisabled = @"kDeviceDisabled";
     return [self.token hash] ^ [self.platform hash] ^ [self.model hash] ^ [self.version hash] ^ [self.sdk hash] ^ [self.language hash] ^ [self.country hash] ^ [self.position hash] ^ [self.persona hash];
 }
 
-
 @end
-

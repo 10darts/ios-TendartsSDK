@@ -6,6 +6,7 @@
 #define TDNOTIFICATIONDEFS
 #define TDN_DEEP_URL @"dl"
 #define TDN_MESSAGE @"body"
+#define TDN_SILENT_MESSAGE @"m"
 #define TDN_TITLE @"title"
 #define TDN_ORIGIN @"org"
 #define TDN_SILENT @"sil"
@@ -18,6 +19,8 @@
 #define TDN_CONTENT_TYPE @"dst"
 #define TDN_IMAGE @"img"
 #define TDN_USER_DATA @"ctm"
+#define TDN_CATEGORY @"category"
+#define TDN_SILENT_NATIVE @"content-available"
 
 #endif
 
@@ -44,16 +47,27 @@
 		NSObject * current = [self.data objectForKey:@"aps"];
         
 		if (current) {
+            self.category = [(NSDictionary*)current objectForKey:TDN_CATEGORY];
+            
+            NSNumber* nativeSilent = [(NSDictionary*)current objectForKey:TDN_SILENT_NATIVE];
+            if (nativeSilent && [nativeSilent integerValue] == 1) {
+                self.nativeSilent = YES;
+            } else {
+                self.nativeSilent = NO;
+            }
 			current = [(NSDictionary *)current objectForKey:@"alert"];
 			if ([[current class] isSubclassOfClass:[NSDictionary class]]) {
 				self.message = [(NSDictionary*)current objectForKey:TDN_MESSAGE];
 				self.title = [(NSDictionary*)current objectForKey:TDN_TITLE];
 				
 			} else {
+                self.title =  [dict objectForKey:TDN_TITLE];
                 self.message = (NSString *)current;
 			}
 		}
 		
+        self.siletMessage = [dict objectForKey:TDN_SILENT_MESSAGE];
+        
 		self.read = false;
 		self.deepLink = [dict objectForKey:TDN_DEEP_URL];
 		self.timeStamp = [NSDate date];

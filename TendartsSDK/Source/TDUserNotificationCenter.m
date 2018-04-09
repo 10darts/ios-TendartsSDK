@@ -2,7 +2,12 @@
 #import "TendartsSDK.h"
 #import "TDUserNotificationCenter.h"
 #import "TDClassUtils.h"
-#import "TendartsSDK.h"
+#import "TDSDKExtension.h"
+#import "TDReplySelectedHandler.h"
+#import "TDConfiguration.h"
+#import "TDConstants.h"
+#import "TDNotification.h"
+#import "TDUIApplication.h"
 
 #ifdef _IOS_10_FUNCTIONALITY
 #import <UserNotifications/UserNotifications.h>
@@ -34,7 +39,6 @@ static UNUserNotificationCenter * currentNC = nil;
 	NSArray * childs = getChilds(existingDelegate);
 	
 	//install our methods:
-	
 	installOverrideMethod([TDUserNotificationCenter class],
 						  @selector(TDUNC:willPresentNotification:withCompletionHandler:),
 						  existingDelegate,
@@ -66,6 +70,42 @@ static UNUserNotificationCenter * currentNC = nil;
 		 didReceiveNotificationResponse:(UNNotificationResponse *)response
 				  withCompletionHandler:(void(^)(void))completionHandler {
 	NSLog(@"td: didReceiveNotificationResponse");
+    
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    
+    NSArray *current = [userInfo objectForKey:@"r"];
+    
+    if (current) {
+        for (NSDictionary *buttonDict in current) {
+            if ([response.actionIdentifier isEqualToString: [buttonDict objectForKey:@"t"]]) {
+                #if !(IN_APP_EXTENSION)
+                if ([[buttonDict objectForKey:@"p"] containsString:@"://"]) {
+                    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: [buttonDict objectForKey:@"p"]] options: @{} completionHandler:^(BOOL success) {
+                        // Open URL
+                    }];
+                    //[[UIApplication sharedApplication] openURL: [NSURL URLWithString: [buttonDict objectForKey:@"p"]]];
+                }
+                [TendartsSDK actionSelected: [buttonDict objectForKey:@"id"]];
+                NSString *code = [TDConfiguration getPushCode];
+                NSString *device = [[TDConstants instance]buildUrlOfType:URL_TYPE_DEVICES andId:code];
+                [TDReplySelectedHandler replySelected: [buttonDict objectForKey:@"id"]
+                                               device: device
+                                            onSuccess: ^{
+                                                //success
+                                            }
+                                              onError: ^(NSString * _Nullable error) {
+                                                  //error
+                                              }];
+                
+                TDNotification * notification = [[TDNotification alloc]initWithDictionary:userInfo];
+                [TendartsSDK onNotificationOpened:notification withHandler:^{
+                }];
+                #endif
+                break;
+            }
+        }
+    }
+    
 	completionHandler();
 }
 

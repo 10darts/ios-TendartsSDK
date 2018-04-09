@@ -11,6 +11,7 @@
 #import "TDConfiguration.h"
 #import "TDAccessHandler.h"
 #import "TDDownloadDelegate.h"
+#import "TDAPIService.h"
 
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #ifdef _IOS_10_FUNCTIONALITY
@@ -78,14 +79,38 @@
 	BOOL runHandler = true;
 	
 	if ([TDNotification isTendartsNotification: userInfo] ) {
-		TDNotification * notification = [[TDNotification alloc]initWithDictionary:userInfo];
+       TDNotification * notification = [[TDNotification alloc]initWithDictionary:userInfo];
+        
 		UIApplicationState state = 7777777;
 #if !(IN_APP_EXTENSION)
 		state = [UIApplication sharedApplication].applicationState;
 #endif
 		static int pendingResults = 0;
 		
-		if (state == UIApplicationStateActive ) {
+        if (notification.nativeSilent && notification.category && state != UIApplicationStateActive) {
+            
+            UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
+            [TDUIApplication showNotificationButtonsIfNeeded: userInfo content: content];
+            content.title = notification.title;
+            content.body = notification.siletMessage;
+            content.userInfo = userInfo;
+            content.sound = [UNNotificationSound defaultSound];
+            
+            UNNotificationRequest *request =[UNNotificationRequest requestWithIdentifier:notification.nId content:content trigger:[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.3 repeats:NO]];
+            [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"TD: error in silent Category notification: %@", error);
+                } else {
+                    NSLog(@"TD: added silent Category notification ok");
+                }
+            }];
+            
+            if (completionHandler)
+                completionHandler(UIBackgroundFetchResultNewData);
+            return;
+        }
+        
+		if (state == UIApplicationStateActive) {
 			if (notification.confirm) {
 				runHandler = false;
 				pendingResults++;
@@ -122,7 +147,8 @@
 				 }];
 
 				
-				UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc]init];
+				UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
+                [TDUIApplication showNotificationButtonsIfNeeded: userInfo content: content];
 				content.title = notification.title;
 				content.body = notification.message;
 				content.userInfo = userInfo;
@@ -239,10 +265,7 @@
 				[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 #endif
 			}
-			
-			
-			
-			
+
 			//not working, present a dialog:
 			runHandler = false;
 			pendingResults++;
@@ -300,20 +323,11 @@
 #if !(IN_APP_EXTENSION)
 			[[[[UIApplication sharedApplication] keyWindow] rootViewController]presentViewController:alert animated:YES completion:nil];
 #endif
-			
-			
-			
-			
-
-			
-			
 			if (runHandler &&  completionHandler) {
 				completionHandler(UIBackgroundFetchResultNewData);
 			}
 			
-		}
-		
-		else if (application.applicationState == UIApplicationStateBackground) {
+		} else if (application.applicationState == UIApplicationStateBackground) {
 			
 			//app is in background, check content available key
 			//todo send received
@@ -367,12 +381,6 @@
 		}
 	}
 	//td2
-	
-	
-	
-	
-	
-	
 	if (runHandler &&  completionHandler) {
 		completionHandler(UIBackgroundFetchResultNewData);
 	}
@@ -425,6 +433,8 @@ static BOOL accessSent = false;
 	if ([self respondsToSelector:@selector(TDDidBecomeActive:)]) {
 		[self TDDidBecomeActive:application];
 	}
+    
+    [TDAPIService processQueue];
 }
 
 - (void)TDWillResignActive:(UIApplication *)application {
@@ -529,6 +539,96 @@ static NSArray *_delegateChilds = nil;
 	}
 }
 
++ (void)showNotificationButtonsIfNeeded: (NSDictionary*)userInfo content:(UNMutableNotificationContent *)content {
+    #ifdef _IOS_10_FUNCTIONALITY
+    NSString *replies = [NSString stringWithFormat:@"%@", [[userInfo objectForKey:@"aps"] objectForKey:@"category"]];
+    if (!replies) {
+        return;
+    }
+    
+    NSMutableSet<UNNotificationCategory*>* notificationCategories = [self allExistingCategories];
+     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    
+    NSArray *current = [userInfo objectForKey:@"r"];
+    
+    if (current) {
+        NSMutableArray *actions =  [[NSMutableArray alloc] init];
+        NSString *categoryIdentifier = [[NSProcessInfo processInfo] globallyUniqueString];
+        
+        if (notificationCategories) {
+            NSMutableArray *newButtons = [NSMutableArray new];
+            for (NSDictionary *buttonDict in current) {
+                [newButtons addObject: [buttonDict objectForKey:@"t"]];
+            }
+            for(UNNotificationCategory *allExistingCategories in notificationCategories) {
+                NSMutableArray *oldButtons = [NSMutableArray new];
+                for(UNNotificationAction *action in allExistingCategories.actions) {
+                    [oldButtons addObject: action.identifier];
+                }
+                NSSet *set1 = [NSSet setWithArray: newButtons];
+                NSSet *set2 = [NSSet setWithArray: oldButtons];
+                
+                if ([set1 isEqualToSet:set2]) {
+                    [center setNotificationCategories: notificationCategories];
+                    break;
+                }
+            }
+        }
+        
+        for (NSDictionary *buttonDict in current) {
+            UNNotificationAction* action = [UNNotificationAction
+                                                  actionWithIdentifier:[buttonDict objectForKey:@"t"]
+                                                  title:[buttonDict objectForKey:@"t"]
+                                                  options:UNNotificationActionOptionForeground];
+            [actions addObject: action];
+        }
+        
+        // Create the category with the custom actions.
+        UNNotificationCategory* category = [UNNotificationCategory
+                                                          categoryWithIdentifier: categoryIdentifier
+                                                          actions: actions
+                                                          intentIdentifiers:@[]
+                                                          options:UNNotificationCategoryOptionCustomDismissAction];
+        
+        if (notificationCategories && notificationCategories.count > 0) {
+            NSMutableSet *newCategorySet = [NSMutableSet new];
+            for(UNNotificationCategory *allExistingCategories in notificationCategories) {
+                    [newCategorySet addObject:allExistingCategories];
+            }
+            
+            [newCategorySet addObject:category];
+            notificationCategories = newCategorySet;
+        }
+        else
+            notificationCategories = [[NSMutableSet alloc] initWithArray:@[category]];
+        
+        
+        // Register the notification categories.
+       
+        [center setNotificationCategories: notificationCategories];
+        content.categoryIdentifier = categoryIdentifier;
+    }
+    #endif
+}
+
++ (NSMutableSet<UNNotificationCategory*>*)allExistingCategories {
+    __block NSMutableSet* allNotificationCategories;
+    dispatch_semaphore_t stopSignal = dispatch_semaphore_create(0);
+    UNUserNotificationCenter *notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
+    
+    [notificationCenter getNotificationCategoriesWithCompletionHandler:^(NSSet<UNNotificationCategory *> *categories) {
+        
+        allNotificationCategories = [categories mutableCopy];
+        
+        dispatch_semaphore_signal(stopSignal);
+        
+    }];
+    
+    dispatch_semaphore_wait(stopSignal, DISPATCH_TIME_FOREVER);
+    
+    return allNotificationCategories;
+}
+
 + (void)installTenddartsOnApplication: (Class)application {
 	//check if already installed
 	if (targetHasMethod(application, @selector(TDAlreadyInstalled))) {
@@ -546,7 +646,6 @@ static NSArray *_delegateChilds = nil;
 	//for ios >= 10 install UserNotifications
 	if (NSClassFromString(@"UNUserNotificationCenter")) {
 		[TDUserNotificationCenter installTDUserNotifications];
-		
 	}
 }
 

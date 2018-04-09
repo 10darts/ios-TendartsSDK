@@ -1,6 +1,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TDRequest.h"
+#import "TDRequestQueue.h"
+
 #ifndef TD_COMMUNICATION_HANDLERS_DEFINED
 #define TD_COMMUNICATION_HANDLERS_DEFINED
 typedef void (^TDCHandleSuccess)(NSDictionary* json , NSData *data, NSInteger statusCode);
@@ -65,5 +68,19 @@ FOUNDATION_EXPORT NSString *const REQUEST_METHOD_PATCH;
                 method:(NSString *)aMethod
       onSuccessHandler:(TDCHandleSuccess)successHandler
         onErrorHandler:(TDCHandleError)errorHandler;
+
++ (void)replySelectedWithData:(NSData *)aData
+                          url:(NSString *)aUrl
+                       method:(NSString *)aMethod
+             onSuccessHandler:(TDCHandleSuccess)successHandler
+               onErrorHandler:(TDCHandleError)errorHandler;
+
++ (void) processQueue;
+
++ (void) processRequestQueue:(TDRequest *)request
+            OnSuccessHandler:(TDCHandleSuccess)successHandler
+              onErrorHandler:(TDCHandleError)errorHandler;
+
++ (BOOL)isInternetNotAvailable;
 
 @end

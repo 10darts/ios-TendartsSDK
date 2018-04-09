@@ -37,45 +37,43 @@ BOOL targetHasMethod( Class targetClass, SEL method) {
 }
 
 Class searchAncestorImplementingProtocol(Class child, Protocol* protocol) {
-	if (!class_conformsToProtocol(child, protocol)) {
-		Class parent = [child superclass];
-		if ( parent == nil) {
-			//finished, no ancestor conforms to protocol
-			return nil;
-		}
-		//if current child doesn't conforms protocol, search parent
-		return  searchAncestorImplementingProtocol(parent, protocol);
-    } else {
-		return child;
-	}
+    if (!class_conformsToProtocol(child, protocol)) {
+        Class parent = [child superclass];
+        if (parent == nil) {
+            //finished, no ancestor conforms to protocol
+            return nil;
+        }
+        //if current child doesn't conforms protocol, search parent
+        Class foundClass =  searchAncestorImplementingProtocol(parent, protocol);
+        if (foundClass)
+            return foundClass;
+        return child;
+    }
+    return child;
 }
 
 NSArray* getChilds(Class parentClass) {
-	
-	int count = objc_getClassList(NULL, 0);
-	
-	Class *classes = (Class*)malloc(sizeof(Class)* count);
-	
-	objc_getClassList(classes, count);
-	
-	NSMutableArray *rv = [NSMutableArray array];
-	
-	//for each class declared
-	for (int i = 0; i < count; i++) {
-		//get the parent class and check if is the searched parent class
-		Class parent = classes[i];
-		do
-		{
-			parent = class_getSuperclass(parent);
-		} while(parent != nil  && parent != parentClass);
-		
-		if (parent != nil) {
-			[rv addObject:classes[i]];
-		}
-	}
-	
-	free(classes);
-	return rv;
+    int numClasses = objc_getClassList(NULL, 0);
+    Class *classes = (Class*)malloc(sizeof(Class) * numClasses);
+    
+    objc_getClassList(classes, numClasses);
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    for (NSInteger i = 0; i < numClasses; i++) {
+        Class superClass = classes[i];
+        
+        while(superClass && superClass != parentClass) {
+            superClass = class_getSuperclass(superClass);
+        }
+        
+        if (superClass)
+            [result addObject:classes[i]];
+    }
+    
+    free(classes);
+    
+    return result;
 }
 
 // override on the proper child or in the parent
