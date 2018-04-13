@@ -10,6 +10,7 @@ NSString * const TD_TOKEN_VERSION = @"TendartsTokenAndVersion";
 NSString * const TD_USER_CODE = @"TendartsUserCode";
 NSString * const TD_GEOSTATS = @"TendartsGeostats";
 NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
+NSString * const TD_ALL_NOTIFICATIONS_READ = @"TendartsAllNotificationsRead";
 
 + (NSUserDefaults* )getSharedUserDefaults: (NSString * _Nonnull )groupName {
 	if ([TDUtils iOSVersion]>=10) {
@@ -149,7 +150,22 @@ NSString * const TD_SHARED_GROUP = @"TendartsSharedGroup";
 + (NSString *)getSharedGroup {
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	return [userDefaults objectForKey:TD_SHARED_GROUP];
+}
 
++ (void)saveDisableAllNotificationsRead:(BOOL)disableRead {
+    @try
+    {
+        NSUserDefaults* userDefaults =  [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:disableRead forKey:TD_ALL_NOTIFICATIONS_READ];
+        [userDefaults synchronize];
+    } @catch (NSException *exception) {
+        NSLog(@"TD configuration: could not disable read value: %@",exception.reason);
+    }
+}
+
++ (BOOL)getDisableAllNotificationsRead {
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults boolForKey: TD_ALL_NOTIFICATIONS_READ];
 }
 
 @end

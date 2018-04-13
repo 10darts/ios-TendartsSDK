@@ -28,4 +28,7 @@
 + (NSString * _Nonnull)getSharedGroup;
 + (void)saveSharedGroup:(NSString * _Nonnull)group;
 
++ (void)saveDisableAllNotificationsRead:(BOOL)disableRead;
++ (BOOL)getDisableAllNotificationsRead;
+
 @end

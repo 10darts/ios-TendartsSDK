@@ -11,8 +11,13 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 
 @interface TDNotificationReadHandler : NSObject
 
-+ (void)notificationReadedWithCode:(NSString *)aCode
-                         onSuccess:(TDOnSuccess)successHandler
-                           onError:(TDOnError)errorHandler;
++ (void)allNotificationReadedWithCode:(NSString *)aCode
+                            onSuccess:(TDOnSuccess)successHandler
+                              onError:(TDOnError)errorHandler;
+
++ (void)notificationReadedWithDeviceCode:(NSString *)aCode
+                          notificationId:(NSString *)aId
+                               onSuccess:(TDOnSuccess)successHandler
+                                 onError:(TDOnError)errorHandler;
 
 @end

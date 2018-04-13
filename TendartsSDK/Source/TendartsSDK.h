@@ -22,6 +22,8 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 - (void)onNotificationOpened: (TDNotification* _Nonnull)notification;
 
 - (void)onLogEventWithCategory:(NSString *_Nullable)category type:(NSString *_Nullable)type andMessage:(NSString *_Nullable)message;
+
+- (void)onActionSelected: (NSString *_Nullable)selectedId;
 @end
 
 @interface TendartsSDK : NSObject
@@ -30,18 +32,27 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 
 + (id _Nonnull )initTendartsUsingLaunchOptions:(NSDictionary*_Nullable)launchOptions withAPIKey: (NSString * _Nonnull)apiKey andConfig: (NSDictionary*_Nullable)config andSharedGroup:(NSString * _Nonnull)group ;
 
-+ (void)resetBadge: (TDOnSuccess _Nullable )successHandler onError: (TDOnError _Nullable )errorHandler;
++ (void)resetBadge: (TDOnSuccess _Nullable )successHandler
+           onError: (TDOnError _Nullable )errorHandler;
 
 + (void)linkDeviceWithUserIdentifier:(NSString * _Nonnull)userId
 						   onSuccess: (TDOnSuccess _Nullable )successHandler
 							 onError: (TDOnError _Nullable )errorHandler;
 
++ (void)disableAutomaticallyReadAllNotification:(BOOL)disable;
+
++ (BOOL)isAutomaticallyReadAllNotificationDisabled;
+
++ (void)markNotificationRead:(NSString *_Nullable)notificationId
+                   onSuccess:(TDOnSuccess _Nullable)successHandler
+                     onError:(TDOnError _Nullable)errorHandler;
+
 + (void)modifyUserEmail:(NSString *_Nullable)email
 			  firstName:(NSString *_Nullable)firstName
 			   lastName:(NSString *_Nullable)lastName
 			   password:(NSString *_Nullable)password
-			  onSuccess: (TDOnSuccess _Nullable )successHandler
-				onError: (TDOnError _Nullable )errorHandler;
+			  onSuccess: (TDOnSuccess _Nullable)successHandler
+				onError: (TDOnError _Nullable)errorHandler;
 
 + (void)sendDeviceKey:(NSString *_Nullable)aKey
                  kind:(NSNumber *_Nullable)aKind

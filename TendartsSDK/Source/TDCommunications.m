@@ -13,11 +13,9 @@ static TDHTTPClient *_httpClient;
     return _httpClient;
 }
 
-+ (void)sendData:(NSData *)data
-           toURl:(NSString *)sUrl
-      withMethod: (NSString *)method
-onSuccessHandler: (TDCHandleSuccess)successHandler
-  onErrorHandler:(TDCHandleError)errorHandler {
++ (void)sendRequest:(TDRequest *)tdRequest
+   onSuccessHandler:(TDCHandleSuccess)successHandler
+     onErrorHandler:(TDCHandleError)errorHandler {
 	NSString * apiKey =[TDConfiguration getAPIKey];
 	if (apiKey == nil) {
 		return;
@@ -26,9 +24,9 @@ onSuccessHandler: (TDCHandleSuccess)successHandler
         NSURLSession* session = [self.httpClient sessionWithToken:apiKey
                                                          language: [TDUtils currentLanguage]];
         
-        NSMutableURLRequest* request = [self.httpClient requestWithMethod: method
-                                                                     data: data
-                                                                      url: sUrl];
+        NSMutableURLRequest* request = [self.httpClient requestWithMethod: tdRequest.method
+                                                                     data: tdRequest.data
+                                                                      url: tdRequest.sUrl];
 		
 		NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

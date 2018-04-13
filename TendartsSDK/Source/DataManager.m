@@ -42,6 +42,31 @@
     return object;
 }
 
+#pragma mark - TDRequest
+
++ (NSArray *)request {
+    NSArray *request = [self loadRequest];
+    return request;
+}
+
+- (NSArray *)loadRequest {
+    NSData *encodedObject = [self dataForKey: kRequest];
+    NSArray *object = [self unarchiveObject: encodedObject];
+    return object;
+}
+
+#pragma mark - Queue Status
+
++ (void)queueStatus:(BOOL)aValue {
+    NSUserDefaults *defaults = [self userDefaults];
+    [defaults setBool:aValue forKey: kQueue];
+    [defaults synchronize];
+}
+
++ (BOOL)queueStatus {
+    return NO;
+}
+
 #pragma mark - Utils
 
 - (nullable id)unarchiveObject:(NSData *) encodedObject {
@@ -60,6 +85,4 @@
     return [[self userDefaults] objectForKey: aKey];
 }
 
-
 @end
-

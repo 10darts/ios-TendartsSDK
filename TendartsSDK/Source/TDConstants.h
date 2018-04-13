@@ -17,11 +17,13 @@
 - (NSString *)personasUrl:(NSString *)aCode;
 - (NSString *)getNotificationReceivedUrl:(NSString *)notificationId;
 - (NSString *)getNotificationClickedUrl:(NSString *)notificationId;
+- (NSString *)getNotificationRead:(NSString *)notificationId;
 - (NSString *)getAllNotificationsRead;
 - (NSString *)getLinkDevice;
 - (NSString *)getDeviceKeys;
 - (NSString *)getPersonaKeys;
 - (NSString *)getEvents;
+- (NSString *)getReplies:(NSString *)selectedId;
 - (NSString *)buildUrlOfType:(NSString *)type andId:(NSString *)identifier;
 
 @end

@@ -89,7 +89,21 @@ static double lastTimestamp = 0;
     
     [TDNotificationOpenHandler notificationOpenWithNotificationId: notification.nId
                                                           handler: ^{
-                                                              onComplete();
+                                                              if ([TDConfiguration getDisableAllNotificationsRead]) {
+                                                                  onComplete();
+                                                                  return;
+                                                              }
+                                                              [self resetBadge:^{
+                                                                  onComplete();
+                                                                  [TendartsSDK logEventWithCategory: @"NOTIFICATION"
+                                                                                               type: @"all notification settled as readed automatically"
+                                                                                         andMessage: @"all notification settled as readed automatically"];
+                                                              } onError:^(NSString * _Nullable error) {
+                                                                  onComplete();
+                                                                  [TendartsSDK logEventWithCategory: @"NOTIFICATION"
+                                                                                               type: @"error reading all notification automatically"
+                                                                                         andMessage: @"error reading all notification automatically"];
+                                                              }];
                                                           }];
 }
 
@@ -106,8 +120,8 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 
 + (BOOL)onAppGoingToBackground {
 	if (lastTimestamp != 0 && lastCode != nil) {
-		NSString *code = [TDConfiguration getPushCode];
         NSString *push = [[TDConstants instance] buildUrlOfType:URL_TYPE_PUSH andId:lastCode];
+        NSString *code = [TDConfiguration getPushCode];
         NSString *device = [[TDConstants instance]buildUrlOfType:URL_TYPE_DEVICES andId:code];
         int seconds = ceil([[NSDate date] timeIntervalSince1970] - lastTimestamp);
         NSString *value = [NSString stringWithFormat:@"%d", seconds];
@@ -142,6 +156,13 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 	if (delegate != nil && [delegate respondsToSelector:@selector(onNotificationReceived:)]) {
 		[delegate onNotificationReceived:notification];
 	}
+}
+
++ (void)actionSelected:(NSString * _Nonnull)selectedId {
+    id<TendartsDelegate> delegate = [TendartsSDK getDelegate];
+    if (delegate != nil && [delegate respondsToSelector:@selector(onActionSelected:)]) {
+        [delegate onActionSelected:selectedId];
+    }
 }
 
 + (void)onNotificationReceived:(TDNotification *)notification
@@ -180,29 +201,23 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
 #endif
 	NSString *code = [TDConfiguration getPushCode];
 
-    [TDNotificationReadHandler notificationReadedWithCode: code
-                                                onSuccess: ^{
-                                                    if (successHandler) {
-                                                        successHandler();
-                                                    }
-                                                }
-                                                  onError: ^(NSString * _Nullable error) {
-                                                      if (errorHandler) {
-                                                          errorHandler(error);
-                                                      }
-                                                  }];
+    [TDNotificationReadHandler allNotificationReadedWithCode: code
+                                                   onSuccess: ^{
+                                                       if (successHandler) {
+                                                           successHandler();
+                                                       }
+                                                   }
+                                                     onError: ^(NSString * _Nullable error) {
+                                                         if (errorHandler) {
+                                                             errorHandler(error);
+                                                         }
+                                                     }];
 }
 
 + (void)linkDeviceWithUserIdentifier:(NSString *)userId
                            onSuccess:(TDOnSuccess _Nullable )successHandler
                              onError:(TDOnError _Nullable )errorHandler {
-    Persona *persona = DataManager.persona;
-    
-    if (![persona isClientDataNew: userId]) {
-        return;
-    }
-    
-	NSString *code = [TDConfiguration getPushCode];
+    NSString *code = [TDConfiguration getPushCode];
     
     if (code == nil) {
         [TendartsSDK logEventWithCategory: @"USER"
@@ -211,6 +226,12 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
         return;
     }
     
+    Persona *persona = DataManager.persona;
+    
+    if (![persona isClientDataNew: userId]) {
+        return;
+    }
+
     [TDLinksHandler linkWithCode: code
                           userId: userId
                        onSuccess: ^{
@@ -226,6 +247,38 @@ static UIBackgroundTaskIdentifier backgroundTask = 0;
                                  errorHandler(error);
                              }
                          }];
+}
+
++ (void)disableAutomaticallyReadAllNotification:(BOOL)disable {
+    [TDConfiguration saveDisableAllNotificationsRead: disable];
+}
+
++ (BOOL)isAutomaticallyReadAllNotificationDisabled {
+    return [TDConfiguration getDisableAllNotificationsRead];
+}
+
++ (void)markNotificationRead:(NSString *)notificationId
+                   onSuccess:(TDOnSuccess)successHandler
+                     onError:(TDOnError)errorHandler {
+    NSString *code = [TDConfiguration getPushCode];
+    NSString *device = [[TDConstants instance] buildUrlOfType: URL_TYPE_DEVICES andId: code];
+    [TDNotificationReadHandler notificationReadedWithDeviceCode: device
+                                                 notificationId: notificationId
+                                                      onSuccess: ^{
+                                                          if (successHandler) {
+                                                              successHandler();
+                                                          }
+                                                          #if !(IN_APP_EXTENSION)
+                                                          long badge = [UIApplication sharedApplication].applicationIconBadgeNumber - 1;
+                                                          if (badge >= 0) {
+                                                              [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+                                                          }
+                                                          #endif
+                                                      } onError: ^(NSString * _Nullable error) {
+                                                          if (errorHandler) {
+                                                              errorHandler(error);
+                                                          }
+                                                      }];
 }
 
 + (void)modifyUserEmail:(NSString *)email
