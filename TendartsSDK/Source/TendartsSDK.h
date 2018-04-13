@@ -32,12 +32,12 @@ typedef void(^TDOnError)(NSString * _Nullable error);
 
 + (id _Nonnull )initTendartsUsingLaunchOptions:(NSDictionary*_Nullable)launchOptions withAPIKey: (NSString * _Nonnull)apiKey andConfig: (NSDictionary*_Nullable)config andSharedGroup:(NSString * _Nonnull)group ;
 
-+ (void)resetBadge: (TDOnSuccess _Nullable )successHandler onError: (TDOnError _Nullable )errorHandler;
++ (void)resetBadge: (TDOnSuccess _Nullable )successHandler
+           onError: (TDOnError _Nullable )errorHandler;
 
 + (void)linkDeviceWithUserIdentifier:(NSString * _Nonnull)userId
 						   onSuccess: (TDOnSuccess _Nullable )successHandler
 							 onError: (TDOnError _Nullable )errorHandler;
-
 
 + (void)disableAutomaticallyReadAllNotification:(BOOL)disable;
 

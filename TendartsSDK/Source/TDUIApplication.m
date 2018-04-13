@@ -84,10 +84,11 @@
 		
         if (notification.nativeSilent && notification.category && state != UIApplicationStateActive) {
             
-            UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
             #ifdef _IOS_10_FUNCTIONALITY
+            
+            UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
             [TDUIApplication showNotificationButtonsIfNeeded: userInfo content: content];
-            #endif
+            
             content.title = notification.title;
             content.body = notification.siletMessage;
             content.userInfo = userInfo;
@@ -104,6 +105,7 @@
             
             if (completionHandler)
                 completionHandler(UIBackgroundFetchResultNewData);
+            #endif
             return;
         }
         
@@ -145,9 +147,9 @@
 
 				
 				UNMutableNotificationContent* content =  [[UNMutableNotificationContent alloc] init];
-                #ifdef _IOS_10_FUNCTIONALITY
+                
                 [TDUIApplication showNotificationButtonsIfNeeded: userInfo content: content];
-                #endif
+                
 				content.title = notification.title;
 				content.body = notification.message;
 				content.userInfo = userInfo;
@@ -630,6 +632,7 @@ static NSArray *_delegateChilds = nil;
 }
 #endif
 
+
 + (void)installTenddartsOnApplication: (Class)application {
 	//check if already installed
 	if (targetHasMethod(application, @selector(TDAlreadyInstalled))) {
@@ -645,9 +648,11 @@ static NSArray *_delegateChilds = nil;
 	putMethodInTarget([TDUIApplication class], @selector(setTDDelegate:), application, @selector(setDelegate:));
 	
 	//for ios >= 10 install UserNotifications
+    #ifdef _IOS_10_FUNCTIONALITYX
 	if (NSClassFromString(@"UNUserNotificationCenter")) {
 		[TDUserNotificationCenter installTDUserNotifications];
 	}
+    #endif
 }
 
 @end
