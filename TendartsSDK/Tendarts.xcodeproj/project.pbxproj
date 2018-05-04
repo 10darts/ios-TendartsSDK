@@ -125,6 +125,10 @@
 		965C43AD1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43AB1FBE2A8900E05A2D /* TDDeviceHandler.m */; };
 		965C43AE1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43AB1FBE2A8900E05A2D /* TDDeviceHandler.m */; };
 		965C43AF1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 965C43AB1FBE2A8900E05A2D /* TDDeviceHandler.m */; };
+		9682120B209C301800A04E1C /* TDReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 96821209209C301800A04E1C /* TDReachability.h */; };
+		9682120C209C301800A04E1C /* TDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9682120A209C301800A04E1C /* TDReachability.m */; };
+		9682120D209C301800A04E1C /* TDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9682120A209C301800A04E1C /* TDReachability.m */; };
+		9682120E209C301800A04E1C /* TDReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9682120A209C301800A04E1C /* TDReachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +218,8 @@
 		965C43A51FBE219B00E05A2D /* TDLinksHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDLinksHandler.m; sourceTree = "<group>"; };
 		965C43AA1FBE2A8900E05A2D /* TDDeviceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDDeviceHandler.h; sourceTree = "<group>"; };
 		965C43AB1FBE2A8900E05A2D /* TDDeviceHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDDeviceHandler.m; sourceTree = "<group>"; };
+		96821209209C301800A04E1C /* TDReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDReachability.h; sourceTree = "<group>"; };
+		9682120A209C301800A04E1C /* TDReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDReachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +331,8 @@
 				965C438C1FBE203200E05A2D /* TDNotificationReadHandler.h */,
 				965C438D1FBE203200E05A2D /* TDNotificationReadHandler.m */,
 				965C43921FBE206200E05A2D /* TDNotificationReceivedHandler.h */,
+				96821209209C301800A04E1C /* TDReachability.h */,
+				9682120A209C301800A04E1C /* TDReachability.m */,
 				965C43931FBE206200E05A2D /* TDNotificationReceivedHandler.m */,
 				965C43981FBE20AB00E05A2D /* TDAccessHandler.h */,
 				965C43991FBE20AB00E05A2D /* TDAccessHandler.m */,
@@ -374,6 +382,7 @@
 				965C439A1FBE20AB00E05A2D /* TDAccessHandler.h in Headers */,
 				9637BE561FD6F5EC008780BC /* DataManager.h in Headers */,
 				965C43A61FBE219B00E05A2D /* TDLinksHandler.h in Headers */,
+				9682120B209C301800A04E1C /* TDReachability.h in Headers */,
 				9637BE531FD6F5E4008780BC /* Device.h in Headers */,
 				965C43741FBDCBC100E05A2D /* NotificationUtils.h in Headers */,
 				965C43571FBDCBC100E05A2D /* TDConstants.h in Headers */,
@@ -521,6 +530,7 @@
 				9637BE4A1FD6F5BB008780BC /* TDPersonaHandler.m in Sources */,
 				965C43A81FBE219B00E05A2D /* TDLinksHandler.m in Sources */,
 				965C438A1FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
+				9682120D209C301800A04E1C /* TDReachability.m in Sources */,
 				965C43901FBE203200E05A2D /* TDNotificationReadHandler.m in Sources */,
 				965C43AE1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */,
 				9637BE501FD6F5DF008780BC /* Device.m in Sources */,
@@ -550,6 +560,7 @@
 				965C42BA1FBC6FEB00E05A2D /* TendartsTests.m in Sources */,
 				965C434D1FBDCBC100E05A2D /* TDCommunications.m in Sources */,
 				965C43531FBDCBC100E05A2D /* TendartsSDK.m in Sources */,
+				9682120E209C301800A04E1C /* TDReachability.m in Sources */,
 				965C43851FBE169B00E05A2D /* TDAPIService.m in Sources */,
 				965C43461FBDCBC100E05A2D /* PushController.m in Sources */,
 				965C43AF1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */,
@@ -594,6 +605,7 @@
 				965C436B1FBDCBC100E05A2D /* TDUIApplication.m in Sources */,
 				965C43A71FBE219B00E05A2D /* TDLinksHandler.m in Sources */,
 				965C43891FBE19A300E05A2D /* TDNotificationOpenHandler.m in Sources */,
+				9682120C209C301800A04E1C /* TDReachability.m in Sources */,
 				965C438F1FBE203200E05A2D /* TDNotificationReadHandler.m in Sources */,
 				965C43AD1FBE2A8900E05A2D /* TDDeviceHandler.m in Sources */,
 				965C437D1FBE0F5900E05A2D /* TDHTTPClient.m in Sources */,
