@@ -340,7 +340,7 @@ onSuccessHandler:(TDCHandleSuccess)successHandler
 }
 
 + (BOOL)isInternetNotAvailable {
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    TDReachability *reachability = [TDReachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     return (networkStatus == NotReachable);
 }
